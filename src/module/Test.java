@@ -13,7 +13,7 @@ public class Test {
         calc.initializeValue();
         calc.printTable();
         System.out.println();
-        calc.onKeyPressLeft();
+        calc.onKeyPressRight();
         calc.printTable();
 
 

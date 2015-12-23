@@ -3,7 +3,7 @@ package module;
 import java.util.Random;
 
 /**
- * Created by Biko on 23.12.2015.
+ * Created by Biko K. & Ali S. on 23.12.2015.
  */
 public class Calc {
     private int[][] table;
@@ -53,6 +53,7 @@ public class Calc {
     /**
      * if the field to the left has the same number --> number is moves to the left and added up
      * original field set to zero
+     * - changes made by Ali S. on 23.12.2015
      */
     public void onKeyPressLeft() {
         for (int i = 0; i < table.length; i++) {
@@ -66,6 +67,22 @@ public class Calc {
         }
     }
 
+    /**
+     * if the field to the right has the same number --> number is moves to the right and added up
+     * original field set to zero
+     * - changes made by Ali S. on 23.12.2015
+     */
+    public void onKeyPressRight() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+
+                if (table[i][j] > 0 && j + 1 <= tableSize - 1 && table[i][j] == table[i][j + 1]) { // number to the right is the same
+                    table[i][j + 1] += table[i][j + 1];
+                    table[i][j] = 0;
+                }
+            }
+        }
+    }
 
     /**
      * Getters and Setters
