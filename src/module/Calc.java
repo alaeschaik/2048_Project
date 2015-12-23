@@ -70,7 +70,7 @@ public class Calc {
     /**
      * if the field to the right has the same number --> number is moves to the right and added up
      * original field set to zero
-     * - changes made by Ali S. on 23.12.2015
+     * - changes made by Ali S. on 23.12.2015 hallo
      */
     public void onKeyPressRight() {
         for (int i = 0; i < table.length; i++) {
