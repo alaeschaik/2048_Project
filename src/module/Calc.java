@@ -20,7 +20,8 @@ public class Calc {
     }
 
     /**
-     *  Randomly creates a position in the array and tries to insert even number into position.
+     * Randomly creates a position in the array and tries to insert even number into position.
+     *
      * @return true if position is assigned with value, else false if not.
      */
     public boolean initializeValue() {
@@ -35,8 +36,9 @@ public class Calc {
     }
 
     /**
-     *  Creates even random number for table
-     *  @return even number;
+     * Creates even random number for table
+     *
+     * @return even number;
      */
     public int returnEvenNumber(int range) {
         int random = 0;
@@ -70,21 +72,13 @@ public class Calc {
     }
 
 
-
-
     public void onKeyPressLeft() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
 
-                if (!(table[i][j] == 0) && j - 1 >= 0) {
-                    if (table[i][j - 1] == 0) {
-                        if(table[i][j]==table[i][j-1])
-                        {
-                            table[i][j]=0;
-                            table[i][j-1] += table[i][j-1];
-                        }
-
-                    }
+                if (table[i][j] > 0 && j - 1 >= 0 && table[i][j] == table[i][j - 1]) {
+                    table[i][j - 1] += table[i][j - 1];
+                    table[i][j] = 0;
                 }
             }
         }

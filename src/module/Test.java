@@ -12,6 +12,7 @@ public class Test {
         calc.initializeValue();
         calc.initializeValue();
         calc.printTable();
+        System.out.println();
         calc.onKeyPressLeft();
         calc.printTable();
 
