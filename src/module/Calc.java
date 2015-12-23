@@ -50,6 +50,28 @@ public class Calc {
         return i;
     }
 
+    /**
+     * if the field to the left has the same number --> number is moves to the left and added up
+     * original field set to zero
+     */
+    public void onKeyPressLeft() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+
+                if (table[i][j] > 0 && j - 1 >= 0 && table[i][j] == table[i][j - 1]) { // number to the left is the same
+                    table[i][j - 1] += table[i][j - 1];
+                    table[i][j] = 0;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Getters and Setters
+     *
+     * @return
+     */
     public int getTableSize() {
         return tableSize;
     }
@@ -62,6 +84,10 @@ public class Calc {
         return false;
     }
 
+
+    /**
+     * Table is printed into the terminal
+     */
     public void printTable() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
@@ -72,15 +98,4 @@ public class Calc {
     }
 
 
-    public void onKeyPressLeft() {
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-
-                if (table[i][j] > 0 && j - 1 >= 0 && table[i][j] == table[i][j - 1]) {
-                    table[i][j - 1] += table[i][j - 1];
-                    table[i][j] = 0;
-                }
-            }
-        }
-    }
 }

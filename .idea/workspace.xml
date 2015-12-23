@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="onKeyPressLeft corrected">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Calc.java" afterPath="$PROJECT_DIR$/src/module/Calc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Test.java" afterPath="$PROJECT_DIR$/src/module/Test.java" />
     </list>
     <ignored path="project-2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,9 +39,12 @@
       <file leaf-file-name="Calc.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3417935">
-              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.35418993">
+              <caret line="60" column="120" selection-start-line="60" selection-start-column="120" selection-end-line="60" selection-end-column="120" />
+              <folding>
+                <element signature="e#1873#1874#0" expanded="true" />
+                <element signature="e#1905#1906#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,8 +86,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/module/calc.java" />
-        <option value="$PROJECT_DIR$/src/module/Calc.java" />
         <option value="$PROJECT_DIR$/src/module/Test.java" />
+        <option value="$PROJECT_DIR$/src/module/Calc.java" />
       </list>
     </option>
   </component>
@@ -606,12 +607,19 @@
       <workItem from="1450861869123" duration="52000" />
       <workItem from="1450861926428" duration="4982000" />
       <workItem from="1450867084523" duration="883000" />
-      <workItem from="1450895079328" duration="1113000" />
+      <workItem from="1450895079328" duration="1576000" />
     </task>
+    <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
+      <created>1450896198100</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1450896198100</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7030000" />
+    <option name="totallyTimeSpent" value="7493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -619,7 +627,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0032502708" sideWeight="0.5182094" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -680,7 +688,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1873#1874#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -712,7 +723,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1873#1874#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -734,9 +748,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3417935">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.35418993">
+          <caret line="60" column="120" selection-start-line="60" selection-start-column="120" selection-end-line="60" selection-end-column="120" />
+          <folding>
+            <element signature="e#1873#1874#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
