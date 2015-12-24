@@ -6,17 +6,17 @@ import java.util.Random;
  * Created by Biko K. & Ali S. on 23.12.2015.
  */
 public class Calc {
-    private int[][] table;
+    private int[][] table = {{0, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}};
     private int tableSize;
 
 
     public Calc(int tableSize) {
-        this.tableSize = tableSize;
-
-        table = new int[tableSize][tableSize];
-        // at the start of the game, 2 values are set
-        initializeValue();
-        initializeValue();
+//        this.tableSize = tableSize;
+//
+//        table = new int[tableSize][tableSize];
+//        // at the start of the game, 2 values are set
+//        initializeValue();
+//        initializeValue();
     }
 
     /**
@@ -41,7 +41,7 @@ public class Calc {
      * @return even number;
      */
     public int returnEvenNumber(int range) {
-        int random = 0;
+        int random;
         int i = 0;
         while (i == 0) {
             random = new Random().nextInt(range + 1);
@@ -51,7 +51,7 @@ public class Calc {
     }
 
     /**
-     * if the field to the left has the same number --> number is moves to the left and added up
+     * if the field to the left has the same number --> number is moved to the left and added up
      * original field set to zero
      * - changes made by Ali S. on 23.12.2015
      */
@@ -60,29 +60,87 @@ public class Calc {
             for (int j = 0; j < table[i].length; j++) {
 
                 if (table[i][j] > 0 && j - 1 >= 0 && table[i][j] == table[i][j - 1]) { // number to the left is the same
+
                     table[i][j - 1] += table[i][j - 1];
                     table[i][j] = 0;
                 }
+
+
             }
         }
     }
 
     /**
-     * if the field to the right has the same number --> number is moves to the right and added up
+     * implication of shifting fields with value to the left if possible & adding up same numbers
+     * original field set to zero
+     * - changes made by Biko K. on 24.12.2015
+     */
+    public void onKeyPressLeftNew() {
+        int k = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] > 0 && j - 1 >= 0) {
+                    if (table[i][j - 1] == table[i][j]) {
+                        k = j;
+                        if (j - 2 >= 0) {
+                            k = j - 2;
+                        }
+                        while (k > 0 && table[i][k] == 0) {
+                            k--;
+                        }
+                        table[i][k] = table[i][j] + table[i][j];
+                        table[i][j] = 0;
+                        table[i][j - 1] = 0;
+                    } else if (table[i][j - 1] == 0) {
+                        k = j - 1;
+                        while (k >= 0) {
+
+
+                            if (table[i][k] == table[i][j]) {
+                                table[i][k] = table[i][k] * 2;
+                                table[i][j] = 0;
+                                return;
+
+                            }
+                            if (!(table[i][k] == 0)) {
+                                k++;
+                                break;
+                            }
+
+                            if (k == 0) break;
+                            if (table[i][k] == 0) k--;
+
+                        }
+
+                        table[i][k] = table[i][j];
+                        table[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    /**
+     * if the field to the right has the same number --> number is moved to the right and added up
      * original field set to zero
      * - changes made by Ali S. on 23.12.2015
      */
+
     public void onKeyPressRight() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
 
                 if (table[i][j] > 0 && j + 1 <= tableSize - 1 && table[i][j] == table[i][j + 1]) { // number to the right is the same
+
                     table[i][j + 1] += table[i][j + 1];
                     table[i][j] = 0;
                 }
             }
         }
     }
+
 
     /**
      * Getters and Setters

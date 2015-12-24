@@ -8,12 +8,12 @@ public class Test {
 
     public static void main(String[] args) {
         Calc calc= new Calc(4);
-        calc.initializeValue();
-        calc.initializeValue();
-        calc.initializeValue();
         calc.printTable();
         System.out.println();
-        calc.onKeyPressRight();
+
+        calc.onKeyPressLeftNew();
+        calc.printTable();
+        calc.onKeyPressLeftNew();
         calc.printTable();
 
 
