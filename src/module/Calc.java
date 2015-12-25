@@ -72,9 +72,93 @@ public class Calc {
     }
 
     /**
+     * implication of shifting fields with value to the top if possible & adding up same numbers
+     * original field set to zero
+     * - changes made by Biko K. on 25.12.2015
+     */
+    public void onKeyPressUp() {
+        int k = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] > 0 && i - 1 >= 0) {
+                    if (table[i - 1][j] == table[i][j]) { // if they are the same
+                        table[i - 1][j] += table[i][j];
+                        table[i][j] = 0;
+                    } else if (table[i - 1][j] == 0) {
+                        k = i - 1;
+                        while (k >= 0) {
+
+
+                            if (table[k][j] == table[i][j]) {
+                                table[k][j] += table[k][j];
+                                table[i][j] = 0;
+                                continue;
+
+                            }
+                            if (!(table[k][j] == 0)) {
+                                k++;
+                                break;
+                            }
+
+                            if (k == 0) break;
+                            if (table[k][j] == 0) k--;
+
+                        }
+
+                        table[k][j] = table[i][j];
+                        table[i][j] = 0;
+
+                    }
+                }
+            }
+        }
+        initializeValue();
+    }
+
+    public void onKeyPressDown() {
+        int k = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] > 0 && i + 1 < table.length) {
+                    if (table[i + 1][j] == table[i][j]) { // if they are the same
+                        table[i + 1][j] += table[i][j];
+                        table[i][j] = 0;
+                    } else if (table[i + 1][j] == 0) {
+                        k = i + 1;
+                        while (k < table.length) {
+
+
+                            if (table[k][j] == table[i][j]) {
+                                table[k][j] += table[k][j];
+                                table[i][j] = 0;
+                                continue;
+
+                            }
+                            if (!(table[k][j] == 0)) {
+                                k--;
+                                break;
+                            }
+
+                            if (k == table.length - 1) break;
+                            if (table[k][j] == 0) k++;
+
+                        }
+
+                        table[k][j] = table[i][j];
+                        table[i][j] = 0;
+
+                    }
+                }
+            }
+        }
+        initializeValue();
+    }
+
+
+    /**
      * implication of shifting fields with value to the left if possible & adding up same numbers
      * original field set to zero
-     * - changes made by Biko K. on 24.12.2015
+     * - changes made by Biko K. on 25.12.2015
      */
     public void onKeyPressLeft() { //// UPDATE 25.12.2015: fixed mistake of ignoring the last row.(thinking mistake from my side) - Biko
         int k = 0;

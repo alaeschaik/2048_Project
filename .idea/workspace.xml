@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="+Fixed the existing mistakes concerning &quot;OnKeyPressLeft&quot;, should work perfectly now(at least i didn't find any errors).&#10;+Implemented a method that checks if the game is over or not.&#10;+ Added a new Test Class&quot;Test2&quot; so we have the ability(if necessary) to follow every single step the program makes with the usage of the debugger&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Calc.java" afterPath="$PROJECT_DIR$/src/module/Calc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Test.java" afterPath="$PROJECT_DIR$/src/module/Test.java" />
     </list>
     <ignored path="project-2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,9 +30,12 @@
       <file leaf-file-name="Calc.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35185185">
-              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-              <folding />
+            <state vertical-scroll-proportion="0.7417417">
+              <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+              <folding>
+                <element signature="e#8324#8325#0" expanded="true" />
+                <element signature="e#8356#8357#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/module/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="28" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="28" />
+              <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -99,8 +104,8 @@
         <option value="$PROJECT_DIR$/src/module/calc.java" />
         <option value="$PROJECT_DIR$/src/game2048/Game2048.java" />
         <option value="$PROJECT_DIR$/src/module/Game2048.java" />
-        <option value="$PROJECT_DIR$/src/module/Test.java" />
         <option value="$PROJECT_DIR$/src/module/Test2.java" />
+        <option value="$PROJECT_DIR$/src/module/Test.java" />
         <option value="$PROJECT_DIR$/src/module/Calc.java" />
       </list>
     </option>
@@ -711,7 +716,7 @@
       <workItem from="1450969225500" duration="244000" />
       <workItem from="1450987727149" duration="7297000" />
       <workItem from="1450995952715" duration="1530000" />
-      <workItem from="1451031752233" duration="2647000" />
+      <workItem from="1451031752233" duration="3874000" />
     </task>
     <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
       <created>1450896198100</created>
@@ -737,15 +742,21 @@
       <option name="project" value="LOCAL" />
       <updated>1451034338883</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="+Fixed the existing mistakes concerning &quot;OnKeyPressLeft&quot;, should work perfectly now(at least i didn't find any errors).&#10;+Implemented a method that checks if the game is over or not.&#10;+ Added a new Test Class&quot;Test2&quot; so we have the ability(if necessary) to follow every single step the program makes with the usage of the debugger&#10;">
+      <created>1451034431082</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1451034431082</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28299000" />
+    <option name="totallyTimeSpent" value="29526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -754,7 +765,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26849896" sideWeight="0.52239585" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12363239" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26638478" sideWeight="0.47760418" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26638478" sideWeight="0.47760418" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4939302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -799,7 +810,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -812,7 +823,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -835,7 +849,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -858,7 +875,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -881,7 +901,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -904,7 +927,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -927,7 +953,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -950,7 +979,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -973,7 +1005,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1003,7 +1038,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,16 +1071,19 @@
     <entry file="file://$PROJECT_DIR$/src/module/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="28" />
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35185185">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding />
+        <state vertical-scroll-proportion="0.7417417">
+          <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+          <folding>
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8356#8357#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

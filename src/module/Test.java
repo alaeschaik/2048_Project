@@ -35,7 +35,8 @@ public class Test {
                         System.exit(0);
                         break;
                     case 2:
-                        //calc.onKeyPressDown(); break;
+                        calc.onKeyPressDown();
+                        break;
                     case 4:
                         calc.onKeyPressLeft();
                         break;
@@ -43,7 +44,8 @@ public class Test {
                         calc.onKeyPressRight();
                         break;
                     case 8:
-                        //calc.onKeyPressUp(); break;
+                        calc.onKeyPressUp();
+                        break;
                 }
             }
         }
