@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by Biko K. & Ali S. on 23.12.2015.
  */
 public class Calc {
-    private int[][] table /*= {{0, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/;
+    private int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
     private int tableSize;
 
 
@@ -14,7 +14,7 @@ public class Calc {
         this.tableSize = tableSize;
 
         table = new int[tableSize][tableSize];
-        // at the start of the game, 2 values are set
+        //at the start of the game, 2 values are set
         initializeValue();
         initializeValue();
     }
@@ -28,12 +28,33 @@ public class Calc {
         int rRow = new Random().nextInt(table.length);
         int rCol = new Random().nextInt(table.length);
 
-        if (table[rRow][rCol] == 0) {
+        if (table[rRow][rCol] == 0 && end()) { //if the game is not over, we insert a new value
             table[rRow][rCol] = returnEvenNumber(4);
             return true;
+        } else if (!(table[rRow][rCol] == 0) && end()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+        {
+            return initializeValue();
+        } else { //if the game is over
+            System.out.println("GAME OVER");
         }
         return false;
     }
+
+
+    /**
+     * checks table for empty field, if not available, end the game
+     */
+    public boolean end() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Creates even random number for table
@@ -55,31 +76,23 @@ public class Calc {
      * original field set to zero
      * - changes made by Biko K. on 24.12.2015
      */
-    public void onKeyPressLeft() { //// TODO: 24.12.2015 last row has issues - debugger shows no mistakes though // Please write comments
+    public void onKeyPressLeft() { //// UPDATE 25.12.2015: fixed mistake of ignoring the last row.(thinking mistake from my side) - Biko
         int k = 0;
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] > 0 && j - 1 >= 0) {
                     if (table[i][j - 1] == table[i][j]) { // if they are the same
-                        k = j;
-                        if (j - 2 >= 0) {
-                            k = j - 2;
-                        }
-                        while (k > 0 && table[i][k] == 0) { // spaces with zero are ignored
-                            k--;
-                        }
-                        table[i][k] = table[i][j] + table[i][j];
+                        table[i][j - 1] += table[i][j];
                         table[i][j] = 0;
-                        table[i][j - 1] = 0;
                     } else if (table[i][j - 1] == 0) {
                         k = j - 1;
                         while (k >= 0) {
 
 
                             if (table[i][k] == table[i][j]) {
-                                table[i][k] = table[i][k] * 2;
+                                table[i][k] += table[i][k];
                                 table[i][j] = 0;
-                                return;
+                                continue;
 
                             }
                             if (!(table[i][k] == 0)) {
@@ -97,6 +110,7 @@ public class Calc {
                     }
                 }
             }
+
         }
         initializeValue();
     }
@@ -168,7 +182,8 @@ public class Calc {
         if (tableSize < 10) {
             this.tableSize = tableSize;
             return true;
-        }
+        } else
+            System.out.println("Only values up to 10 are allowed");
         return false;
     }
 

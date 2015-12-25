@@ -3,7 +3,7 @@ package module;
 import java.util.Scanner;
 
 /**
- * Created by Biko on 23.12.2015.
+ * Created by Biko K. and Ali S.
  */
 public class Test {
     private static Scanner scanner;
