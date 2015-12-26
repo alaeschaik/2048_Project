@@ -11,7 +11,7 @@ public class Test {
     public static void main(String[] args) {
         System.out.println("---------------------------- Test 2048 ----------------------------");
         Calc calc = new Calc(4);
-        calc.initializeValue();
+        calc.initializeValue(16);
 
         int choice = 0;
         scanner = new Scanner(System.in);

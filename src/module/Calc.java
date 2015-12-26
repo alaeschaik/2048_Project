@@ -7,7 +7,8 @@ import java.util.Random;
  */
 public class Calc {
     private int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
-    private int tableSize;
+    private int tableSize; //size of the table, sides are proportional
+    public int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
 
 
     public Calc(int tableSize) {
@@ -15,8 +16,8 @@ public class Calc {
 
         table = new int[tableSize][tableSize];
         //at the start of the game, 2 values are set
-        initializeValue();
-        initializeValue();
+        initializeValue(range);
+        initializeValue(range);
     }
 
     /**
@@ -24,16 +25,17 @@ public class Calc {
      *
      * @return true if position is assigned with value, else false if not.
      */
-    public boolean initializeValue() {
+    public boolean initializeValue(int range) {
+        this.range = range;
         int rRow = new Random().nextInt(table.length);
         int rCol = new Random().nextInt(table.length);
 
-        if (table[rRow][rCol] == 0 && end()) { //if the game is not over, we insert a new value
-            table[rRow][rCol] = returnEvenNumber(4);
+        if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
+            table[rRow][rCol] = returnEvenNumber(range);
             return true;
-        } else if (!(table[rRow][rCol] == 0) && end()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+        } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
         {
-            return initializeValue();
+            return initializeValue(range);
         } else { //if the game is over
             System.out.println("GAME OVER");
         }
@@ -44,7 +46,7 @@ public class Calc {
     /**
      * checks table for empty field, if not available, end the game
      */
-    public boolean end() {
+    public boolean endOfGame() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] == 0) {
@@ -64,11 +66,17 @@ public class Calc {
     public int returnEvenNumber(int range) {
         int random;
         int i = 0;
-        while (i == 0) {
-            random = new Random().nextInt(range + 1);
-            if (random % 2 == 0) i = random;
+        if (range > 2) {
+            this.range = range;
+            while (i == 0) {
+                random = new Random().nextInt(range + 1);
+                if (random % 2 == 0) i = random;
+            }
+            return i;
+        } else {
+            System.out.println("minimum range of 2 is required");
         }
-        return i;
+        return 0;
     }
 
     /**
@@ -112,11 +120,16 @@ public class Calc {
                 }
             }
         }
-        initializeValue();
+        initializeValue(range);
     }
 
+    /**
+     * implication of shifting fields with value to the bottom if possible & adding up same numbers
+     * original field set to zero
+     * - changes made by Biko K. on 25.12.2015
+     */
     public void onKeyPressDown() {
-        int k = 0;
+        int k;
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] > 0 && i + 1 < table.length) {
@@ -151,7 +164,7 @@ public class Calc {
                 }
             }
         }
-        initializeValue();
+        initializeValue(range);
     }
 
 
@@ -161,7 +174,7 @@ public class Calc {
      * - changes made by Biko K. on 25.12.2015
      */
     public void onKeyPressLeft() { //// UPDATE 25.12.2015: fixed mistake of ignoring the last row.(thinking mistake from my side) - Biko
-        int k = 0;
+        int k;
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] > 0 && j - 1 >= 0) {
@@ -196,7 +209,7 @@ public class Calc {
             }
 
         }
-        initializeValue();
+        initializeValue(range);
     }
 
 
@@ -205,9 +218,8 @@ public class Calc {
      * original field set to zero
      * - changes made by Ali S. on 24.12.2015
      */
-
     public void onKeyPressRight() { // TODO: 24.12.2015 correct the algorithmus
-        int k = 0;
+        int k;
         for (int i = 0; i < table.length; i++) {
             for (int j = table[i].length - 1; j >= 0; j--) {
                 if (table[i][j] > 0 && j - 1 >= 0) {
@@ -249,7 +261,7 @@ public class Calc {
                 }
             }
         }
-        initializeValue();
+        initializeValue(range);
     }
 
 
