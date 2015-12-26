@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="+Fixed the existing mistakes concerning &quot;OnKeyPressLeft&quot;, should work perfectly now(at least i didn't find any errors).&#10;+Implemented a method that checks if the game is over or not.&#10;+ Added a new Test Class&quot;Test2&quot; so we have the ability(if necessary) to follow every single step the program makes with the usage of the debugger&#10;">
+    <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="Minor tweaks &#10;&#10;+Allowing the user to set the allowed values for the">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Calc.java" afterPath="$PROJECT_DIR$/src/module/Calc.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Test.java" afterPath="$PROJECT_DIR$/src/module/Test.java" />
@@ -30,11 +30,11 @@
       <file leaf-file-name="Calc.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7417417">
-              <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+            <state vertical-scroll-proportion="1.074074">
+              <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
               <folding>
-                <element signature="e#8324#8325#0" expanded="true" />
-                <element signature="e#8356#8357#0" expanded="true" />
+                <element signature="e#8998#8999#0" expanded="true" />
+                <element signature="e#9030#9031#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/module/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -153,9 +153,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,6 +193,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -716,7 +716,8 @@
       <workItem from="1450969225500" duration="244000" />
       <workItem from="1450987727149" duration="7297000" />
       <workItem from="1450995952715" duration="1530000" />
-      <workItem from="1451031752233" duration="3874000" />
+      <workItem from="1451031752233" duration="9282000" />
+      <workItem from="1451123268964" duration="765000" />
     </task>
     <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
       <created>1450896198100</created>
@@ -748,15 +749,21 @@
       <option name="project" value="LOCAL" />
       <updated>1451034431082</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented &quot;OnKeyPressUp()&quot; and &quot;OnKeyPressDown()&quot;.&#10;&#10;As you requested, i let do the work for &quot;OnKeyPressRight()&quot;^^ So you have the chance to get to understand what the code I've written does actually do">
+      <created>1451035764476</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1451035764476</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29526000" />
+    <option name="totallyTimeSpent" value="35699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -765,7 +772,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26849896" sideWeight="0.52239585" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12363239" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26638478" sideWeight="0.47760418" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26638478" sideWeight="0.47760418" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4939302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -801,7 +808,8 @@
     <MESSAGE value="neues" />
     <MESSAGE value="Overwork of the old &quot;onKeyPressLeft&quot; Method, so it automatically shifts fields with value in the most left empty field" />
     <MESSAGE value="+Fixed the existing mistakes concerning &quot;OnKeyPressLeft&quot;, should work perfectly now(at least i didn't find any errors).&#10;+Implemented a method that checks if the game is over or not.&#10;+ Added a new Test Class&quot;Test2&quot; so we have the ability(if necessary) to follow every single step the program makes with the usage of the debugger&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="+Fixed the existing mistakes concerning &quot;OnKeyPressLeft&quot;, should work perfectly now(at least i didn't find any errors).&#10;+Implemented a method that checks if the game is over or not.&#10;+ Added a new Test Class&quot;Test2&quot; so we have the ability(if necessary) to follow every single step the program makes with the usage of the debugger&#10;" />
+    <MESSAGE value="Implemented &quot;OnKeyPressUp()&quot; and &quot;OnKeyPressDown()&quot;.&#10;&#10;As you requested, i let do the work for &quot;OnKeyPressRight()&quot;^^ So you have the chance to get to understand what the code I've written does actually do" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented &quot;OnKeyPressUp()&quot; and &quot;OnKeyPressDown()&quot;.&#10;&#10;As you requested, i let do the work for &quot;OnKeyPressRight()&quot;^^ So you have the chance to get to understand what the code I've written does actually do" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -810,7 +818,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -824,8 +832,53 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/project-2048/module/Test.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#1729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Test2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -850,8 +903,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -876,8 +929,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -902,8 +955,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -928,8 +981,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -954,8 +1007,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -980,8 +1033,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1006,8 +1059,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1039,8 +1092,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1068,21 +1121,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/project-2048/module/Test.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.148148">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#1729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7417417">
-          <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+        <state vertical-scroll-proportion="1.074074">
+          <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
           <folding>
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8356#8357#0" expanded="true" />
+            <element signature="e#8998#8999#0" expanded="true" />
+            <element signature="e#9030#9031#0" expanded="true" />
           </folding>
         </state>
       </provider>
