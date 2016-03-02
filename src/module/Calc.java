@@ -1,18 +1,21 @@
 package module;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 import java.util.Random;
 
 /**
  * Created by Biko K. & Ali S. on 23.12.2015.
  */
-public class Calc {
-    private int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
+public class Calc extends JPanel {
+    public int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
     private int tableSize; //size of the table, sides are proportional
     public int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
-
+    Calc temp = this;
 
     public Calc(int tableSize) {
-        this.tableSize = tableSize;
+        setTableSize(tableSize);
 
         table = new int[tableSize][tableSize];
         //at the start of the game, 2 values are set
@@ -60,6 +63,10 @@ public class Calc {
         return false;
     }
 
+    public void resetGame() {
+
+        table = new int[tableSize][tableSize];
+    }
 
     /**
      * Creates even random number for table
@@ -409,7 +416,74 @@ public class Calc {
 
 
     }
+
+    public Color getBackground(int value) {
+        switch (value) {
+            case 2:
+                return new Color(0xeee4da);
+            case 4:
+                return new Color(0xede0c8);
+            case 8:
+                return new Color(0xf2b179);
+            case 16:
+                return new Color(0xf59563);
+            case 32:
+                return new Color(0xf67c5f);
+            case 64:
+                return new Color(0xf65e3b);
+            case 128:
+                return new Color(0xedcf72);
+            case 256:
+                return new Color(0xedcc61);
+            case 512:
+                return new Color(0xedc850);
+            case 1024:
+                return new Color(0xedc53f);
+            case 2048:
+                return new Color(0xedc22e);
+        }
+        return new Color(0xcdc1b4);
+    }
+
+    public Color getForeground(int value) {
+        return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
+    }
+
+    public void saveStatus() throws IOException {
+        // FileOutputStream fo=new FileOutputStream("save.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.ser"));
+        oos.writeObject(this);
+        oos.close();
+        System.out.println("figures serialized");
+    }
+
+    /**
+     * Serialize objects
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void readStatus() throws IOException, ClassNotFoundException {
+        FileInputStream fi = new FileInputStream("save.ser");
+        ObjectInputStream ois = new ObjectInputStream(fi);
+        temp = null;
+        // cast object to arraylist of Geometricalfigures
+        temp = (Calc) ois.readObject();
+        ois.close();
+        System.out.println("Serialized figures read");
+    }
+
+    @Override
+    public String toString() {
+        return "Calc{" +
+                "tableSize=" + tableSize +
+                ", range=" + range +
+                '}';
+    }
 }
+
+
+
 
 
 
