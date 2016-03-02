@@ -295,6 +295,7 @@ public class Game2048 extends JPanel {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 drawTile(g, myTiles[x + y * 4], x, y);
+                //test
             }
         }
     }
