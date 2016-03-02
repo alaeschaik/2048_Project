@@ -18,6 +18,9 @@ public class Calc {
         //at the start of the game, 2 values are set
         initializeValue(range);
         initializeValue(range);
+        initializeValue(range);
+        initializeValue(range);
+        initializeValue(range);
     }
 
     /**
@@ -164,7 +167,7 @@ public class Calc {
                 }
             }
         }
-        initializeValue(range);
+        //initializeValue(range);
     }
 
 
@@ -221,37 +224,30 @@ public class Calc {
     public void onKeyPressRight() { // TODO: 24.12.2015 correct the algorithmus
         int k;
         for (int i = 0; i < table.length; i++) {
-            for (int j = table[i].length - 1; j >= 0; j--) {
-                if (table[i][j] > 0 && j - 1 >= 0) {
-                    if (table[i][j - 1] == table[i][j]) { // if they are the same
-                        k = j;
-                        if (j - 2 >= 0) {
-                            k = j - 2;
-                        }
-                        while (k > 0 && table[i][k] == 0) { // spaces with zero are ignored
-                            k--;
-                        }
-                        table[i][k] = table[i][j] + table[i][j];
+            for (int j = 0; j + 1 < table[i].length; j++) {
+                if (table[i][j] > 0) {
+                    if (table[i][j + 1] == table[i][j]) { // if they are the same
+                        table[i][j + 1] += table[i][j];
                         table[i][j] = 0;
-                        table[i][j - 1] = 0;
-                    } else if (table[i][j - 1] == 0) {
-                        k = j - 1;
-                        while (k >= 0) {
+                    } else if (table[i][j + 1] == 0) {
+                        k = j + 1;
+                        while (k < table.length) {
 
 
                             if (table[i][k] == table[i][j]) {
-                                table[i][k] = table[i][k] * 2;
+                                table[i][k] += table[i][j];
                                 table[i][j] = 0;
-                                return;
+                                continue;
 
                             }
+
                             if (!(table[i][k] == 0)) {
                                 k++;
                                 break;
                             }
 
-                            if (k == 0) break;
-                            if (table[i][k] == 0) k--;
+                            if (k == table.length - 1) break;
+                            if (table[i][k] == 0) k++;
 
                         }
 
@@ -260,6 +256,7 @@ public class Calc {
                     }
                 }
             }
+
         }
         initializeValue(range);
     }
@@ -297,4 +294,122 @@ public class Calc {
     }
 
 
+    public void onKeyPressLeftNew() {
+        rotate();
+        rotate();
+        for (int i = 0; i < table.length; i++) {
+            if (isEmpty(i) > 0) {
+                mergeLine(i);
+            }
+        }
+        rotate();
+        rotate();
+    }
+
+    public void onKeyPressRightNew() {
+        for (int i = 0; i < table.length; i++) {
+            if (isEmpty(i) > 0) {
+                mergeLine(i);
+            }
+        }
+    }
+
+    public void onKeyPressUpNew() {
+        rotate();
+        rotate();
+        rotate();
+        for (int i = 0; i < table.length; i++) {
+            if (isEmpty(i) > 0) {
+                mergeLine(i);
+            }
+        }
+        rotate();
+    }
+
+    public void onKeyPressDownNew() {
+        rotate();
+        for (int i = 0; i < table.length; i++) {
+            if (isEmpty(i) > 0) {
+                mergeLine(i);
+            }
+        }
+        rotate();
+        rotate();
+        rotate();
+    }
+
+
+    public int isEmpty(int row) {
+        int counter = 0;
+        if (row < table.length) {
+            for (int i = 0; i < table[row].length; i++) {
+                if (table[row][i] > 0) {
+                    counter++;
+                }
+            }
+        } else {
+            System.err.println("row must be smaller than the size of the array!");
+        }
+        return counter;
+
+    }
+
+    public void rotate() {
+        int w = table.length;
+        int h = table[0].length;
+        int[][] ret = new int[h][w];
+        for (int i = 0; i < h; ++i) {
+            for (int j = 0; j < w; ++j) {
+                ret[i][j] = table[j][h - i - 1];
+            }
+        }
+        table = ret;
+    }
+
+    public void mergeLine(int row) {
+        int temp = 1;
+        int innerTemp = 0;
+        for (int j = 0; j + 1 < table[row].length; j++) {
+
+            if (table[row][j] > 0) {
+                temp = j + 1;
+                if (temp < table[row].length) {
+                    if (table[row][j] == table[row][temp]) {
+                        table[row][temp] += table[row][j];
+                        table[row][j] = 0;
+                        innerTemp = temp;
+                        while (innerTemp + 1 < table[row].length && table[row][innerTemp + 1] == 0) {
+                            innerTemp++;
+                        }
+                        if (innerTemp != temp) {
+                            table[row][innerTemp] = table[row][temp];
+                            table[row][temp] = 0;
+                        }
+
+                    } else if (table[row][temp] == 0) {
+                        innerTemp = temp;
+                        while (innerTemp + 1 < table[row].length && table[row][innerTemp + 1] == 0) {
+
+                            innerTemp++;
+                        }
+
+                        table[row][innerTemp] = table[row][j];
+                        table[row][j] = 0;
+
+                    }
+                    if (j - 1 >= 0 && table[row][j - 1] > 0) {//if there is a value right behind the value that is being shifted..
+                        table[row][innerTemp - 1] = table[row][j - 1];
+                        table[row][j - 1] = 0;
+                    }
+
+                }
+
+            }
+        }
+
+
+    }
 }
+
+
+
