@@ -35,16 +35,16 @@ public class Test {
                         System.exit(0);
                         break;
                     case 2:
-                        calc.onKeyPressDown();
+                        calc.onKeyPressDownNew();
                         break;
                     case 4:
-                        calc.onKeyPressLeft();
+                        calc.onKeyPressLeftNew();
                         break;
                     case 6:
-                        calc.onKeyPressRight();
+                        calc.onKeyPressRightNew();
                         break;
                     case 8:
-                        calc.onKeyPressUp();
+                        calc.onKeyPressUpNew();
                         break;
                 }
             }

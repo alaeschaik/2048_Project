@@ -2,6 +2,8 @@ package module;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Random;
 
@@ -9,10 +11,15 @@ import java.util.Random;
  * Created by Biko K. & Ali S. on 23.12.2015.
  */
 public class Calc extends JPanel {
+    private static final Color BG_COLOR = new Color(0xbbada0);
+    private static final String FONT_NAME = "Arial";
+    private static final int TILE_SIZE = 64;
+    private static final int TILES_MARGIN = 16;
+    public static Calc Game2048;
     public int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
-    private int tableSize; //size of the table, sides are proportional
     public int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
     Calc temp = this;
+    private int tableSize; //size of the table, sides are proportional
 
     public Calc(int tableSize) {
         setTableSize(tableSize);
@@ -22,9 +29,42 @@ public class Calc extends JPanel {
         initializeValue(range);
         initializeValue(range);
         initializeValue(range);
-        initializeValue(range);
-        initializeValue(range);
+
+
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    resetGame();
+                }
+                switch (e.getKeyCode()) { // delivers you which key was pressed
+                    case KeyEvent.VK_LEFT:
+                        System.out.println("vk_left");
+                        onKeyPressLeftNew();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        onKeyPressRightNew();
+                        System.out.println("vk_right");
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        System.out.println("vk_down");
+                        onKeyPressDownNew();
+                        break;
+                    case KeyEvent.VK_UP:
+                        System.out.println("vk_up");
+                        onKeyPressUpNew();
+                        break;
+
+                }
+                repaint();
+            }
+
+
+        });
+
     }
+
 
     /**
      * Randomly creates a position in the array and tries to insert even number into position.
@@ -89,185 +129,6 @@ public class Calc extends JPanel {
         return 0;
     }
 
-    /**
-     * implication of shifting fields with value to the top if possible & adding up same numbers
-     * original field set to zero
-     * - changes made by Biko K. on 25.12.2015
-     */
-    public void onKeyPressUp() {
-        int k = 0;
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                if (table[i][j] > 0 && i - 1 >= 0) {
-                    if (table[i - 1][j] == table[i][j]) { // if they are the same
-                        table[i - 1][j] += table[i][j];
-                        table[i][j] = 0;
-                    } else if (table[i - 1][j] == 0) {
-                        k = i - 1;
-                        while (k >= 0) {
-
-
-                            if (table[k][j] == table[i][j]) {
-                                table[k][j] += table[k][j];
-                                table[i][j] = 0;
-                                continue;
-
-                            }
-                            if (!(table[k][j] == 0)) {
-                                k++;
-                                break;
-                            }
-
-                            if (k == 0) break;
-                            if (table[k][j] == 0) k--;
-
-                        }
-
-                        table[k][j] = table[i][j];
-                        table[i][j] = 0;
-
-                    }
-                }
-            }
-        }
-        initializeValue(range);
-    }
-
-    /**
-     * implication of shifting fields with value to the bottom if possible & adding up same numbers
-     * original field set to zero
-     * - changes made by Biko K. on 25.12.2015
-     */
-    public void onKeyPressDown() {
-        int k;
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                if (table[i][j] > 0 && i + 1 < table.length) {
-                    if (table[i + 1][j] == table[i][j]) { // if they are the same
-                        table[i + 1][j] += table[i][j];
-                        table[i][j] = 0;
-                    } else if (table[i + 1][j] == 0) {
-                        k = i + 1;
-                        while (k < table.length) {
-
-
-                            if (table[k][j] == table[i][j]) {
-                                table[k][j] += table[k][j];
-                                table[i][j] = 0;
-                                continue;
-
-                            }
-                            if (!(table[k][j] == 0)) {
-                                k--;
-                                break;
-                            }
-
-                            if (k == table.length - 1) break;
-                            if (table[k][j] == 0) k++;
-
-                        }
-
-                        table[k][j] = table[i][j];
-                        table[i][j] = 0;
-
-                    }
-                }
-            }
-        }
-        //initializeValue(range);
-    }
-
-
-    /**
-     * implication of shifting fields with value to the left if possible & adding up same numbers
-     * original field set to zero
-     * - changes made by Biko K. on 25.12.2015
-     */
-    public void onKeyPressLeft() { //// UPDATE 25.12.2015: fixed mistake of ignoring the last row.(thinking mistake from my side) - Biko
-        int k;
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                if (table[i][j] > 0 && j - 1 >= 0) {
-                    if (table[i][j - 1] == table[i][j]) { // if they are the same
-                        table[i][j - 1] += table[i][j];
-                        table[i][j] = 0;
-                    } else if (table[i][j - 1] == 0) {
-                        k = j - 1;
-                        while (k >= 0) {
-
-
-                            if (table[i][k] == table[i][j]) {
-                                table[i][k] += table[i][k];
-                                table[i][j] = 0;
-                                continue;
-
-                            }
-                            if (!(table[i][k] == 0)) {
-                                k++;
-                                break;
-                            }
-
-                            if (k == 0) break;
-                            if (table[i][k] == 0) k--;
-
-                        }
-
-                        table[i][k] = table[i][j];
-                        table[i][j] = 0;
-                    }
-                }
-            }
-
-        }
-        initializeValue(range);
-    }
-
-
-    /**
-     * if the field to the right has the same number --> number is moved to the right and added up
-     * original field set to zero
-     * - changes made by Ali S. on 24.12.2015
-     */
-    public void onKeyPressRight() { // TODO: 24.12.2015 correct the algorithmus
-        int k;
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j + 1 < table[i].length; j++) {
-                if (table[i][j] > 0) {
-                    if (table[i][j + 1] == table[i][j]) { // if they are the same
-                        table[i][j + 1] += table[i][j];
-                        table[i][j] = 0;
-                    } else if (table[i][j + 1] == 0) {
-                        k = j + 1;
-                        while (k < table.length) {
-
-
-                            if (table[i][k] == table[i][j]) {
-                                table[i][k] += table[i][j];
-                                table[i][j] = 0;
-                                continue;
-
-                            }
-
-                            if (!(table[i][k] == 0)) {
-                                k++;
-                                break;
-                            }
-
-                            if (k == table.length - 1) break;
-                            if (table[i][k] == 0) k++;
-
-                        }
-
-                        table[i][k] = table[i][j];
-                        table[i][j] = 0;
-                    }
-                }
-            }
-
-        }
-        initializeValue(range);
-    }
-
 
     /**
      * Getters and Setters
@@ -287,38 +148,47 @@ public class Calc extends JPanel {
         return false;
     }
 
-
-    /**
-     * Table is printed into the terminal
-     */
-    public void printTable() {
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                System.out.print("[" + table[i][j] + "]");
-            }
-            System.out.println();
-        }
+    public static Color getBgColor() {
+        return BG_COLOR;
     }
 
+    public static String getFontName() {
+        return FONT_NAME;
+    }
+
+    public static int getTileSize() {
+        return TILE_SIZE;
+    }
+
+    public static int getTilesMargin() {
+        return TILES_MARGIN;
+    }
+
+
+    /**
+     * Moving methods
+     **/
 
     public void onKeyPressLeftNew() {
         rotate();
         rotate();
         for (int i = 0; i < table.length; i++) {
-            if (isEmpty(i) > 0) {
+            if (!isEmpty(i)) {
                 mergeLine(i);
             }
         }
         rotate();
         rotate();
+        initializeValue(range);
     }
 
     public void onKeyPressRightNew() {
         for (int i = 0; i < table.length; i++) {
-            if (isEmpty(i) > 0) {
+            if (!isEmpty(i)) {
                 mergeLine(i);
             }
         }
+        initializeValue(range);
     }
 
     public void onKeyPressUpNew() {
@@ -326,41 +196,48 @@ public class Calc extends JPanel {
         rotate();
         rotate();
         for (int i = 0; i < table.length; i++) {
-            if (isEmpty(i) > 0) {
+            if (!isEmpty(i)) {
                 mergeLine(i);
             }
         }
         rotate();
+        initializeValue(range);
     }
 
     public void onKeyPressDownNew() {
         rotate();
         for (int i = 0; i < table.length; i++) {
-            if (isEmpty(i) > 0) {
+            if (!isEmpty(i)) {
                 mergeLine(i);
             }
         }
         rotate();
         rotate();
         rotate();
+        initializeValue(range);
     }
 
 
-    public int isEmpty(int row) {
+    public boolean isEmpty(int row) {
         int counter = 0;
         if (row < table.length) {
             for (int i = 0; i < table[row].length; i++) {
                 if (table[row][i] > 0) {
-                    counter++;
+                    return false;
                 }
             }
         } else {
             System.err.println("row must be smaller than the size of the array!");
         }
-        return counter;
+        return true;
 
     }
 
+    /**
+     * rotates the array counter clockwise
+     * eg. [0] [2] = [2] [4]
+     * [0] [4]   [0] [0]
+     */
     public void rotate() {
         int w = table.length;
         int h = table[0].length;
@@ -373,6 +250,12 @@ public class Calc extends JPanel {
         table = ret;
     }
 
+    /**
+     * mergeLine() is basically a moveRight method, but by rotating the array it creates
+     * the impression as if you would move the tiles in any direction
+     *
+     * @param row
+     */
     public void mergeLine(int row) {
         int temp = 1;
         int innerTemp = 0;
@@ -404,18 +287,26 @@ public class Calc extends JPanel {
                         table[row][j] = 0;
 
                     }
-                    if (j - 1 >= 0 && table[row][j - 1] > 0) {//if there is a value right behind the value that is being shifted..
+                    if (j - 1 >= 0 && innerTemp - 1 >= 0 && table[row][j - 1] > 0) {//if there is a value right behind the value that is being shifted..
+
                         table[row][innerTemp - 1] = table[row][j - 1];
                         table[row][j - 1] = 0;
                     }
 
-                }
+                }//if (temp < table[row].length)
 
-            }
-        }
+            }// if (table[row][j] > 0)
+
+        }// for (int j = 0; j + 1 < table[row].length; j++)
 
 
     }
+
+
+    /**
+     * Tile Back & Foreground
+     */
+
 
     public Color getBackground(int value) {
         switch (value) {
@@ -449,6 +340,68 @@ public class Calc extends JPanel {
         return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
     }
 
+
+    /**
+     * Drawing the playing field
+     **/
+    @Override
+    public void paint(Graphics g) {
+
+        g.setColor(BG_COLOR);
+        g.fillRect(0, 0, this.getSize().width, this.getSize().height);
+        for (int x = 0; x < getTableSize(); x++) {
+            for (int y = 0; y < getTableSize(); y++) {
+                drawTile(g, x, y);
+                //test
+            }
+        }
+    }
+
+    private void drawTile(Graphics g2, int x, int y) {
+        Graphics2D g = ((Graphics2D) g2);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        int value = table[x][y];
+
+        int xOffset = offsetCoors(x);
+        int yOffset = offsetCoors(y);
+        final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+        g.setColor(getBackground(table[x][y]));
+        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+        g.setColor(getForeground(table[x][y]));
+
+        final Font font = new Font(FONT_NAME, Font.BOLD, size);
+        g.setFont(font);
+
+        String s = String.valueOf(value);
+        final FontMetrics fm = getFontMetrics(font);
+
+        final int w = fm.stringWidth(s);
+        final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
+
+        if (value != 0)
+            g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+    }
+
+    private static int offsetCoors(int arg) {
+        return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
+    }
+
+
+    /**
+     * Code responsible for saving the stats
+     * and the current array values
+     **/
+
+    public void readStatus() throws IOException, ClassNotFoundException {
+        FileInputStream fi = new FileInputStream("save.ser");
+        ObjectInputStream ois = new ObjectInputStream(fi);
+        temp = null;
+        temp = (Calc) ois.readObject();
+        ois.close();
+        System.out.println("Serialized figures read");
+    }
+
     public void saveStatus() throws IOException {
         // FileOutputStream fo=new FileOutputStream("save.ser");
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.ser"));
@@ -457,21 +410,19 @@ public class Calc extends JPanel {
         System.out.println("figures serialized");
     }
 
+
     /**
-     * Serialize objects
-     *
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * Table is printed into the terminal
      */
-    public void readStatus() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream("save.ser");
-        ObjectInputStream ois = new ObjectInputStream(fi);
-        temp = null;
-        // cast object to arraylist of Geometricalfigures
-        temp = (Calc) ois.readObject();
-        ois.close();
-        System.out.println("Serialized figures read");
+    public void printTable() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                System.out.print("[" + table[i][j] + "]");
+            }
+            System.out.println();
+        }
     }
+
 
     @Override
     public String toString() {
@@ -481,6 +432,7 @@ public class Calc extends JPanel {
                 '}';
     }
 }
+
 
 
 
