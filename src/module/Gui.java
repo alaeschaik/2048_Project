@@ -9,12 +9,12 @@ public class Gui extends JPanel {
 
 
     public static void main(String[] args) {
-        Calc game2048 = new Calc(2);
+        Calc game2048 = new Calc(5);
         game2048.printTable();
         JFrame game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        game.setSize(400,400);
+        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()), game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);

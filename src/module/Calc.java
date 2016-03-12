@@ -16,7 +16,7 @@ public class Calc extends JPanel {
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
     public static Calc Game2048;
-    public int[][] table /*= {{4, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}*/; //remove or keep initialization as comment depending on if you want specific or general testing
+    public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
     public int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
     Calc temp = this;
     private int tableSize; //size of the table, sides are proportional
@@ -25,7 +25,8 @@ public class Calc extends JPanel {
         setTableSize(tableSize);
 
         table = new int[tableSize][tableSize];
-        //at the start of the game, 2 values are set
+/**     at the start of the game, 2 values are set **/
+
         initializeValue(range);
         initializeValue(range);
         initializeValue(range);
@@ -40,19 +41,19 @@ public class Calc extends JPanel {
                 }
                 switch (e.getKeyCode()) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
-                        System.out.println("vk_left");
+
                         onKeyPressLeftNew();
                         break;
                     case KeyEvent.VK_RIGHT:
                         onKeyPressRightNew();
-                        System.out.println("vk_right");
+
                         break;
                     case KeyEvent.VK_DOWN:
-                        System.out.println("vk_down");
+
                         onKeyPressDownNew();
                         break;
                     case KeyEvent.VK_UP:
-                        System.out.println("vk_up");
+
                         onKeyPressUpNew();
                         break;
 
@@ -261,43 +262,48 @@ public class Calc extends JPanel {
         int innerTemp = 0;
         for (int j = 0; j + 1 < table[row].length; j++) {
 
-            if (table[row][j] > 0) {
+            if (table[row][j] > 0 && j + 1 < table[row].length) {//if the field's value is higher than 0 and the next field is still within the array
                 temp = j + 1;
-                if (temp < table[row].length) {
-                    if (table[row][j] == table[row][temp]) {
-                        table[row][temp] += table[row][j];
+
+                if (table[row][j] == table[row][temp]) {// if the field and the next field have the same value
+                    table[row][temp] += table[row][j];
+                    table[row][j] = 0;
+
+                } else if (table[row][temp] == 0) {
+                    innerTemp = temp;
+                    while (innerTemp + 1 < table[row].length && table[row][innerTemp] == 0) {
+
+                        innerTemp++;
+                    }
+                    if (table[row][innerTemp] == table[row][j]) {
+                        table[row][innerTemp] += table[row][j];
                         table[row][j] = 0;
-                        innerTemp = temp;
-                        while (innerTemp + 1 < table[row].length && table[row][innerTemp + 1] == 0) {
-                            innerTemp++;
-                        }
-                        if (innerTemp != temp) {
-                            table[row][innerTemp] = table[row][temp];
-                            table[row][temp] = 0;
-                        }
-
-                    } else if (table[row][temp] == 0) {
-                        innerTemp = temp;
-                        while (innerTemp + 1 < table[row].length && table[row][innerTemp + 1] == 0) {
-
-                            innerTemp++;
-                        }
-
+                    } else if (table[row][innerTemp] == 0) {
                         table[row][innerTemp] = table[row][j];
                         table[row][j] = 0;
-
+                    } else {
+                        table[row][innerTemp - 1] = table[row][j];
+                        table[row][j] = 0;
                     }
-                    if (j - 1 >= 0 && innerTemp - 1 >= 0 && table[row][j - 1] > 0) {//if there is a value right behind the value that is being shifted..
+                }
+            }
 
-                        table[row][innerTemp - 1] = table[row][j - 1];
-                        table[row][j - 1] = 0;
-                    }
+        }
 
-                }//if (temp < table[row].length)
 
-            }// if (table[row][j] > 0)
+        for (int emptyFiller = table[row].length - 1; emptyFiller > 0; emptyFiller--) {
+            if (table[row][emptyFiller] == 0) {
+                int tempValue = emptyFiller;
+                while (table[row][tempValue] == 0 && tempValue > 0) {
+                    tempValue--;
+                }
+                table[row][emptyFiller] = table[row][tempValue];
+                table[row][tempValue] = 0;
+
+            }
 
         }// for (int j = 0; j + 1 < table[row].length; j++)
+
 
 
     }
@@ -308,7 +314,7 @@ public class Calc extends JPanel {
      */
 
 
-    public Color getBackground(int value) {
+    public static Color getBackground(int value) {
         switch (value) {
             case 2:
                 return new Color(0xeee4da);
@@ -336,7 +342,7 @@ public class Calc extends JPanel {
         return new Color(0xcdc1b4);
     }
 
-    public Color getForeground(int value) {
+    public static Color getForeground(int value) {
         return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
     }
 
@@ -361,14 +367,13 @@ public class Calc extends JPanel {
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-        int value = table[x][y];
-
+        int value = table[y][x];
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
         final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
-        g.setColor(getBackground(table[x][y]));
+        g.setColor(getBackground(table[y][x]));
         g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
-        g.setColor(getForeground(table[x][y]));
+        g.setColor(getForeground(table[y][x]));
 
         final Font font = new Font(FONT_NAME, Font.BOLD, size);
         g.setFont(font);

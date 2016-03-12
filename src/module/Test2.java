@@ -9,7 +9,7 @@ public class Test2 {
         Calc calc = new Calc(6);
         calc.printTable();
         System.out.println();
-        calc.onKeyPressLeftNew();
+        calc.onKeyPressRightNew();
         calc.printTable();
 
     }
