@@ -17,19 +17,68 @@ public class Calc extends JPanel {
     private static final int TILES_MARGIN = 16;
     public static Calc Game2048;
     public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
-    public int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
+    public static int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
     Calc temp = this;
-    private int tableSize; //size of the table, sides are proportional
+    private static int tableSize = 4; //size of the table, sides are proportional
+    public static int spawnRate = 2;
+    public int score;
 
+
+    /**
+     * Constructor used for creating a new Playing field
+     **/
     public Calc(int tableSize) {
         setTableSize(tableSize);
 
         table = new int[tableSize][tableSize];
 /**     at the start of the game, 2 values are set **/
 
-        initializeValue(range);
-        initializeValue(range);
-        initializeValue(range);
+        initializeValue(range, spawnRate);
+
+
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    resetGame();
+                }
+                switch (e.getKeyCode()) { // delivers you which key was pressed
+                    case KeyEvent.VK_LEFT:
+
+                        onKeyPressLeftNew();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        onKeyPressRightNew();
+
+                        break;
+                    case KeyEvent.VK_DOWN:
+
+                        onKeyPressDownNew();
+                        break;
+                    case KeyEvent.VK_UP:
+
+                        onKeyPressUpNew();
+                        break;
+
+                }
+                repaint();
+            }
+
+
+        });
+
+    }
+
+    /**
+     * Constructor used for using the field u have previously created and just continue playing
+     **/
+    public Calc(boolean useBackUp) throws IOException, ClassNotFoundException {
+        ScoreArray backup = readStatus();
+        table = readStatus().getTable();
+
+
+/**     at the start of the game, spawnRate values are set **/
 
 
         setFocusable(true);
@@ -67,24 +116,37 @@ public class Calc extends JPanel {
     }
 
 
+
+
+
+
+
+
+
+
+
     /**
      * Randomly creates a position in the array and tries to insert even number into position.
      *
      * @return true if position is assigned with value, else false if not.
      */
-    public boolean initializeValue(int range) {
+    public boolean initializeValue(int range,int spawnRate) {
         this.range = range;
-        int rRow = new Random().nextInt(table.length);
-        int rCol = new Random().nextInt(table.length);
+        while (spawnRate > 0) {
+            int rRow = new Random().nextInt(table.length);
+            int rCol = new Random().nextInt(table.length);
 
-        if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
-            table[rRow][rCol] = returnEvenNumber(range);
-            return true;
-        } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
-        {
-            return initializeValue(range);
-        } else { //if the game is over
-            System.out.println("GAME OVER");
+            if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
+                table[rRow][rCol] = returnEvenNumber(range);
+                return true;
+            } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+            {
+                return initializeValue(range, spawnRate);
+            } else { //if the game is over
+                System.out.println("GAME OVER");
+            }
+
+         spawnRate--;
         }
         return false;
     }
@@ -136,13 +198,23 @@ public class Calc extends JPanel {
      *
      * @return
      */
-    public int getTableSize() {
+
+
+    public static int getSpawnRate() {
+        return spawnRate;
+    }
+
+    public static void setSpawnRate(int spawnRate) {
+        Calc.spawnRate = spawnRate;
+    }
+
+    public static int getTableSize() {
         return tableSize;
     }
 
-    public boolean setTableSize(int tableSize) {
+    public static boolean setTableSize(int tableSize) {
         if (tableSize < 10) {
-            this.tableSize = tableSize;
+            Calc.tableSize = tableSize;
             return true;
         } else
             System.out.println("Only values up to 10 are allowed");
@@ -166,6 +238,15 @@ public class Calc extends JPanel {
     }
 
 
+    public int getRange() {
+        return range;
+    }
+
+    public static void setRange(int range) {
+        Calc.range=range;
+    }
+
+
     /**
      * Moving methods
      **/
@@ -180,7 +261,7 @@ public class Calc extends JPanel {
         }
         rotate();
         rotate();
-        initializeValue(range);
+        initializeValue(range,spawnRate);
     }
 
     public void onKeyPressRightNew() {
@@ -189,7 +270,7 @@ public class Calc extends JPanel {
                 mergeLine(i);
             }
         }
-        initializeValue(range);
+        initializeValue(range,spawnRate);
     }
 
     public void onKeyPressUpNew() {
@@ -202,7 +283,7 @@ public class Calc extends JPanel {
             }
         }
         rotate();
-        initializeValue(range);
+        initializeValue(range,spawnRate);
     }
 
     public void onKeyPressDownNew() {
@@ -215,7 +296,7 @@ public class Calc extends JPanel {
         rotate();
         rotate();
         rotate();
-        initializeValue(range);
+        initializeValue(range,spawnRate);
     }
 
 
@@ -394,23 +475,25 @@ public class Calc extends JPanel {
 
 
     /**
-     * Code responsible for saving the stats
-     * and the current array values
+     * readStatus() saves the necessary informations that are individual for each instance(Score,Table).
+     * That's what the ScoreArray Class is used for.
+     * @return ScoreArray backup;
+     *
      **/
 
-    public void readStatus() throws IOException, ClassNotFoundException {
+    public ScoreArray readStatus() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream("save.ser");
         ObjectInputStream ois = new ObjectInputStream(fi);
-        temp = null;
-        temp = (Calc) ois.readObject();
+        ScoreArray backup = (ScoreArray)ois.readObject();
         ois.close();
         System.out.println("Serialized figures read");
+        return backup;
     }
 
     public void saveStatus() throws IOException {
-        // FileOutputStream fo=new FileOutputStream("save.ser");
+
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.ser"));
-        oos.writeObject(this);
+        oos.writeObject(new ScoreArray(score,table));
         oos.close();
         System.out.println("figures serialized");
     }
