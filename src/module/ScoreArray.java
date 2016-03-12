@@ -6,14 +6,20 @@ import java.io.Serializable;
  * Created by Biko on 12.03.2016.
  */
 public class ScoreArray implements Serializable {
+    private static long serialVersionUID = 1113799434508676095L;
     private int score;
     private int[][] table;
 
-    public int getScore() {
+    public ScoreArray(int score, int[][] table) {
+        this.score = score;
+        this.table = table;
+    }
+
+    public int getscore() {
         return score;
     }
 
-    public ScoreArray setScore(int score) {
+    public ScoreArray setscore(int score) {
         this.score = score;
         return this;
     }
@@ -27,8 +33,5 @@ public class ScoreArray implements Serializable {
         return this;
     }
 
-    public ScoreArray(int score, int[][] table) {
-        this.score = score;
-        this.table = table;
-    }
+
 }

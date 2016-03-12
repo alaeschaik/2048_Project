@@ -23,7 +23,7 @@ public class GameGui {
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);
-
+        ScoreBoard sB = new ScoreBoard();
         game.setLocationRelativeTo(null); // centers the game at start
 
         game.addWindowListener(new WindowAdapter() {
@@ -57,12 +57,19 @@ public class GameGui {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
+                    ScoreBoard.add(new Score("huhu", 10));
                     game2048.saveStatus();
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                } finally {
+                    System.out.println("Closed");
+                    e.getWindow().dispose();
+                    ScoreBoard.printScoreBoard();
                 }
-                System.out.println("Closed");
-                e.getWindow().dispose();
+
             }
         });
     }

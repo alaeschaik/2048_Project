@@ -17,6 +17,7 @@ public class Menu {
     private JButton exitButton;
     private JButton optionsButton;
     private JLabel label1;
+    private JButton scoreboardButton;
 
 
     public Menu() {
@@ -26,7 +27,6 @@ public class Menu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
         startGameButton.addActionListener(new ActionListener() {
 
             @Override
@@ -42,7 +42,10 @@ public class Menu {
                         options,  //the titles of buttons
                         options[0]); //default button title
                 if (choice == 0) {
+
                     GameGui gameGui = new GameGui();
+
+
                 } else {
                     try {
                         GameGui gameGui = new GameGui(true);
@@ -73,7 +76,7 @@ public class Menu {
         optionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OptionsMenu OM = new OptionsMenu();
+                OptionsMenu oM = new OptionsMenu();
                 frame.setState(Frame.ICONIFIED);
             }
         });
@@ -85,6 +88,23 @@ public class Menu {
             }
         });
         frame.setLocationRelativeTo(null);
+        scoreboardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    ScoreBoardMenu sBM = new ScoreBoardMenu();
+
+                } catch (NullPointerException e1) {
+                    JOptionPane.showMessageDialog(frame,
+                            "No Scoreboard Entrys.",
+                            "NoScoreBoardEntrysError",
+                            JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
     }
 
 

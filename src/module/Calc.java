@@ -21,7 +21,9 @@ public class Calc extends JPanel {
     Calc temp = this;
     private static int tableSize = 4; //size of the table, sides are proportional
     public static int spawnRate = 2;
-    public int score;
+    private int scoreValue;
+    private Score score;
+    private static int highScore;
 
 
     /**
@@ -348,6 +350,7 @@ public class Calc extends JPanel {
 
                 if (table[row][j] == table[row][temp]) {// if the field and the next field have the same value
                     table[row][temp] += table[row][j];
+                    scoreValue += table[row][temp];
                     table[row][j] = 0;
 
                 } else if (table[row][temp] == 0) {
@@ -358,6 +361,7 @@ public class Calc extends JPanel {
                     }
                     if (table[row][innerTemp] == table[row][j]) {
                         table[row][innerTemp] += table[row][j];
+                        scoreValue += table[row][innerTemp];
                         table[row][j] = 0;
                     } else if (table[row][innerTemp] == 0) {
                         table[row][innerTemp] = table[row][j];
@@ -465,9 +469,11 @@ public class Calc extends JPanel {
         final int w = fm.stringWidth(s);
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
-        if (value != 0)
-            g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+        if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+        g.drawString("Score: " + score, 100, 25);
+        g.drawString("HighScore: " + highScore, 300, 25);
     }
+
 
     private static int offsetCoors(int arg) {
         return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
@@ -493,7 +499,7 @@ public class Calc extends JPanel {
     public void saveStatus() throws IOException {
 
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.ser"));
-        oos.writeObject(new ScoreArray(score,table));
+        oos.writeObject(new ScoreArray(scoreValue, table));
         oos.close();
         System.out.println("figures serialized");
     }

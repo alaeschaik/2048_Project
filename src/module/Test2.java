@@ -6,12 +6,13 @@ package module;
  */
 public class Test2 {
     public static void main(String[] args) {
-        Calc calc = new Calc(6);
-        calc.printTable();
-        System.out.println();
-        calc.onKeyPressRightNew();
-        calc.printTable();
+        new Test2().testScore();
 
+    }
+
+    public void testScore() {
+        Score score = new Score("huhu", 10);
+        System.out.println(score.toString());
     }
 
 }

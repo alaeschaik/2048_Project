@@ -6,10 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="HUGE UPDATE!!!&#10;---------------------------------------------------------------------------&#10;I have redesigned the game, because...... Just kidding :D!!!&#10;&#10;+ implemented two new Menus: (Menu, for choosing one of the three options(Start,Options,Exit) and the OptionsMenu for determining the values of the variables(tableSize,range,spawnRate)&#10;+ created the Class ScoreArray, which is necessary for creating a proper backup of the game state and I even got the Backup Thingy to work&#10;+ renamed the Gui Class to GameGui&#10;+ solved the existing errors regarding the actual movement process(mergeLine()) of the tiles&#10;TODO: score implementation, determining when the game is over, ...&#10;We are close to done!!! HYPE&#10;---------------------------------------------------------------------">
+    <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="minor tweak&#10;&#10;+added proper image displaying when creating executable&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/Score.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/ScoreBoardComparator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/ScoreBoardMenu.form" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/ScoreBoardMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Calc.java" afterPath="$PROJECT_DIR$/src/module/Calc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/GameGui.java" afterPath="$PROJECT_DIR$/src/module/GameGui.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Menu.form" afterPath="$PROJECT_DIR$/src/module/Menu.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Menu.java" afterPath="$PROJECT_DIR$/src/module/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/OptionsMenu.java" afterPath="$PROJECT_DIR$/src/module/OptionsMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/OptionsMenu.form" afterPath="$PROJECT_DIR$/src/module/OptionsMenu.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/ScoreArray.java" afterPath="$PROJECT_DIR$/src/module/ScoreArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Test2.java" afterPath="$PROJECT_DIR$/src/module/Test2.java" />
     </list>
     <ignored path="project-2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,51 +49,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Calc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="402" column="43" selection-start-line="402" selection-start-column="43" selection-end-line="402" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="110" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="110" />
+            <state vertical-scroll-proportion="-7.3448277">
+              <caret line="95" column="47" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3015#3016#0" expanded="true" />
-                <element signature="e#3063#3064#0" expanded="true" />
-                <element signature="e#3171#3172#0" expanded="true" />
-                <element signature="e#3209#3210#0" expanded="true" />
+                <element signature="e#3088#3089#0" expanded="true" />
+                <element signature="e#3136#3137#0" expanded="true" />
+                <element signature="e#3831#3832#0" expanded="true" />
+                <element signature="e#3869#3870#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OptionsMenu.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/module/OptionsMenu.java">
+      <file leaf-file-name="scoreBoard.ser" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scoreBoard.ser">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21343283">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#1025#1026#0" expanded="true" />
-                <element signature="e#1394#1395#0" expanded="true" />
-                <element signature="e#1467#1468#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OptionsMenu.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/OptionsMenu.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -92,56 +79,85 @@
         <entry file="file://$PROJECT_DIR$/src/module/Game2048.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
+              <caret line="344" column="52" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageIO.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/javax/imageio/ImageIO.java">
+      <file leaf-file-name="GameGui.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/GameGui.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1387" column="0" selection-start-line="1387" selection-start-column="0" selection-end-line="1387" selection-end-column="0" />
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Score.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/Score.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="banner.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/banner.png">
-          <provider selected="true" editor-type-id="images">
+      <file leaf-file-name="ScoreBoard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/ScoreBoard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#585#586#0" expanded="true" />
+                <element signature="e#777#778#0" expanded="true" />
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#1792#1793#0" expanded="true" />
+                <element signature="e#1864#1865#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreBoardMenu.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/module/ScoreBoardMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71343285">
+              <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="save.ser" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/save.ser">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menu.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/Menu.form">
+          <provider selected="true" editor-type-id="ui-designer">
             <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/Test2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profiles_settings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/.idea/copyright/profiles_settings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
+      <file leaf-file-name="ScoreBoardMenu.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/ScoreBoardMenu.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -180,18 +196,24 @@
         <option value="$PROJECT_DIR$/src/game2048/Game2048.java" />
         <option value="$PROJECT_DIR$/src/module/Test.java" />
         <option value="$PROJECT_DIR$/src/module/Game2048.java" />
-        <option value="$PROJECT_DIR$/src/module/Test2.java" />
         <option value="$PROJECT_DIR$/src/module/asdas.form" />
         <option value="$PROJECT_DIR$/src/module/asdas.java" />
-        <option value="$PROJECT_DIR$/src/module/OptionsMenu.form" />
         <option value="$PROJECT_DIR$/src/module/Gui.java" />
-        <option value="$PROJECT_DIR$/src/module/GameGui.java" />
-        <option value="$PROJECT_DIR$/src/module/ScoreArray.java" />
-        <option value="$PROJECT_DIR$/src/module/Menu.form" />
         <option value="$PROJECT_DIR$/src/.idea/.name" />
-        <option value="$PROJECT_DIR$/src/module/Menu.java" />
-        <option value="$PROJECT_DIR$/src/module/Calc.java" />
         <option value="$PROJECT_DIR$/src/module/OptionsMenu.java" />
+        <option value="$PROJECT_DIR$/src/module/Menu.form" />
+        <option value="$PROJECT_DIR$/src/module/Test2.java" />
+        <option value="$PROJECT_DIR$/src/module/Score.java" />
+        <option value="$PROJECT_DIR$/src/module/Calc.java" />
+        <option value="$PROJECT_DIR$/src/module/ScoreBoardComparator.java" />
+        <option value="$PROJECT_DIR$/src/module/OptionsMenu.form" />
+        <option value="$PROJECT_DIR$/src/module/ScoreArray.java" />
+        <option value="$PROJECT_DIR$/src/module/ScoreBoard.java" />
+        <option value="$PROJECT_DIR$/src/module/GameGui.java" />
+        <option value="$PROJECT_DIR$/src/module/ScoreBoardMenu.form" />
+        <option value="$PROJECT_DIR$/src/module/Menu.java" />
+        <option value="$PROJECT_DIR$/scoreBoard.ser" />
+        <option value="$PROJECT_DIR$/src/module/ScoreBoardMenu.java" />
       </list>
     </option>
   </component>
@@ -293,8 +315,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OptionsMenu" />
+              <option name="myItemId" value="ScoreBoardMenu" />
               <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2048_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2048_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -332,10 +372,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -351,7 +387,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -370,6 +406,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="copyright" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -394,35 +434,18 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project\src\resources" />
+      <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project\src\.idea\copyright" />
       <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project\src\module" />
+      <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project\src\resources" />
       <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project" />
       <recent name="D:\MEGA\HTL Spengergasse\2EHIF\POS\Workspace\2048_Project\src\module" />
-      <recent name="D:\MEGA\HTL Spengergasse\2EHIF\POS\Workspace\2048_Project\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Menu">
-    <configuration default="false" name="Game2048" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="module.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="module.Game2048" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="2048_Project" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="GameGui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -491,6 +514,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="module.OptionsMenu" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="2048_Project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ScoreBoardMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="module.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="module.ScoreBoardMenu" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -935,19 +978,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Game2048" />
-      <item index="2" class="java.lang.String" itemvalue="Application.GameGui" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Test2" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Menu" />
-      <item index="5" class="java.lang.String" itemvalue="Application.OptionsMenu" />
+      <item index="1" class="java.lang.String" itemvalue="Application.GameGui" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Test2" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Menu" />
+      <item index="4" class="java.lang.String" itemvalue="Application.OptionsMenu" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ScoreBoardMenu" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Menu" />
-        <item index="1" class="java.lang.String" itemvalue="Application.OptionsMenu" />
-        <item index="2" class="java.lang.String" itemvalue="Application.GameGui" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Test2" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Game2048" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ScoreBoardMenu" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Test2" />
+        <item index="3" class="java.lang.String" itemvalue="Application.OptionsMenu" />
+        <item index="4" class="java.lang.String" itemvalue="Application.GameGui" />
       </list>
     </recent_temporary>
   </component>
@@ -996,7 +1039,7 @@
       <workItem from="1457540638649" duration="892000" />
       <workItem from="1457554514191" duration="380000" />
       <workItem from="1457782068054" duration="8575000" />
-      <workItem from="1457791613787" duration="14627000" />
+      <workItem from="1457791613787" duration="28376000" />
     </task>
     <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
       <created>1450896198100</created>
@@ -1058,11 +1101,17 @@
       <option name="project" value="LOCAL" />
       <updated>1457803776183</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="minor tweak&#10;&#10;+added proper image displaying when creating executable&#10;">
+      <created>1457806312044</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1457806312044</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76934000" />
+    <option name="totallyTimeSpent" value="90683000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1078,7 +1127,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.12760417" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="635" y="16" width="649" height="985" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26215646" sideWeight="0.52135414" order="10" side_tool="true" content_ui="tabs" />
@@ -1088,13 +1137,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26215646" sideWeight="0.47864583" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16770834" sideWeight="0.49335548" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.48710603" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5083969" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16793893" sideWeight="0.50664455" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16770834" sideWeight="0.512894" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38477802" sideWeight="0.4859375" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1128,24 +1177,17 @@
     <MESSAGE value="+ added &quot;Menu &quot; class for creating a menu later on&#10;+ added &quot;Gui&quot; class for the new Version of the Game" />
     <MESSAGE value="+ Reworked the actual movement process(MergeLine). Should be more efficient now&#10;+Fixed a drawing problem caused by wrong coordination(mixed up [x] [y])&#10;" />
     <MESSAGE value="HUGE UPDATE!!!&#10;---------------------------------------------------------------------------&#10;I have redesigned the game, because...... Just kidding :D!!!&#10;&#10;+ implemented two new Menus: (Menu, for choosing one of the three options(Start,Options,Exit) and the OptionsMenu for determining the values of the variables(tableSize,range,spawnRate)&#10;+ created the Class ScoreArray, which is necessary for creating a proper backup of the game state and I even got the Backup Thingy to work&#10;+ renamed the Gui Class to GameGui&#10;+ solved the existing errors regarding the actual movement process(mergeLine()) of the tiles&#10;TODO: score implementation, determining when the game is over, ...&#10;We are close to done!!! HYPE&#10;---------------------------------------------------------------------" />
-    <option name="LAST_COMMIT_MESSAGE" value="HUGE UPDATE!!!&#10;---------------------------------------------------------------------------&#10;I have redesigned the game, because...... Just kidding :D!!!&#10;&#10;+ implemented two new Menus: (Menu, for choosing one of the three options(Start,Options,Exit) and the OptionsMenu for determining the values of the variables(tableSize,range,spawnRate)&#10;+ created the Class ScoreArray, which is necessary for creating a proper backup of the game state and I even got the Backup Thingy to work&#10;+ renamed the Gui Class to GameGui&#10;+ solved the existing errors regarding the actual movement process(mergeLine()) of the tiles&#10;TODO: score implementation, determining when the game is over, ...&#10;We are close to done!!! HYPE&#10;---------------------------------------------------------------------" />
+    <MESSAGE value="minor tweak&#10;&#10;+added proper image displaying when creating executable&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor tweak&#10;&#10;+added proper image displaying when creating executable&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/module/Game2048.java</url>
-          <line>296</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="94" />
+      <option name="time" value="110" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1154,82 +1196,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/awt/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="414" column="0" selection-start-line="414" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/jre/lib/rt.jar!/sun/java2d/SurfaceData.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.740741">
-          <caret line="211" column="25" selection-start-line="211" selection-start-column="25" selection-end-line="211" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/jre/lib/rt.jar!/sun/java2d/d3d/D3DSurfaceData.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.814815">
-          <caret line="358" column="0" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/jre/lib/rt.jar!/sun/java2d/pipe/ValidatePipe.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.925926">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1311,6 +1277,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1318,6 +1285,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="725" column="0" selection-start-line="725" selection-start-column="0" selection-end-line="725" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,6 +1293,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,11 +1833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menu.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2048_Project.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1882,28 +1846,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/ScoreArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/GameGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1939,11 +1881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/banner.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/javax/imageio/ImageIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1952,26 +1889,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Game2048.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Test2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/banner.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="402" column="43" selection-start-line="402" selection-start-column="43" selection-end-line="402" selection-end-column="43" />
+          <caret line="251" column="0" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1981,29 +1915,142 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/module/OptionsMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="110" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="110" />
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="370" column="0" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/ObjectStreamClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="620" column="0" selection-start-line="620" selection-start-column="0" selection-end-line="620" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/ScoreBoardComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/ScoreArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Calc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="504" column="0" selection-start-line="504" selection-start-column="0" selection-end-line="504" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Game2048.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="344" column="52" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/GameGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3015#3016#0" expanded="true" />
-            <element signature="e#3063#3064#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3209#3210#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/OptionsMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/module/Score.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21343283">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/ScoreBoardMenu.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Menu.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3448277">
+          <caret line="95" column="47" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
           <folding>
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3088#3089#0" expanded="true" />
+            <element signature="e#3136#3137#0" expanded="true" />
+            <element signature="e#3831#3832#0" expanded="true" />
+            <element signature="e#3869#3870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/save.ser">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scoreBoard.ser">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/ScoreBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#1792#1793#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/ScoreBoardMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71343285">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
