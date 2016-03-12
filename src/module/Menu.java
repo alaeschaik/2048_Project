@@ -1,5 +1,6 @@
 package module;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,6 @@ public class Menu {
 
 
     public Menu() {
-        createUIComponents();
         JFrame frame = new JFrame("Menu");
 
         frame.setContentPane(panel1);
@@ -95,7 +95,11 @@ public class Menu {
 
     private void createUIComponents() {
 
-        label1 = new JLabel(new ImageIcon("banner.png"));
+        try {
+            label1 = new JLabel(new ImageIcon(ImageIO.read(getClass().getResource("/resources/banner.png"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

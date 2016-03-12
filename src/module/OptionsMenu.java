@@ -1,8 +1,10 @@
 package module;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.io.IOException;
 
 /**
  * Created by Biko on 12.03.2016.
@@ -54,7 +56,11 @@ public class OptionsMenu {
 
 
     private void createUIComponents() {
-        ImageLabel = new JLabel(new ImageIcon("banner.png"));
+        try {
+            ImageLabel = new JLabel(new ImageIcon(ImageIO.read(getClass().getResource("/resources/banner.png"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         rangeSlider = new JSlider(2, 128, 2);
 
 
