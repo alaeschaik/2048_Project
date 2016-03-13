@@ -1,4 +1,8 @@
-package module;
+package module.Menus;
+
+import module.Logic.Calc;
+import module.Score.Score;
+import module.Score.ScoreBoard;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -10,13 +14,13 @@ import java.io.IOException;
  */
 public class GameGui {
     Calc game2048;
+    JFrame game;
 
     public GameGui(boolean useBackup) throws IOException, ClassNotFoundException {
 
         game2048 = new Calc(useBackup);
 
-
-        JFrame game = new JFrame();
+        game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()), game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
@@ -44,7 +48,7 @@ public class GameGui {
     public GameGui() {
         game2048 = new Calc(Calc.getTableSize());
 
-        JFrame game = new JFrame();
+        game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()), game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
@@ -57,8 +61,7 @@ public class GameGui {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
-                    ScoreBoard.add(new Score("huhu", 10));
-                    game2048.saveStatus();
+                    scoreWindow();
 
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -74,5 +77,38 @@ public class GameGui {
         });
     }
 
+    public void scoreWindow() throws IOException, ClassNotFoundException {
+        Object[] options = {"Save", "stop and enter into scoreboard"};
+        int choice = JOptionPane.showOptionDialog(game,
+                "Would you like to save your current progress",
+                "Create Backup?",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,     //do not use a custom Icon
+                options,  //the titles of buttons
+                options[0]); //default button title
+        if (choice == 1) {
+            options = new Object[]{"Save", "Discard"};
+            choice = JOptionPane.showOptionDialog(game,
+                    "Would you like to enter the Score into the scoreboard?",
+                    "Scoreboard entry?",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,     //do not use a custom Icon
+                    options,  //the titles of buttons
+                    options[0]); //default button title
+            if (choice == 0) {
+                String response = JOptionPane.showInputDialog(null,
+                        "What is your name?",
+                        "Enter your name",
+                        JOptionPane.QUESTION_MESSAGE);
+                System.out.println(response.toString());
+                ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getScoreValue()));
+            } else {
+                game2048.saveStatus();
 
+            }
+        }
+
+    }
 }

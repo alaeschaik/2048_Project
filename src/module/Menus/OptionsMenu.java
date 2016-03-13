@@ -1,4 +1,6 @@
-package module;
+package module.Menus;
+
+import module.Logic.Calc;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

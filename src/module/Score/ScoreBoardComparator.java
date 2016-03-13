@@ -1,4 +1,4 @@
-package module;
+package module.Score;
 
 import java.util.Comparator;
 

@@ -1,4 +1,6 @@
-package module;
+package module.Menus;
+
+import module.Score.ScoreBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -77,7 +79,7 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 OptionsMenu oM = new OptionsMenu();
-                frame.setState(Frame.ICONIFIED);
+                frame.setState(Frame.NORMAL);
             }
         });
 
@@ -92,6 +94,22 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    try {
+                        ScoreBoard.readList();
+                        ScoreBoard.printScoreBoard();
+                    } catch (IOException e1) {
+                        JOptionPane.showMessageDialog(frame,
+                                "No Scoreboard Entrys.",
+                                "NoScoreBoardEntrysError",
+                                JOptionPane.ERROR_MESSAGE);
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        JOptionPane.showMessageDialog(frame,
+                                "No Scoreboard Entrys.",
+                                "NoScoreBoardEntrysError",
+                                JOptionPane.ERROR_MESSAGE);
+                        e1.printStackTrace();
+                    }
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
 
                 } catch (NullPointerException e1) {

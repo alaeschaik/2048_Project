@@ -1,4 +1,4 @@
-package module;
+package module.Logic;
 
 import javax.swing.*;
 import java.awt.*;

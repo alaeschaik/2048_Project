@@ -1,4 +1,7 @@
-package module;
+package module.Logic;
+
+import module.Score.Score;
+import module.Score.ScoreArray;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,6 +30,7 @@ public class Calc extends JPanel {
 
 
     /**
+
      * Constructor used for creating a new Playing field
      **/
     public Calc(int tableSize) {
@@ -78,6 +82,7 @@ public class Calc extends JPanel {
     public Calc(boolean useBackUp) throws IOException, ClassNotFoundException {
         ScoreArray backup = readStatus();
         table = readStatus().getTable();
+        tableSize = readStatus().getTable().length;
 
 
 /**     at the start of the game, spawnRate values are set **/
@@ -215,11 +220,11 @@ public class Calc extends JPanel {
     }
 
     public static boolean setTableSize(int tableSize) {
-        if (tableSize < 10) {
+        if (tableSize <= 25) {
             Calc.tableSize = tableSize;
             return true;
         } else
-            System.out.println("Only values up to 10 are allowed");
+            System.out.println("Only values up to 25 are allowed");
         return false;
     }
 
@@ -248,6 +253,14 @@ public class Calc extends JPanel {
         Calc.range=range;
     }
 
+    public int getScoreValue() {
+        return scoreValue;
+    }
+
+    public void setScoreValue(int scoreValue) {
+        this.scoreValue = scoreValue;
+        return;
+    }
 
     /**
      * Moving methods

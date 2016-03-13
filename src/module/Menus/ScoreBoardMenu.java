@@ -1,4 +1,7 @@
-package module;
+package module.Menus;
+
+import module.Score.Score;
+import module.Score.ScoreBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,7 +21,7 @@ public class ScoreBoardMenu {
 
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
+        frame.setSize(500, 500);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
@@ -43,8 +46,8 @@ public class ScoreBoardMenu {
         for (Score e : ScoreBoard.scoreBoard) {
             ScoreBoard.printScoreBoard();
             for (Score score : ScoreBoard.scoreBoard) {
-                System.out.println("huhu");
-
+                panel.add(score);
+                score.repaint();
             }
         }
     }
