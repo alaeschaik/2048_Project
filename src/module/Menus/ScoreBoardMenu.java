@@ -14,16 +14,17 @@ public class ScoreBoardMenu {
     private JLabel ImageLabel;
     private JPanel panel;
     private JScrollBar scrollBar1;
+    JFrame frame;
 
     public ScoreBoardMenu() {
 
-        JFrame frame = new JFrame("Menu");
+        frame = new JFrame("Menu");
 
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 500);
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
     }
 
@@ -42,17 +43,14 @@ public class ScoreBoardMenu {
         JTextField TextFieldlol = new JTextField();
 
         panel = new JPanel();
-
-        for (Score e : ScoreBoard.scoreBoard) {
-            ScoreBoard.printScoreBoard();
-            for (Score score : ScoreBoard.scoreBoard) {
-                panel.add(score);
-                score.repaint();
-            }
+        panel.add(new JTextField("uhu"));
+        for (Score score : ScoreBoard.scoreBoard) {
+            panel.add(score);
         }
     }
-
 }
+
+
 
 
 

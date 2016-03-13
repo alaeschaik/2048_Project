@@ -23,7 +23,7 @@ public class GameGui {
         game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()), game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
+        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()) + 100);
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);
@@ -51,7 +51,7 @@ public class GameGui {
         game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()), game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
+        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);
@@ -63,9 +63,7 @@ public class GameGui {
                 try {
                     scoreWindow();
 
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
+                } catch (ClassNotFoundException | IOException e1) {
                     e1.printStackTrace();
                 } finally {
                     System.out.println("Closed");

@@ -65,6 +65,16 @@ public class Score extends JPanel {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         g.setBackground(new Color(255, 102, 210));
+        g.fillRect(100, 100, 40, 40);
         g.drawString("huhu", 200, 200);
     }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // Draw Text
+        g.drawString("This is my custom Panel!", 10, 20);
+    }
+
+
 }

@@ -1,6 +1,8 @@
 package module.Menus;
 
+import module.Score.Score;
 import module.Score.ScoreBoard;
+import module.Score.ScoreBoardEmptyException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -89,35 +91,24 @@ public class Menu {
                 System.exit(-11);
             }
         });
+
         frame.setLocationRelativeTo(null);
         scoreboardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    try {
-                        ScoreBoard.readList();
-                        ScoreBoard.printScoreBoard();
-                    } catch (IOException e1) {
-                        JOptionPane.showMessageDialog(frame,
-                                "No Scoreboard Entrys.",
-                                "NoScoreBoardEntrysError",
-                                JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
-                    } catch (ClassNotFoundException e1) {
-                        JOptionPane.showMessageDialog(frame,
-                                "No Scoreboard Entrys.",
-                                "NoScoreBoardEntrysError",
-                                JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
-                    }
-                    ScoreBoardMenu sBM = new ScoreBoardMenu();
 
-                } catch (NullPointerException e1) {
+                try {
+                    ScoreBoard.add(new Score("huhu", 4, 19));
+                    ScoreBoard.initialize();
+                    ScoreBoardMenu sBM = new ScoreBoardMenu();
+                } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame,
                             "No Scoreboard Entrys.",
                             "NoScoreBoardEntrysError",
                             JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace();
+
+
                 }
 
 
