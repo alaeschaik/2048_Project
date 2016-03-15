@@ -19,39 +19,20 @@ public class GameGui {
     public GameGui(boolean useBackup) throws IOException, ClassNotFoundException {
 
         game2048 = new Calc(useBackup);
-
-        game = new JFrame();
-        game.setTitle("2048 Game");
-        game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()) + 100);
-        game.setResizable(false);
-        game.setVisible(true);
-        game.add(game2048);
-        ScoreBoard sB = new ScoreBoard();
-        game.setLocationRelativeTo(null); // centers the game at start
-
-        game.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                try {
-                    game2048.saveStatus();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                System.out.println("Closed");
-                e.getWindow().dispose();
-            }
-        });
+        createGame();
     }
-
 
     public GameGui() {
         game2048 = new Calc(Calc.getTableSize());
+        createGame();
 
+    }
+
+    public void createGame() {
         game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, game2048.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
+        game.setSize(Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);
@@ -68,7 +49,7 @@ public class GameGui {
                 } finally {
                     System.out.println("Closed");
                     e.getWindow().dispose();
-                    ScoreBoard.printScoreBoard();
+
                 }
 
             }
@@ -102,10 +83,10 @@ public class GameGui {
                         JOptionPane.QUESTION_MESSAGE);
                 System.out.println(response.toString());
                 ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getScoreValue()));
-            } else {
-                game2048.saveStatus();
-
             }
+        } else {
+            game2048.saveStatus();
+
         }
 
     }

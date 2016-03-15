@@ -1,6 +1,5 @@
 package module.Menus;
 
-import module.Score.Score;
 import module.Score.ScoreBoard;
 import module.Score.ScoreBoardEmptyException;
 
@@ -98,7 +97,7 @@ public class Menu {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    ScoreBoard.add(new Score("huhu", 4, 19));
+//                    ScoreBoard.add(new Score("huhu", 4, 19));
                     ScoreBoard.initialize();
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {

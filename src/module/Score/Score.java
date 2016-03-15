@@ -60,6 +60,7 @@ public class Score extends JPanel {
                 '}';
     }
 
+    //TODO: make the painting functional
     public void paint(Graphics g2) {
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -70,6 +71,7 @@ public class Score extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
+
         super.paintComponent(g);
 
         // Draw Text

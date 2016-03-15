@@ -81,6 +81,7 @@ public class Calc extends JPanel {
      **/
     public Calc(boolean useBackUp) throws IOException, ClassNotFoundException {
         ScoreArray backup = readStatus();
+        System.out.println(readStatus().toString());
         table = readStatus().getTable();
         tableSize = readStatus().getTable().length;
 
@@ -203,7 +204,7 @@ public class Calc extends JPanel {
     /**
      * Getters and Setters
      *
-     * @return
+     *
      */
 
 
@@ -259,7 +260,7 @@ public class Calc extends JPanel {
 
     public void setScoreValue(int scoreValue) {
         this.scoreValue = scoreValue;
-        return;
+
     }
 
     /**
