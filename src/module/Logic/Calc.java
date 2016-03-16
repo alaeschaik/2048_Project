@@ -503,8 +503,7 @@ public class Calc extends JPanel {
      **/
 
     public ScoreArray readStatus() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream("save.ser");
-        ObjectInputStream ois = new ObjectInputStream(fi);
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("save.ser"));
         ScoreArray backup = (ScoreArray)ois.readObject();
         ois.close();
         System.out.println("Serialized figures read");

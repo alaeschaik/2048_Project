@@ -5,6 +5,7 @@ import module.Score.ScoreBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 
@@ -48,16 +49,30 @@ public class ScoreBoardMenu {
             e.printStackTrace ();
         }
         JTextField TextFieldScore = new JTextField ();
-        panel = new JPanel (new BorderLayout ());
+        panel = new JPanel(new BorderLayout());
+        JPanel panel2 = new JPanel(new FlowLayout());
+        JPanel panel3 = new JPanel(new FlowLayout());
+        JLabel name_LB = new JLabel("Name");
+        name_LB.setBorder(new EmptyBorder(0, 0, 0, 30));
+        panel2.add(name_LB);
+        panel2.add(new JLabel("Score"));
+        panel2.add(new JLabel("Time"));
+
+        panel.add(panel2, BorderLayout.NORTH);
+
         for (Score score : ScoreBoard.scoreBoard) {
             JLabel name_JLB = new JLabel (score.getName1 ());
+            name_JLB.setBorder(new EmptyBorder(0, 0, 0, 30));
             JLabel score_JLB = new JLabel ("" + score.getScore ());
             JLabel time_JLB = new JLabel (score.getDateFormat ());
 
-            panel.add (name_JLB, BorderLayout.CENTER);
-            panel.add (score_JLB, BorderLayout.CENTER);
-            panel.add (time_JLB, BorderLayout.CENTER);
+
+            panel3.add(name_JLB);
+            panel3.add(score_JLB);
+            panel3.add(time_JLB);
         }
+
+        panel.add(panel3, BorderLayout.CENTER);
         Score test = new Score ("name", 10, 10);
 
 //        test.paint ();
