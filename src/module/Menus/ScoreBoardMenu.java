@@ -15,12 +15,12 @@ public class ScoreBoardMenu {
     private JPanel panel;
     private JScrollBar scrollBar1;
     JFrame frame;
-
+    private JPanel panelTest;
     public ScoreBoardMenu() {
 
         frame = new JFrame("Menu");
 
-        frame.setContentPane(panel);
+        frame.setContentPane (panelTest);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
@@ -41,11 +41,13 @@ public class ScoreBoardMenu {
             e.printStackTrace();
         }
         JTextField TextFieldScore = new JTextField ();
-
+        panelTest = new JPanel ();
         panel = new JPanel();
-        panel.add(new JTextField("uhu"));
+        panel.add (new JTextField ("uhu"));
+        panelTest.add (new JTextField ("uhu"));
         for (Score score : ScoreBoard.scoreBoard) {
-            panel.add(score);
+            panelTest.add (score);
+            panelTest.add (new JTextArea (score.toString ()));
         }
         Score test = new Score ("name", 10, 10);
 

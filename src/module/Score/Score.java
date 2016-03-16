@@ -2,13 +2,17 @@ package module.Score;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.ZonedDateTime;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Biko on 12.03.2016.
  */
 public class Score extends JPanel {
-    ZonedDateTime tod = ZonedDateTime.now();
+    DateFormat dateFormat = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss");
+    String date = dateFormat.format (new Date ());
+
     int score = 0;
     String name;
     int tableSize;
@@ -52,12 +56,11 @@ public class Score extends JPanel {
     @Override
     public String toString() {
         return "Score:" +
-                " Name='" + name +
-                " Size=" + tableSize +
-                " Time=" + tod +
-                " Score=" + score +
-                '\'' +
-                '}';
+                " Name: '" + name +
+                " Size: " + tableSize +
+                " Time: " + date +
+                " Score: " + score +
+                '\'';
     }
 
     //TODO: make the painting functional

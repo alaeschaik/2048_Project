@@ -19,7 +19,7 @@ public class ScoreBoard implements Serializable {
     public static void add(Score score) throws IOException, ClassNotFoundException {
         if (ScoreBoard.scoreBoard == null) {
             scoreBoard = new ArrayList<> ();
-            ScoreBoard.readList ();
+            if (new File ("scoreBoard.ser").length () != 0) readList ();
         }
         scoreBoard.add (score);
         ScoreBoard.saveList ();
