@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -23,20 +22,20 @@ public class Menu {
     private JButton scoreboardButton;
 
 
-    public Menu() {
-        JFrame frame = new JFrame("Menu");
-
-        frame.setContentPane(panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        startGameButton.addActionListener(new ActionListener() {
+    public Menu() throws UnsupportedLookAndFeelException {
+        JFrame frame = new JFrame ("Menu");
+        UIManager.setLookAndFeel (new javax.swing.plaf.nimbus.NimbusLookAndFeel ());
+        frame.setContentPane (panel1);
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.pack ();
+        frame.setVisible (true);
+        startGameButton.addActionListener (new ActionListener () {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object[] options = {"new Game",
                         "Continue"};
-                int choice = JOptionPane.showOptionDialog(frame,
+                int choice = JOptionPane.showOptionDialog (frame,
                         "Would you like to use a Backup or create a new Game?",
                         "Choose",
                         JOptionPane.YES_NO_OPTION,
@@ -46,66 +45,54 @@ public class Menu {
                         options[0]); //default button title
                 if (choice == 0) {
 
-                    GameGui gameGui = new GameGui();
+                    GameGui gameGui = new GameGui ();
 
 
                 } else {
                     try {
-                        GameGui gameGui = new GameGui(true);
-                    } catch (FileNotFoundException e1) {
-                        JOptionPane.showMessageDialog(frame,
+                        GameGui gameGui = new GameGui (true);
+                    } catch (IOException | ClassNotFoundException e1) {
+                        JOptionPane.showMessageDialog (frame,
                                 "No Backup available.",
                                 "NoBackupError",
                                 JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
-                    } catch (IOException e1) {
-                        JOptionPane.showMessageDialog(frame,
-                                "No Backup available.",
-                                "NoBackupError",
-                                JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
-                    } catch (ClassNotFoundException e1) {
-                        JOptionPane.showMessageDialog(frame,
-                                "No Backup available.",
-                                "NoBackupError",
-                                JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
+                        e1.printStackTrace ();
+
                     }
+
                 }
-
-
             }
         });
-        optionsButton.addActionListener(new ActionListener() {
+        optionsButton.addActionListener (new ActionListener () {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OptionsMenu oM = new OptionsMenu();
-                frame.setState(Frame.NORMAL);
+                OptionsMenu oM = new OptionsMenu ();
+                frame.setState (Frame.NORMAL);
             }
         });
 
-        exitButton.addActionListener(new ActionListener() {
+        exitButton.addActionListener (new ActionListener () {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(-11);
+                System.exit (-11);
             }
         });
 
-        frame.setLocationRelativeTo(null);
-        scoreboardButton.addActionListener(new ActionListener() {
+        frame.setLocationRelativeTo (null);
+        scoreboardButton.addActionListener (new ActionListener () {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
 //                    ScoreBoard.add(new Score("huhu", 4, 19));
-                    ScoreBoard.initialize();
-                    ScoreBoardMenu sBM = new ScoreBoardMenu();
+                    ScoreBoard.initialize ();
+                    ScoreBoardMenu sBM = new ScoreBoardMenu ();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
-                    JOptionPane.showMessageDialog(frame,
+                    JOptionPane.showMessageDialog (frame,
                             "No Scoreboard Entrys.",
                             "NoScoreBoardEntrysError",
                             JOptionPane.ERROR_MESSAGE);
-                    e1.printStackTrace();
+                    e1.printStackTrace ();
 
 
                 }
@@ -117,16 +104,20 @@ public class Menu {
 
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        try {
+            Menu menu = new Menu ();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace ();
+        }
     }
 
 
     private void createUIComponents() {
 
         try {
-            label1 = new JLabel(new ImageIcon(ImageIO.read(getClass().getResource("/resources/banner.png"))));
+            label1 = new JLabel (new ImageIcon (ImageIO.read (getClass ().getResource ("/resources/banner.png"))));
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace ();
         }
     }
 }

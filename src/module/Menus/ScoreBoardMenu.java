@@ -40,13 +40,16 @@ public class ScoreBoardMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JTextField TextFieldlol = new JTextField();
+        JTextField TextFieldScore = new JTextField ();
 
         panel = new JPanel();
         panel.add(new JTextField("uhu"));
         for (Score score : ScoreBoard.scoreBoard) {
             panel.add(score);
         }
+        Score test = new Score ("name", 10, 10);
+
+//        test.paint ();
     }
 }
 
