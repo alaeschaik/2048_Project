@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="minor changes.&#10;+ created a createGame() method in the GameGui rather than calling than calling the same code in both of the constructors. little Overview improvement!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Logic/Calc.java" afterPath="$PROJECT_DIR$/src/module/Logic/Calc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Score/Score.java" afterPath="$PROJECT_DIR$/src/module/Score/Score.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Score/ScoreBoard.java" afterPath="$PROJECT_DIR$/src/module/Score/ScoreBoard.java" />
     </list>
     <ignored path="project-2048.iws" />
@@ -73,11 +71,11 @@
       <file leaf-file-name="ScoreBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49043062">
-              <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+            <state vertical-scroll-proportion="1.1626794">
+              <caret line="68" column="98" selection-start-line="68" selection-start-column="98" selection-end-line="68" selection-end-column="98" />
               <folding>
-                <element signature="e#357#358#0" expanded="true" />
-                <element signature="e#390#391#0" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#389#390#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1159,7 +1157,7 @@
       <workItem from="1457945290978" duration="3289000" />
       <workItem from="1458063034038" duration="843000" />
       <workItem from="1458112080832" duration="52000" />
-      <workItem from="1458114493407" duration="3796000" />
+      <workItem from="1458114493407" duration="4030000" />
     </task>
     <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
       <created>1450896198100</created>
@@ -1263,11 +1261,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458116542162</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="minor changes.&#10;+ created a createGame() method in the GameGui rather than calling than calling the same code in both of the constructors. little Overview improvement!">
+      <created>1458118302437</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1458118302437</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110270000" />
+    <option name="totallyTimeSpent" value="110504000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1290,7 +1294,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="93" y="100" width="1170" height="535" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21035941" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2591362" sideWeight="0.47864583" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2591362" sideWeight="0.47864583" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16793893" sideWeight="0.48710603" order="0" side_tool="false" content_ui="combo" />
@@ -1887,11 +1891,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49043062">
-          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+        <state vertical-scroll-proportion="1.1626794">
+          <caret line="68" column="98" selection-start-line="68" selection-start-column="98" selection-end-line="68" selection-end-column="98" />
           <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -59,9 +59,7 @@ public class ScoreBoard implements Serializable {
             System.out.println (arr.toString ());
         }
         ois.close ();
-        System.out.println (scoreBoardBackUp);
-
-        System.out.println (scoreBoardBackUp);
+        scoreBoard = arr;
         return arr;
     }
 
@@ -69,8 +67,7 @@ public class ScoreBoard implements Serializable {
     public static void saveList() throws IOException, ClassNotFoundException {
 
         ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("scoreBoard.ser"));
-        ArrayList<Score> temp = scoreBoard;
-        oos.writeObject (temp);
+        oos.writeObject (scoreBoard);
         oos.close ();
         System.out.println ("figures serialized");
     }
