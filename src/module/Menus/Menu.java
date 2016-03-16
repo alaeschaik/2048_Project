@@ -84,8 +84,10 @@ public class Menu {
             public void actionPerformed(ActionEvent e) {
 
                 try {
+
 //                    ScoreBoard.add(new Score("huhu", 4, 19));
                     ScoreBoard.initialize ();
+                    ScoreBoard.sort ();
                     ScoreBoardMenu sBM = new ScoreBoardMenu ();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog (frame,

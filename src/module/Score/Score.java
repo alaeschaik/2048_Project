@@ -39,18 +39,17 @@ public class Score extends JPanel {
         return name;
     }
 
-    public Score setName1(String name) {
+    public void setName1(String name) {
         this.name = name;
-        return this;
+
     }
 
-    public int getTableSize() {
-        return tableSize;
+    public String getTableSize() {
+        return tableSize + "x" + tableSize;
     }
 
-    public Score setTableSize(int tableSize) {
+    public void setTableSize(int tableSize) {
         this.tableSize = tableSize;
-        return this;
     }
 
     public String getDateFormat() {

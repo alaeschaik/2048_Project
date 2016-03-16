@@ -10,6 +10,6 @@ public class ScoreBoardComparator implements Comparator<Score> {
 
     @Override
     public int compare(Score o1, Score o2) {
-        return Integer.valueOf(o1.getScore()).compareTo(Integer.valueOf(o2.getScore()));
+        return Integer.valueOf (o2.getScore ()).compareTo (Integer.valueOf (o1.getScore ()));
     }
 }
