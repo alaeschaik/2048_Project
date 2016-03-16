@@ -61,6 +61,7 @@ public class Score extends JPanel {
     }
 
     //TODO: make the painting functional
+    @Override
     public void paint(Graphics g2) {
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

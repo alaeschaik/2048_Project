@@ -12,7 +12,7 @@ public class ScoreBoard implements Serializable {
     public static ArrayList<Score> scoreBoard;
 
 
-    public static ArrayList<Score> getScoreBoard() {
+    public ArrayList<Score> getScoreBoard() {
         return scoreBoard;
     }
 
@@ -38,9 +38,13 @@ public class ScoreBoard implements Serializable {
     }
 
     public static void initialize() throws IOException, ClassNotFoundException, ScoreBoardEmptyException {
-        if (scoreBoard == null) scoreBoard = new ArrayList<> ();
+        if (scoreBoard == null) {
+            scoreBoard = new ArrayList<> ();
+            scoreBoard = readList ();
+
+        }
         if (scoreBoard.size () == 0) throw new ScoreBoardEmptyException ("no Entry in the scoreboard");
-        scoreBoard = readList ();
+
         System.out.println ("initialize complete");
     }
 
@@ -48,17 +52,24 @@ public class ScoreBoard implements Serializable {
     public static ArrayList<Score> readList() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream ("scoreBoard.ser");
         ObjectInputStream ois = new ObjectInputStream (fi);
-        ScoreBoard scoreBoardBackUp = (ScoreBoard) ois.readObject ();
+        Object scoreBoardBackUp = ois.readObject ();
+        ArrayList<Score> arr = null;
+        if (scoreBoardBackUp instanceof ArrayList) {
+            arr = ((ArrayList<Score>) scoreBoardBackUp);
+            System.out.println (arr.toString ());
+        }
         ois.close ();
-        System.out.println ("Serialized figures read");
-        scoreBoard = scoreBoardBackUp.getScoreBoard ();
-        return scoreBoardBackUp.getScoreBoard ();
+        System.out.println (scoreBoardBackUp);
+
+        System.out.println (scoreBoardBackUp);
+        return arr;
     }
+
 
     public static void saveList() throws IOException, ClassNotFoundException {
 
         ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("scoreBoard.ser"));
-        ScoreBoard temp = new ScoreBoard ();
+        ArrayList<Score> temp = scoreBoard;
         oos.writeObject (temp);
         oos.close ();
         System.out.println ("figures serialized");

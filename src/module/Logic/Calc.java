@@ -426,7 +426,8 @@ public class Calc extends JPanel {
             case 32:
                 return new Color(0xf67c5f);
             case 64:
-                return new Color(0xf65e3b);
+                if (value > 64 && value < 128) return new Color (0xf65e3b + value * 10);
+
             case 128:
                 return new Color(0xedcf72);
             case 256:
