@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="minor changes.&#10;+ created a createGame() method in the GameGui rather than calling than calling the same code in both of the constructors. little Overview improvement!">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.form" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java" afterPath="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Score/Score.java" afterPath="$PROJECT_DIR$/src/module/Score/Score.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Score/ScoreBoard.java" afterPath="$PROJECT_DIR$/src/module/Score/ScoreBoard.java" />
     </list>
     <ignored path="project-2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,89 +51,32 @@
         <entry file="file://$PROJECT_DIR$/src/module/Menus/GameGui.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreBoardEmptyException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoardEmptyException.java">
+      <file leaf-file-name="Calc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/Logic/Calc.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="81" column="11" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
               <folding>
-                <element signature="e#176#177#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreBoard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScoreBoard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75598085">
-              <caret line="61" column="25" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
               <folding>
                 <element signature="e#356#357#0" expanded="true" />
                 <element signature="e#389#390#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/ArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#54151#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#6252#6253#0" expanded="false" />
-                <element signature="e#6320#6321#0" expanded="false" />
-                <element signature="e#10398#10399#0" expanded="false" />
-                <element signature="e#10430#10431#0" expanded="false" />
-                <element signature="e#10907#10908#0" expanded="false" />
-                <element signature="e#10945#10946#0" expanded="false" />
-                <element signature="e#13541#13542#0" expanded="false" />
-                <element signature="e#13596#13597#0" expanded="false" />
-                <element signature="e#15414#15415#0" expanded="false" />
-                <element signature="e#15459#15460#0" expanded="false" />
-                <element signature="e#24549#24550#0" expanded="false" />
-                <element signature="e#24603#24604#0" expanded="false" />
-                <element signature="e#30347#30348#0" expanded="false" />
-                <element signature="e#30384#30385#0" expanded="false" />
-                <element signature="e#30684#30685#0" expanded="false" />
-                <element signature="e#30716#30717#0" expanded="false" />
-                <element signature="e#31041#31042#0" expanded="false" />
-                <element signature="e#31086#31087#0" expanded="false" />
-                <element signature="e#33262#33263#0" expanded="false" />
-                <element signature="e#33304#33305#0" expanded="false" />
-                <element signature="e#33338#33339#0" expanded="false" />
-                <element signature="e#33375#33376#0" expanded="false" />
-                <element signature="e#33413#33414#0" expanded="false" />
-                <element signature="e#33454#33455#0" expanded="false" />
-                <element signature="e#38943#38944#0" expanded="false" />
-                <element signature="e#38994#38995#0" expanded="false" />
-                <element signature="e#39436#39437#0" expanded="false" />
-                <element signature="e#39481#39482#0" expanded="false" />
-                <element signature="e#39886#39887#0" expanded="false" />
-                <element signature="e#39960#39961#0" expanded="false" />
-                <element signature="e#40600#40601#0" expanded="false" />
-                <element signature="e#40658#40659#0" expanded="false" />
-                <element signature="e#42227#42228#0" expanded="false" />
-                <element signature="e#42280#42281#0" expanded="false" />
-                <element signature="e#42326#42327#0" expanded="false" />
-                <element signature="e#42383#42384#0" expanded="false" />
-                <element signature="e#44775#44776#0" expanded="false" />
-                <element signature="e#44842#44843#0" expanded="false" />
-                <element signature="e#46390#46391#0" expanded="false" />
-                <element signature="e#46455#46456#0" expanded="false" />
-                <element signature="e#51499#51500#0" expanded="false" />
-                <element signature="e#51557#51558#0" expanded="false" />
-                <element signature="e#51597#51598#0" expanded="false" />
-                <element signature="e#51690#51691#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -144,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/src/module/Menus/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -160,13 +102,27 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="OptionsMenu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/Menus/OptionsMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Score.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/Score/Score.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#692#693#0" expanded="false" />
+                <element signature="e#719#720#0" expanded="false" />
+                <element signature="e#873#874#0" expanded="false" />
+                <element signature="e#1049#1050#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -185,18 +141,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreBoardMenu.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScoreBoardMenu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScoreBoardMenu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.20334928">
+              <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -261,12 +210,12 @@
         <option value="$PROJECT_DIR$/save.ser" />
         <option value="$PROJECT_DIR$/src/module/Menus/GameGui.java" />
         <option value="$PROJECT_DIR$/src/module/Menus/Menu.java" />
-        <option value="$PROJECT_DIR$/src/module/Logic/Calc.java" />
         <option value="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.form" />
-        <option value="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java" />
-        <option value="$PROJECT_DIR$/src/module/Score/Score.java" />
-        <option value="$PROJECT_DIR$/scoreBoard.ser" />
         <option value="$PROJECT_DIR$/src/module/Score/ScoreBoard.java" />
+        <option value="$PROJECT_DIR$/src/module/Score/Score.java" />
+        <option value="$PROJECT_DIR$/src/module/Logic/Calc.java" />
+        <option value="$PROJECT_DIR$/scoreBoard.ser" />
+        <option value="$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java" />
       </list>
     </option>
   </component>
@@ -422,84 +371,6 @@
               <option name="myItemId" value="Menus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ScoreBoardMenu" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OptionsMenu" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Menu" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2048_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -608,6 +479,118 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Biko\Google Drive\Workspace\2048_Project" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/module/Score/Score.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/module/Score/ScoreBoard.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Menu (1)">
     <configuration default="false" name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -1210,7 +1193,7 @@
       <workItem from="1457945290978" duration="3289000" />
       <workItem from="1458063034038" duration="843000" />
       <workItem from="1458112080832" duration="52000" />
-      <workItem from="1458114493407" duration="5423000" />
+      <workItem from="1458114493407" duration="6342000" />
     </task>
     <task id="LOCAL-00001" summary="onKeyPressLeft corrected">
       <created>1450896198100</created>
@@ -1326,11 +1309,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458118534523</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="minor changes.&#10;+ created a createGame() method in the GameGui rather than calling than calling the same code in both of the constructors. little Overview improvement!">
+      <created>1458119927783</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1458119927783</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111897000" />
+    <option name="totallyTimeSpent" value="112816000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1474,9 +1463,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1545,13 +1532,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Menus/Menu.form">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.form">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1808,16 +1788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Logic/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="429" column="0" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/module/Menus/Menu.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1832,14 +1802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menus/OptionsMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1930,32 +1892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menus/GameGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/time/ZonedDateTime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1963,6 +1899,57 @@
           <folding>
             <element signature="e#8016#8017#0" expanded="true" />
             <element signature="e#8069#8070#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Score/Score.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#692#693#0" expanded="false" />
+            <element signature="e#719#720#0" expanded="false" />
+            <element signature="e#873#874#0" expanded="false" />
+            <element signature="e#1049#1050#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Menus/OptionsMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Menus/GameGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/Logic/Calc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="11" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1978,29 +1965,16 @@
     <entry file="file://$PROJECT_DIR$/src/module/Menus/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Score/Score.java">
+    <entry file="file://$PROJECT_DIR$/src/module/Menus/ScoreBoardMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/Score/ScoreBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75598085">
-          <caret line="61" column="25" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="25" />
-          <folding>
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.20334928">
+          <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>

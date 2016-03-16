@@ -13,44 +13,50 @@ import java.io.IOException;
  */
 public class ScoreBoardMenu {
     private JLabel ImageLabel;
-    private JPanel panel;
     private JScrollBar scrollBar1;
     JFrame frame;
-    private JPanel panelTest;
-    public ScoreBoardMenu() {
+    private JPanel panel;
 
-        frame = new JFrame("Menu");
+    public ScoreBoardMenu() throws IOException, ClassNotFoundException {
+        createUIComponents ();
+        frame = new JFrame ("Menu");
 
-        frame.setContentPane (panelTest);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.setContentPane (panel);
+        frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize (500, 500);
+        frame.setLocationRelativeTo (null);
+        frame.setVisible (true);
 
     }
 
 
     public static void main(String[] args) {
-        ScoreBoardMenu oM = new ScoreBoardMenu();
+        try {
+            ScoreBoardMenu oM = new ScoreBoardMenu ();
+        } catch (IOException e) {
+            e.printStackTrace ();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace ();
+        }
     }
 
 
     private void createUIComponents() throws IOException, ClassNotFoundException {
         try {
-            ImageLabel = new JLabel(new ImageIcon(ImageIO.read(getClass().getResource("/resources/crown.jpg"))));
+            ImageLabel = new JLabel (new ImageIcon (ImageIO.read (getClass ().getResource ("/resources/crown.jpg"))));
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace ();
         }
         JTextField TextFieldScore = new JTextField ();
-        panelTest = new JPanel(new BorderLayout());
+        panel = new JPanel (new BorderLayout ());
         for (Score score : ScoreBoard.scoreBoard) {
-            JLabel name_JLB = new JLabel(score.getName1());
-            JLabel score_JLB = new JLabel("" + score.getScore());
-            JLabel time_JLB = new JLabel(score.getDateFormat());
+            JLabel name_JLB = new JLabel (score.getName1 ());
+            JLabel score_JLB = new JLabel ("" + score.getScore ());
+            JLabel time_JLB = new JLabel (score.getDateFormat ());
 
-            panelTest.add(name_JLB, BorderLayout.CENTER);
-            panelTest.add(score_JLB, BorderLayout.CENTER);
-            panelTest.add(time_JLB, BorderLayout.CENTER);
+            panel.add (name_JLB, BorderLayout.CENTER);
+            panel.add (score_JLB, BorderLayout.CENTER);
+            panel.add (time_JLB, BorderLayout.CENTER);
         }
         Score test = new Score ("name", 10, 10);
 
