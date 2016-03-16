@@ -53,6 +53,10 @@ public class Score extends JPanel {
         return this;
     }
 
+    public String getDateFormat() {
+        return dateFormat.format(new Date());
+    }
+
     @Override
     public String toString() {
         return "Score:" +

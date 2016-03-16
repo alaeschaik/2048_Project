@@ -5,6 +5,7 @@ import module.Score.ScoreBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -41,13 +42,15 @@ public class ScoreBoardMenu {
             e.printStackTrace();
         }
         JTextField TextFieldScore = new JTextField ();
-        panelTest = new JPanel ();
-        panel = new JPanel();
-        panel.add (new JTextField ("uhu"));
-        panelTest.add (new JTextField ("uhu"));
+        panelTest = new JPanel(new BorderLayout());
         for (Score score : ScoreBoard.scoreBoard) {
-            panelTest.add (score);
-            panelTest.add (new JTextArea (score.toString ()));
+            JLabel name_JLB = new JLabel(score.getName1());
+            JLabel score_JLB = new JLabel("" + score.getScore());
+            JLabel time_JLB = new JLabel(score.getDateFormat());
+
+            panelTest.add(name_JLB, BorderLayout.CENTER);
+            panelTest.add(score_JLB, BorderLayout.CENTER);
+            panelTest.add(time_JLB, BorderLayout.CENTER);
         }
         Score test = new Score ("name", 10, 10);
 

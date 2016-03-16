@@ -50,8 +50,7 @@ public class ScoreBoard implements Serializable {
 
 
     public static ArrayList<Score> readList() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream ("scoreBoard.ser");
-        ObjectInputStream ois = new ObjectInputStream (fi);
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("scoreBoard.ser"));
         Object scoreBoardBackUp = ois.readObject ();
         ArrayList<Score> arr = null;
         if (scoreBoardBackUp instanceof ArrayList) {
@@ -65,7 +64,6 @@ public class ScoreBoard implements Serializable {
 
 
     public static void saveList() throws IOException, ClassNotFoundException {
-
         ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("scoreBoard.ser"));
         oos.writeObject (scoreBoard);
         oos.close ();
