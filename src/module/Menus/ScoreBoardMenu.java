@@ -5,7 +5,6 @@ import module.Score.ScoreBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 
@@ -24,7 +23,7 @@ public class ScoreBoardMenu {
 
         frame.setContentPane (panel);
         frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize (500, 500);
+        frame.pack();
         frame.setLocationRelativeTo (null);
         frame.setVisible (true);
 
@@ -49,33 +48,44 @@ public class ScoreBoardMenu {
             e.printStackTrace ();
         }
         JTextField TextFieldScore = new JTextField ();
-        panel = new JPanel(new BorderLayout());
-        JPanel panel2 = new JPanel(new FlowLayout());
-        JPanel panel3 = new JPanel(new FlowLayout());
-        JLabel name_LB = new JLabel("Name");
-        name_LB.setBorder(new EmptyBorder(0, 0, 0, 30));
-        panel2.add(name_LB);
-        panel2.add(new JLabel("Score"));
-        panel2.add(new JLabel("Time"));
 
-        panel.add(panel2, BorderLayout.NORTH);
+        GridLayout layout = new GridLayout(ScoreBoard.scoreBoard.size() + 1, 3);
+        layout.setVgap(10); // vertical spacing
+        panel = new JPanel(layout);
+        JLabel nameTitle_JLB = new JLabel("Name");
+        nameTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel scoreTitle_JLB = new JLabel("Score");
+        scoreTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel timeTitle_JLB = new JLabel("Time");
+        timeTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // sets the titles to bold
+        Font font = nameTitle_JLB.getFont();
+        Font boldFont = new Font(font.getFontName(), Font.BOLD, font.getSize());
+
+        nameTitle_JLB.setFont(boldFont);
+        scoreTitle_JLB.setFont(boldFont);
+        timeTitle_JLB.setFont(boldFont);
+
+        // adding the title "bar"
+        panel.add(nameTitle_JLB);
+        panel.add(scoreTitle_JLB);
+        panel.add(timeTitle_JLB);
+
 
         for (Score score : ScoreBoard.scoreBoard) {
             JLabel name_JLB = new JLabel (score.getName1 ());
-            name_JLB.setBorder(new EmptyBorder(0, 0, 0, 30));
+            name_JLB.setHorizontalAlignment(SwingConstants.CENTER);
             JLabel score_JLB = new JLabel ("" + score.getScore ());
+            score_JLB.setHorizontalAlignment(SwingConstants.CENTER);
             JLabel time_JLB = new JLabel (score.getDateFormat ());
+            time_JLB.setHorizontalAlignment(SwingConstants.CENTER);
 
+            panel.add(name_JLB);
+            panel.add(score_JLB);
+            panel.add(time_JLB);
 
-            panel3.add(name_JLB);
-            panel3.add(score_JLB);
-            panel3.add(time_JLB);
         }
-
-        panel.add(panel3, BorderLayout.CENTER);
-        Score test = new Score ("name", 10, 10);
-
-//        test.paint ();
     }
 }
 
