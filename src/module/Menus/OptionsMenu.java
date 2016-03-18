@@ -57,7 +57,7 @@ public class OptionsMenu {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == backButton) {
+                if (e.getSource() == backButton) { // delete the comment to making some change tp push
                     frame.dispose();
                 }
             }
