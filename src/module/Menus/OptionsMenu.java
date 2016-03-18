@@ -23,6 +23,9 @@ public class OptionsMenu {
 
     public OptionsMenu() {
 
+        rangeSlider.setValue(Calc.getRange());
+        spawnSlider.setValue(Calc.getSpawnRate());
+        sizeSlider.setValue(Calc.getTableSize());
         JFrame frame = new JFrame("Menu");
 
         frame.setContentPane(jpanel);
@@ -35,6 +38,7 @@ public class OptionsMenu {
             @Override
             public void stateChanged(ChangeEvent e) {
                 Calc.setRange(rangeSlider.getValue());
+
             }
         });
         sizeSlider.addChangeListener(new ChangeListener() {

@@ -273,7 +273,7 @@ public class Calc extends JPanel {
         return 0;
     }
 
-    public int getRange() {
+    public static int getRange() {
         return range;
     }
 
