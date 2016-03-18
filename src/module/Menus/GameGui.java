@@ -28,7 +28,7 @@ public class GameGui {
 
     }
 
-    public void createGame() {
+    private void createGame() {
         game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,7 +56,7 @@ public class GameGui {
         });
     }
 
-    public void scoreWindow() throws IOException, ClassNotFoundException {
+    private void scoreWindow() throws IOException, ClassNotFoundException {
         Object[] options = {"Save", "stop and enter into scoreboard"};
         int choice = JOptionPane.showOptionDialog(game,
                 "Would you like to save your current progress",
