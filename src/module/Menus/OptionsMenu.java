@@ -1,10 +1,11 @@
 package module.Menus;
 
 import module.Logic.Calc;
-import module.Score.Score;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.io.IOException;
 
 /**
@@ -19,19 +20,35 @@ public class OptionsMenu {
     private JLabel ImageLabel;
     private JTextPane rangeOfValuesThatTextPane;
     private JSlider rangeSlider;
-    private Score score;
 
     public OptionsMenu() {
+
         JFrame frame = new JFrame("Menu");
 
         frame.setContentPane(jpanel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
         frame.setLocationRelativeTo(null);
-        rangeSlider.addChangeListener(e -> Calc.setRange(rangeSlider.getValue()));
-        sizeSlider.addChangeListener(e -> Calc.setTableSize(sizeSlider.getValue()));
-        spawnSlider.addChangeListener(e -> Calc.setSpawnRate(spawnSlider.getValue()));
+        rangeSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                Calc.setRange(rangeSlider.getValue());
+            }
+        });
+        sizeSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                Calc.setTableSize(sizeSlider.getValue());
+            }
+        });
+        spawnSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                Calc.setSpawnRate(spawnSlider.getValue());
+            }
+        });
     }
 
 
