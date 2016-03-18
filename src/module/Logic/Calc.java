@@ -19,14 +19,14 @@ public class Calc extends JPanel {
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
     public static Calc Game2048;
-    public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
     public static int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
-    Calc temp = this;
-    private static int tableSize = 4; //size of the table, sides are proportional
     public static int spawnRate = 2;
+    private static int tableSize = 4; //size of the table, sides are proportional
+    private static int highScore;
+    public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
+    Calc temp = this;
     private int scoreValue;
     private Score score;
-    private static int highScore;
 
 
     /**
@@ -123,88 +123,8 @@ public class Calc extends JPanel {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Randomly creates a position in the array and tries to insert even number into position.
-     *
-     * @return true if position is assigned with value, else false if not.
-     */
-    public boolean initializeValue(int range,int spawnRate) {
-        this.range = range;
-        while (spawnRate > 0) {
-            int rRow = new Random().nextInt(table.length);
-            int rCol = new Random().nextInt(table.length);
-
-            if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
-                table[rRow][rCol] = returnEvenNumber(range);
-                return true;
-            } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
-            {
-                return initializeValue(range, spawnRate);
-            } else { //if the game is over
-                System.out.println("GAME OVER");
-            }
-
-         spawnRate--;
-        }
-        return false;
-    }
-
-
-    /**
-     * checks table for empty field, if not available, end the game
-     */
-    public boolean endOfGame() {
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                if (table[i][j] == 0) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void resetGame() {
-
-        table = new int[tableSize][tableSize];
-    }
-
-    /**
-     * Creates even random number for table
-     *
-     * @return even number;
-     */
-    public int returnEvenNumber(int range) {
-        int random;
-        int i = 0;
-        if (range > 2) {
-            this.range = range;
-            while (i == 0) {
-                random = new Random().nextInt(range + 1);
-                if (random % 2 == 0) i = random;
-            }
-            return i;
-        } else {
-            System.out.println("minimum range of 2 is required");
-        }
-        return 0;
-    }
-
-
     /**
      * Getters and Setters
-     *
-     *
      */
 
 
@@ -245,6 +165,113 @@ public class Calc extends JPanel {
         return TILES_MARGIN;
     }
 
+    /**
+     * Tile Back & Foreground
+     */
+
+
+    public static Color getBackground(int value) {
+        switch (value) {
+            case 2:
+                return new Color(0xeee4da);
+            case 4:
+                return new Color(0xede0c8);
+            case 8:
+                return new Color(0xf2b179);
+            case 16:
+                return new Color(0xf59563);
+            case 32:
+                return new Color(0xf67c5f);
+            case 64:
+                if (value > 64 && value < 128) return new Color(0xf65e3b + value * 10);
+
+            case 128:
+                return new Color(0xedcf72);
+            case 256:
+                return new Color(0xedcc61);
+            case 512:
+                return new Color(0xedc850);
+            case 1024:
+                return new Color(0xedc53f);
+            case 2048:
+                return new Color(0xedc22e);
+        }
+        return new Color(0xcdc1b4);
+    }
+
+    public static Color getForeground(int value) {
+        return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
+    }
+
+    private static int offsetCoors(int arg) {
+        return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
+    }
+
+    /**
+     * Randomly creates a position in the array and tries to insert even number into position.
+     *
+     * @return true if position is assigned with value, else false if not.
+     */
+    public boolean initializeValue(int range,int spawnRate) {
+        this.range = range;
+        while (spawnRate > 0) {
+            int rRow = new Random().nextInt(table.length);
+            int rCol = new Random().nextInt(table.length);
+
+            if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
+                table[rRow][rCol] = returnEvenNumber(range);
+                return true;
+            } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+            {
+                return initializeValue(range, spawnRate);
+            } else { //if the game is over
+                System.out.println("GAME OVER");
+            }
+
+         spawnRate--;
+        }
+        return false;
+    }
+
+    /**
+     * checks table for empty field, if not available, end the game
+     */
+    public boolean endOfGame() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void resetGame() {
+
+        table = new int[tableSize][tableSize];
+    }
+
+    /**
+     * Creates even random number for table
+     *
+     * @return even number;
+     */
+    public int returnEvenNumber(int range) {
+        int random;
+        int i = 0;
+        if (range > 2) {
+            this.range = range;
+            while (i == 0) {
+                random = new Random().nextInt(range + 1);
+                if (random % 2 == 0) i = random;
+            }
+            return i;
+        } else {
+            System.out.println("minimum range of 2 is required");
+        }
+        return 0;
+    }
 
     public int getRange() {
         return range;
@@ -314,7 +341,6 @@ public class Calc extends JPanel {
         rotate();
         initializeValue(range,spawnRate);
     }
-
 
     public boolean isEmpty(int row) {
         int counter = 0;
@@ -407,46 +433,6 @@ public class Calc extends JPanel {
 
     }
 
-
-    /**
-     * Tile Back & Foreground
-     */
-
-
-    public static Color getBackground(int value) {
-        switch (value) {
-            case 2:
-                return new Color(0xeee4da);
-            case 4:
-                return new Color(0xede0c8);
-            case 8:
-                return new Color(0xf2b179);
-            case 16:
-                return new Color(0xf59563);
-            case 32:
-                return new Color(0xf67c5f);
-            case 64:
-                if (value > 64 && value < 128) return new Color (0xf65e3b + value * 10);
-
-            case 128:
-                return new Color(0xedcf72);
-            case 256:
-                return new Color(0xedcc61);
-            case 512:
-                return new Color(0xedc850);
-            case 1024:
-                return new Color(0xedc53f);
-            case 2048:
-                return new Color(0xedc22e);
-        }
-        return new Color(0xcdc1b4);
-    }
-
-    public static Color getForeground(int value) {
-        return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
-    }
-
-
     /**
      * Drawing the playing field
      **/
@@ -484,16 +470,11 @@ public class Calc extends JPanel {
         final int w = fm.stringWidth(s);
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
+        // TODO: 18.03.2016 fix the sizing of the score and centre them 
         if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
         g.drawString("Score: " + score, 100, 25);
         g.drawString("HighScore: " + highScore, 300, 25);
     }
-
-
-    private static int offsetCoors(int arg) {
-        return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
-    }
-
 
     /**
      * readStatus() saves the necessary informations that are individual for each instance(Score,Table).

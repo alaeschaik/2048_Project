@@ -6,6 +6,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
@@ -20,6 +22,7 @@ public class OptionsMenu {
     private JLabel ImageLabel;
     private JTextPane rangeOfValuesThatTextPane;
     private JSlider rangeSlider;
+    private JButton backButton;
 
     public OptionsMenu() {
 
@@ -31,6 +34,7 @@ public class OptionsMenu {
         frame.setVisible(true);
 
         frame.setLocationRelativeTo(null);
+        // FIXME: 18.03.2016 Sliders don't set the values!
         rangeSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -47,6 +51,15 @@ public class OptionsMenu {
             @Override
             public void stateChanged(ChangeEvent e) {
                 Calc.setSpawnRate(spawnSlider.getValue());
+            }
+        });
+        // TODO: 18.03.2016 Back button needs to be smaller 
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == backButton) {
+                    frame.dispose();
+                }
             }
         });
     }
