@@ -45,12 +45,12 @@ public class Menu {
                         options[0]); //default button title
                 if (choice == 0) {
 
-                    GameGui gameGui = new GameGui ();
+                    new GameGui();
 
 
                 } else {
                     try {
-                        GameGui gameGui = new GameGui (true);
+                        new GameGui(true);
                     } catch (IOException | ClassNotFoundException e1) {
                         JOptionPane.showMessageDialog (frame,
                                 "No Backup available.",
@@ -63,44 +63,33 @@ public class Menu {
                 }
             }
         });
-        optionsButton.addActionListener (new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                OptionsMenu oM = new OptionsMenu ();
-                frame.setState (Frame.NORMAL);
-            }
+        optionsButton.addActionListener(e -> {
+            OptionsMenu oM = new OptionsMenu();
+            frame.setState(Frame.NORMAL);
         });
 
-        exitButton.addActionListener (new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit (-11);
-            }
-        });
+        exitButton.addActionListener(e -> System.exit(-11));
 
         frame.setLocationRelativeTo (null);
-        scoreboardButton.addActionListener (new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        scoreboardButton.addActionListener(e -> {
 
-                try {
+            try {
 
 //                    ScoreBoard.add(new Score("huhu", 4, 19));
-                    ScoreBoard.initialize ();
-                    ScoreBoard.sort ();
-                    ScoreBoardMenu sBM = new ScoreBoardMenu ();
-                } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
-                    JOptionPane.showMessageDialog (frame,
-                            "No Scoreboard Entrys.",
-                            "NoScoreBoardEntrysError",
-                            JOptionPane.ERROR_MESSAGE);
-                    e1.printStackTrace ();
-
-
-                }
+                ScoreBoard.initialize();
+                ScoreBoard.sort();
+                ScoreBoardMenu sBM = new ScoreBoardMenu();
+            } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
+                JOptionPane.showMessageDialog(frame,
+                        "No Scoreboard Entrys.",
+                        "NoScoreBoardEntrysError",
+                        JOptionPane.ERROR_MESSAGE);
+                e1.printStackTrace();
 
 
             }
+
+
         });
     }
 

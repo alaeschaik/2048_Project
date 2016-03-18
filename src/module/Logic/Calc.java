@@ -273,7 +273,7 @@ public class Calc extends JPanel {
         return 0;
     }
 
-    public int getRange() {
+    public static int getRange() {
         return range;
     }
 
@@ -293,6 +293,46 @@ public class Calc extends JPanel {
     /**
      * Moving methods
      **/
+    @Deprecated
+    public void onKeyPressUp() {
+        int k = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] > 0 && i - 1 >= 0) {
+                    if (table[i - 1][j] == table[i][j]) { // if they are the same
+                        table[i - 1][j] += table[i][j];
+                        table[i][j] = 0;
+                    } else if (table[i - 1][j] == 0) {
+                        k = i - 1;
+                        while (k >= 0) {
+
+
+                            if (table[k][j] == table[i][j]) {
+                                table[k][j] += table[k][j];
+                                table[i][j] = 0;
+                                continue;
+
+                            }
+                            if (!(table[k][j] == 0)) {
+                                k++;
+                                break;
+                            }
+
+                            if (k == 0) break;
+                            if (table[k][j] == 0) k--;
+
+                        }
+
+                        table[k][j] = table[i][j];
+                        table[i][j] = 0;
+
+                    }
+                }
+            }
+        }
+        initializeValue(range, spawnRate);
+    }
+
 
     public void onKeyPressLeftNew() {
         rotate();
