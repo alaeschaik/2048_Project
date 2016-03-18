@@ -83,7 +83,7 @@ public class Calc extends JPanel {
         ScoreArray backup = readStatus();
         System.out.println(readStatus().toString());
         table = readStatus().getTable();
-        tableSize = readStatus().getTable().length;
+//        tableSize = readStatus().getTable().length;
 
 
 /**     at the start of the game, spawnRate values are set **/

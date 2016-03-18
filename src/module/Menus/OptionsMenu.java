@@ -27,7 +27,9 @@ public class OptionsMenu {
     public OptionsMenu() {
 
         JFrame frame = new JFrame("Menu");
-
+        spawnSlider.setValue(Calc.getSpawnRate());
+        sizeSlider.setValue(Calc.getTableSize());
+        rangeSlider.setValue(Calc.getRange());
         frame.setContentPane(jpanel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
