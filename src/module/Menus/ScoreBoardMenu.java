@@ -20,7 +20,6 @@ public class ScoreBoardMenu {
     public ScoreBoardMenu() throws IOException, ClassNotFoundException {
         createUIComponents ();
         frame = new JFrame ("Menu");
-
         frame.setContentPane (panel);
         frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -78,7 +77,7 @@ public class ScoreBoardMenu {
             name_JLB.setHorizontalAlignment(SwingConstants.CENTER);
             JLabel score_JLB = new JLabel ("" + score.getScore ());
             score_JLB.setHorizontalAlignment(SwingConstants.CENTER);
-            JLabel time_JLB = new JLabel (score.getDateFormat ());
+            JLabel time_JLB = new JLabel (score.getGlobalTime());
             time_JLB.setHorizontalAlignment(SwingConstants.CENTER);
 
             panel.add(name_JLB);

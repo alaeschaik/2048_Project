@@ -456,7 +456,7 @@ public class Calc extends JPanel {
 
                     }
 
-                }// for (int j = 0; j + 1 < table[i].length; j++)
+                }
 
 
             }

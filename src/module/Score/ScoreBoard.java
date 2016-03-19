@@ -1,5 +1,8 @@
 package module.Score;
 
+import module.Server.Server;
+import module.Server.ServerException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,11 +21,12 @@ public class ScoreBoard implements Serializable {
 
     public static void add(Score score) throws IOException, ClassNotFoundException {
         if (ScoreBoard.scoreBoard == null) {
-            scoreBoard = new ArrayList<> ();
-            if (new File ("scoreBoard.ser").length () != 0) readList ();
+            scoreBoard = new ArrayList<>();
+            if (new File("scoreBoard.ser").length() != 0) readList();
         }
-        scoreBoard.add (score);
-        ScoreBoard.saveList ();
+        scoreBoard.add(score);
+        ScoreBoard.saveList();
+        Server.setHTML(score);
     }
 
     public static void setScoreBoard(ArrayList<Score> scoreBoard) {
@@ -30,47 +34,56 @@ public class ScoreBoard implements Serializable {
     }
 
     public static void printScoreBoard() {
-        if (scoreBoard.size () == 0) System.out.println ("no entry");
+        if (scoreBoard.size() == 0) System.out.println("no entry");
         for (Score score : scoreBoard) {
-            System.out.println (score.toString ());
+            System.out.println(score.toString());
 
         }
     }
 
-    public static void initialize() throws IOException, ClassNotFoundException, ScoreBoardEmptyException {
+    public static void initializeLocal() throws IOException, ClassNotFoundException, ScoreBoardEmptyException {
         if (scoreBoard == null) {
-            scoreBoard = new ArrayList<> ();
-            scoreBoard = readList ();
+            scoreBoard = new ArrayList<>();
+            scoreBoard = readList();
 
         }
-        if (scoreBoard.size () == 0) throw new ScoreBoardEmptyException ("no Entry in the scoreboard");
+        if (scoreBoard.size() == 0) throw new ScoreBoardEmptyException("no Entry in the scoreboard");
 
-        System.out.println ("initialize complete");
+        System.out.println("initialize complete");
+    }
+
+    public static void initializeGlobal() throws IOException, ClassNotFoundException, ScoreBoardEmptyException, ServerException {
+        if (scoreBoard == null) {
+            scoreBoard = new ArrayList<>();
+        }
+        scoreBoard = Server.getHTML();
+
+        System.out.println("initialize complete");
     }
 
 
     public static ArrayList<Score> readList() throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("scoreBoard.ser"));
-        Object scoreBoardBackUp = ois.readObject ();
+        Object scoreBoardBackUp = ois.readObject();
         ArrayList<Score> arr = null;
         if (scoreBoardBackUp instanceof ArrayList) {
             arr = ((ArrayList<Score>) scoreBoardBackUp);
-            System.out.println (arr.toString ());
+            System.out.println(arr.toString());
         }
-        ois.close ();
+        ois.close();
         scoreBoard = arr;
         return arr;
     }
 
 
     public static void saveList() throws IOException, ClassNotFoundException {
-        ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("scoreBoard.ser"));
-        oos.writeObject (scoreBoard);
-        oos.close ();
-        System.out.println ("figures serialized");
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("scoreBoard.ser"));
+        oos.writeObject(scoreBoard);
+        oos.close();
+        System.out.println("figures serialized");
     }
 
     public static void sort() {
-        Collections.sort (scoreBoard, new ScoreBoardComparator ());
+        Collections.sort(scoreBoard, new ScoreBoardComparator());
     }
 }

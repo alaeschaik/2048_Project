@@ -1,5 +1,7 @@
 package module.Score;
 
+import javafx.scene.shape.Circle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
@@ -10,20 +12,41 @@ import java.util.Date;
  * Created by Biko on 12.03.2016.
  */
 public class Score extends JPanel {
-    DateFormat dateFormat = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss");
-    String date = dateFormat.format (new Date ());
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    String LocalTime= dateFormat.format(new Date());
 
     int score = 0;
     String name;
     int tableSize;
+    String serverTime;
 
-
+/**
+ * Constructor for creating local score where no time is set
+ * @param name
+ * @param tableSize
+ * @param score
+**/
     public Score(String name, int tableSize, int score) {
         this.tableSize = tableSize;
-
         this.score = score;
         this.name = name;
     }
+
+    /**
+     * Constructor used for recieving date from the server (http:biko.wolko.at) as it also transmits the time the score was set.
+     * @param name
+     * @param tableSize
+     * @param score
+     * @param serverTime
+     */
+    public Score(String name, int tableSize, int score,String serverTime) {
+        this.tableSize = tableSize;
+        this.score = score;
+        this.name = name;
+        this.serverTime = serverTime;
+    }
+
+
 
 
     public int getScore() {
@@ -44,26 +67,29 @@ public class Score extends JPanel {
 
     }
 
-    public String getTableSize() {
-        return tableSize + "x" + tableSize;
+    public int getTableSize() {
+        return tableSize;
     }
 
     public void setTableSize(int tableSize) {
         this.tableSize = tableSize;
     }
 
-    public String getDateFormat() {
+    public String getLocalTime() {
         return dateFormat.format(new Date());
+    }
+    public String getGlobalTime() {
+        return serverTime;
     }
 
     @Override
     public String toString() {
+
         return "Score:" +
-                " Name: '" + name +
+                " Name: " + name +
                 " Size: " + tableSize +
-                " Time: " + date +
-                " Score: " + score +
-                '\'';
+                " Time: " + getLocalTime() +
+                " Score: " + score + "\n";
     }
 
     //TODO: make the painting functional
