@@ -18,19 +18,17 @@ public class Calc extends JPanel {
     private static final String FONT_NAME = "Arial";
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
-    public static Calc Game2048;
     public static int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
     public static int spawnRate = 2;
     private static int tableSize = 4; //size of the table, sides are proportional
     private static int highScore;
     public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
-    Calc temp = this;
     private int scoreValue;
     private Score score;
+    private boolean moved = true;
 
 
     /**
-
      * Constructor used for creating a new Playing field
      **/
     public Calc(int tableSize) {
@@ -51,19 +49,18 @@ public class Calc extends JPanel {
                 }
                 switch (e.getKeyCode()) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
-
                         onKeyPressLeftNew();
                         break;
+
                     case KeyEvent.VK_RIGHT:
                         onKeyPressRightNew();
-
                         break;
-                    case KeyEvent.VK_DOWN:
 
+                    case KeyEvent.VK_DOWN:
                         onKeyPressDownNew();
                         break;
-                    case KeyEvent.VK_UP:
 
+                    case KeyEvent.VK_UP:
                         onKeyPressUpNew();
                         break;
 
@@ -83,7 +80,7 @@ public class Calc extends JPanel {
         ScoreArray backup = readStatus();
         System.out.println(readStatus().toString());
         table = readStatus().getTable();
-//        tableSize = readStatus().getTable().length;
+        tableSize = readStatus().getTable().length;
 
 
 /**     at the start of the game, spawnRate values are set **/
@@ -212,7 +209,8 @@ public class Calc extends JPanel {
      *
      * @return true if position is assigned with value, else false if not.
      */
-    public boolean initializeValue(int range,int spawnRate) {
+    public boolean initializeValue(int range, int spawnRate) {
+        if (moved != true) return false;
         this.range = range;
         while (spawnRate > 0) {
             int rRow = new Random().nextInt(table.length);
@@ -228,7 +226,7 @@ public class Calc extends JPanel {
                 System.out.println("GAME OVER");
             }
 
-         spawnRate--;
+            spawnRate--;
         }
         return false;
     }
@@ -278,7 +276,7 @@ public class Calc extends JPanel {
     }
 
     public static void setRange(int range) {
-        Calc.range=range;
+        Calc.range = range;
     }
 
     public int getScoreValue() {
@@ -337,52 +335,35 @@ public class Calc extends JPanel {
     public void onKeyPressLeftNew() {
         rotate();
         rotate();
-        for (int i = 0; i < table.length; i++) {
-            if (!isEmpty(i)) {
-                mergeLine(i);
-            }
-        }
+        mergeLine();
         rotate();
         rotate();
-        initializeValue(range,spawnRate);
     }
 
     public void onKeyPressRightNew() {
-        for (int i = 0; i < table.length; i++) {
-            if (!isEmpty(i)) {
-                mergeLine(i);
-            }
-        }
-        initializeValue(range,spawnRate);
+        mergeLine();
+        initializeValue(range, spawnRate);
     }
 
     public void onKeyPressUpNew() {
         rotate();
         rotate();
         rotate();
-        for (int i = 0; i < table.length; i++) {
-            if (!isEmpty(i)) {
-                mergeLine(i);
-            }
-        }
+        mergeLine();
         rotate();
-        initializeValue(range,spawnRate);
+
     }
 
     public void onKeyPressDownNew() {
         rotate();
-        for (int i = 0; i < table.length; i++) {
-            if (!isEmpty(i)) {
-                mergeLine(i);
-            }
-        }
+        mergeLine();
         rotate();
         rotate();
         rotate();
-        initializeValue(range,spawnRate);
     }
 
     public boolean isEmpty(int row) {
+
         int counter = 0;
         if (row < table.length) {
             for (int i = 0; i < table[row].length; i++) {
@@ -417,60 +398,70 @@ public class Calc extends JPanel {
     /**
      * mergeLine() is basically a moveRight method, but by rotating the array it creates
      * the impression as if you would move the tiles in any direction
-     *
-     * @param row
      */
-    public void mergeLine(int row) {
+    public void mergeLine() {
+        moved = false;
         int temp = 1;
         int innerTemp = 0;
-        for (int j = 0; j + 1 < table[row].length; j++) {
+        for (int i = 0; i < table.length; i++) {
+            if (!isEmpty(i)) {
 
-            if (table[row][j] > 0 && j + 1 < table[row].length) {//if the field's value is higher than 0 and the next field is still within the array
-                temp = j + 1;
+                for (int j = 0; j + 1 < table[i].length; j++) {
 
-                if (table[row][j] == table[row][temp]) {// if the field and the next field have the same value
-                    table[row][temp] += table[row][j];
-                    scoreValue += table[row][temp];
-                    table[row][j] = 0;
+                    if (table[i][j] > 0 && j + 1 < table[i].length) {//if the field's value is higher than 0 and the next field is still within the array
+                        temp = j + 1;
 
-                } else if (table[row][temp] == 0) {
-                    innerTemp = temp;
-                    while (innerTemp + 1 < table[row].length && table[row][innerTemp] == 0) {
+                        if (table[i][j] == table[i][temp]) {// if the field and the next field have the same value
+                            table[i][temp] += table[i][j];
+                            scoreValue += table[i][temp];
+                            table[i][j] = 0;
+                            j = temp;
+                            moved = true;
 
-                        innerTemp++;
+                        } else if (table[i][temp] == 0) {
+                            innerTemp = temp;
+                            while (innerTemp + 1 < table[i].length && table[i][innerTemp] == 0) {
+
+                                innerTemp++;
+                            }
+                            if (table[i][innerTemp] == table[i][j]) {
+                                table[i][innerTemp] += table[i][j];
+                                scoreValue += table[i][innerTemp];
+                                table[i][j] = 0;
+                                j = innerTemp;
+                                moved = true;
+                            } else if (table[i][innerTemp] == 0) {
+                                table[i][innerTemp] = table[i][j];
+                                table[i][j] = 0;
+                                moved = true;
+                            } else { //if the innerTemp value has another value than the moved tile, shift the tile to the last empty field;
+                                table[i][innerTemp - 1] = table[i][j];
+                                table[i][j] = 0;
+                                moved = true;
+                            }
+                        }
                     }
-                    if (table[row][innerTemp] == table[row][j]) {
-                        table[row][innerTemp] += table[row][j];
-                        scoreValue += table[row][innerTemp];
-                        table[row][j] = 0;
-                    } else if (table[row][innerTemp] == 0) {
-                        table[row][innerTemp] = table[row][j];
-                        table[row][j] = 0;
-                    } else {
-                        table[row][innerTemp - 1] = table[row][j];
-                        table[row][j] = 0;
-                    }
+
                 }
-            }
 
+
+                for (int emptyFiller = table[i].length - 1; emptyFiller > 0; emptyFiller--) {
+                    if (table[i][emptyFiller] == 0) {
+                        int tempValue = emptyFiller;
+                        while (table[i][tempValue] == 0 && tempValue > 0) {
+                            tempValue--;
+                        }
+                        table[i][emptyFiller] = table[i][tempValue];
+                        table[i][tempValue] = 0;
+
+                    }
+
+                }// for (int j = 0; j + 1 < table[i].length; j++)
+
+
+            }
         }
-
-
-        for (int emptyFiller = table[row].length - 1; emptyFiller > 0; emptyFiller--) {
-            if (table[row][emptyFiller] == 0) {
-                int tempValue = emptyFiller;
-                while (table[row][tempValue] == 0 && tempValue > 0) {
-                    tempValue--;
-                }
-                table[row][emptyFiller] = table[row][tempValue];
-                table[row][tempValue] = 0;
-
-            }
-
-        }// for (int j = 0; j + 1 < table[row].length; j++)
-
-
-
+        initializeValue(range,spawnRate);
     }
 
     /**
@@ -519,13 +510,13 @@ public class Calc extends JPanel {
     /**
      * readStatus() saves the necessary informations that are individual for each instance(Score,Table).
      * That's what the ScoreArray Class is used for.
-     * @return ScoreArray backup;
      *
+     * @return ScoreArray backup;
      **/
 
     public ScoreArray readStatus() throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("save.ser"));
-        ScoreArray backup = (ScoreArray)ois.readObject();
+        ScoreArray backup = (ScoreArray) ois.readObject();
         ois.close();
         System.out.println("Serialized figures read");
         return backup;

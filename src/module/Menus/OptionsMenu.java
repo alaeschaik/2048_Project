@@ -36,7 +36,6 @@ public class OptionsMenu {
         frame.setVisible(true);
 
         frame.setLocationRelativeTo(null);
-        // FIXME: 18.03.2016 Sliders don't set the values!
         rangeSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {

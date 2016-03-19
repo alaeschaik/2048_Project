@@ -81,7 +81,6 @@ public class GameGui {
                         "What is your name?",
                         "Enter your name",
                         JOptionPane.QUESTION_MESSAGE);
-                System.out.println(response.toString());
                 ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getScoreValue()));
             }
         } else {

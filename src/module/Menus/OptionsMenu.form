@@ -51,12 +51,12 @@
           <majorTickSpacing value="1"/>
           <maximum value="20"/>
           <minimum value="1"/>
-          <minorTickSpacing value="2"/>
+          <minorTickSpacing value="1"/>
           <orientation value="0"/>
           <paintLabels value="true"/>
           <paintTicks value="true"/>
           <snapToTicks value="true"/>
-          <value value="3"/>
+          <value value="4"/>
           <valueIsAdjusting value="true"/>
         </properties>
       </component>
