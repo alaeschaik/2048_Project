@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class Server {
 
 
-    public static ArrayList<Score> getHTML() throws IOException, ServerException {
+    public static ArrayList<Score> getHTML(int size) throws IOException, ServerException {
         StringBuilder result = new StringBuilder();
-        URL url = new URL("http://biko.wolko.at/2048/?size=4");
+        URL url = new URL("http://biko.wolko.at/2048/?size="+size);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -30,7 +30,7 @@ public class Server {
         ArrayList<Score> serverArray = new ArrayList<>();
         for (int i = 0; i < Score.length; i++) {
             String[] serverValues = Score[i].toString().split(";|\n");
-            if (serverValues.length < 5) throw new ServerException("no entrys in the scoreboard yet");
+            if (serverValues.length < 5) throw new ServerException("no entrys in the scoreboard for this category yet");
 
             serverArray.add(new Score(serverValues[0], Integer.parseInt(serverValues[2]), Integer.parseInt(serverValues[1]), serverValues[3]));
 
@@ -49,12 +49,5 @@ public class Server {
 
     }
 
-    public static void main(String[] args) throws Exception {
-        getHTML();
-    }
-
-    public static void getEntryTime() {
-
-    }
 }
 

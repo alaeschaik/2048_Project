@@ -13,19 +13,20 @@ import java.util.Date;
  */
 public class Score extends JPanel {
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    String LocalTime= dateFormat.format(new Date());
+    String LocalTime = dateFormat.format(new Date());
 
     int score = 0;
     String name;
     int tableSize;
     String serverTime;
 
-/**
- * Constructor for creating local score where no time is set
- * @param name
- * @param tableSize
- * @param score
-**/
+    /**
+     * Constructor for creating local score where no time is set
+     *
+     * @param name
+     * @param tableSize
+     * @param score
+     **/
     public Score(String name, int tableSize, int score) {
         this.tableSize = tableSize;
         this.score = score;
@@ -34,19 +35,18 @@ public class Score extends JPanel {
 
     /**
      * Constructor used for recieving date from the server (http:biko.wolko.at) as it also transmits the time the score was set.
+     *
      * @param name
      * @param tableSize
      * @param score
      * @param serverTime
      */
-    public Score(String name, int tableSize, int score,String serverTime) {
+    public Score(String name, int tableSize, int score, String serverTime) {
         this.tableSize = tableSize;
         this.score = score;
         this.name = name;
         this.serverTime = serverTime;
     }
-
-
 
 
     public int getScore() {
@@ -78,6 +78,7 @@ public class Score extends JPanel {
     public String getLocalTime() {
         return dateFormat.format(new Date());
     }
+
     public String getGlobalTime() {
         return serverTime;
     }

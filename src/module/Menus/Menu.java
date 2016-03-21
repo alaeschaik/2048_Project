@@ -87,7 +87,7 @@ public class Menu {
                 try {
 
                     ScoreBoard.initializeLocal();
-                ScoreBoard.sort();
+                    ScoreBoard.sort();
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame,
@@ -98,12 +98,10 @@ public class Menu {
 
 
                 }
-            }else {
+            } else {
                 try {
-                    ScoreBoard.initializeGlobal();
-
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
-                } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException | ServerException e1) {
+                } catch (IOException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame,
                             "No Scoreboard Entrys.",
                             "NoScoreBoardEntrysError",

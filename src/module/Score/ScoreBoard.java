@@ -52,11 +52,11 @@ public class ScoreBoard implements Serializable {
         System.out.println("initialize complete");
     }
 
-    public static void initializeGlobal() throws IOException, ClassNotFoundException, ScoreBoardEmptyException, ServerException {
+    public static void initializeGlobal(int size) throws IOException, ClassNotFoundException,ServerException {
         if (scoreBoard == null) {
             scoreBoard = new ArrayList<>();
         }
-        scoreBoard = Server.getHTML();
+        scoreBoard = Server.getHTML(size);
 
         System.out.println("initialize complete");
     }
