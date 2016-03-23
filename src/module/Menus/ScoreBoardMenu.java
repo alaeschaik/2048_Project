@@ -68,7 +68,6 @@ public class ScoreBoardMenu {
                scorePanel.removeAll();
                 //System.out.println(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
                 Server.getHTML(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
-                System.out.println(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
                 ScoreBoard.initializeGlobal(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
                 GridLayout layout = new GridLayout(ScoreBoard.scoreBoard.size(), 3);
                 layout.setVgap(10); // vertical spacing
