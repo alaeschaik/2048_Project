@@ -45,6 +45,7 @@ public class ScoreBoard implements Serializable {
         if (scoreBoard == null) {
             scoreBoard = new ArrayList<>();
             scoreBoard = readList();
+            sort();
 
         }
         if (scoreBoard.size() == 0) throw new ScoreBoardEmptyException("no Entry in the scoreboard");
@@ -57,7 +58,7 @@ public class ScoreBoard implements Serializable {
             scoreBoard = new ArrayList<>();
         }
         scoreBoard = Server.getHTML(size);
-
+        sort();
         System.out.println("initialize complete");
     }
 

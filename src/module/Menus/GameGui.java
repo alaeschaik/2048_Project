@@ -36,7 +36,8 @@ public class GameGui {
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);
-
+        game2048.setGuiX(game.getX());
+        game2048.setGuiY(game.getY());
         game.setLocationRelativeTo(null); // centers the game at start
         game.addWindowListener(new WindowAdapter() {
             @Override

@@ -30,6 +30,7 @@ public class Menu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
         startGameButton.addActionListener(new ActionListener() {
 
             @Override
@@ -47,7 +48,6 @@ public class Menu {
                 if (choice == 0) {
 
                     new GameGui();
-
 
                 } else {
                     try {
@@ -87,7 +87,7 @@ public class Menu {
                 try {
 
                     ScoreBoard.initializeLocal();
-                    ScoreBoard.sort();
+                    //ScoreBoard.sort();
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame,

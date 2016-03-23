@@ -1,7 +1,10 @@
 package module.Logic;
 
+import module.Menus.GameGui;
+import module.Menus.ScoreBoardMenu;
 import module.Score.Score;
 import module.Score.ScoreArray;
+import module.Score.ScoreBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,8 +27,9 @@ public class Calc extends JPanel {
     private static int highScore;
     public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
     private int scoreValue;
-    private Score score;
     private boolean moved = true;
+    private int guiX;
+    private int guiY;
 
 
     /**
@@ -33,6 +37,8 @@ public class Calc extends JPanel {
      **/
     public Calc(int tableSize) {
         setTableSize(tableSize);
+        guiX = 0;
+        guiY = 0;
 
         table = new int[tableSize][tableSize];
 /**     at the start of the game, 2 values are set **/
@@ -118,6 +124,22 @@ public class Calc extends JPanel {
 
         });
 
+    }
+
+    public int getGuiX() {
+        return guiX;
+    }
+
+    public void setGuiX(int guiX) {
+        this.guiX = guiX;
+    }
+
+    public int getGuiY() {
+        return guiY;
+    }
+
+    public void setGuiY(int guiY) {
+        this.guiY = guiY;
     }
 
     /**
@@ -502,8 +524,9 @@ public class Calc extends JPanel {
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
         if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-        g.drawString("Score: " + scoreValue, 50, 615);
-        g.drawString("HighScore: " + highScore, 300, 615); // FIXME: 23.03.16 highscore needs the right value
+        g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
+        g.drawString("Score: " + scoreValue, guiX+50, guiY+15);
+        g.drawString("HighScore: " + ScoreBoard.scoreBoard.get(0).getScore(), guiX+150, guiY+15); // FIXME: 23.03.16 ArrayList needs to be sorted when starting a new Game
     }
 
     /**
