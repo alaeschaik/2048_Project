@@ -60,15 +60,16 @@ public class ScoreBoardMenu {
         scorePanel = new JPanel();
 
         //Combobox initialization
-        String[] scoreStrings = {"start","start", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] scoreStrings = {"2", "3", "4", "5", "6", "7", "8", "9", "10"};
         sizeList = new JComboBox(scoreStrings);
-        sizeList.setSelectedIndex(1);
+        sizeList.setSelectedIndex(0);
         sizeList.addActionListener(e -> {
             try {
                scorePanel.removeAll();
-                Server.getHTML(sizeList.getSelectedIndex());
-                System.out.println("lol");
-                ScoreBoard.initializeGlobal(sizeList.getSelectedIndex());
+                //System.out.println(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
+                Server.getHTML(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
+                System.out.println(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
+                ScoreBoard.initializeGlobal(Integer.parseInt(String.valueOf(sizeList.getSelectedItem())));
                 GridLayout layout = new GridLayout(ScoreBoard.scoreBoard.size(), 3);
                 layout.setVgap(10); // vertical spacing
                 JPanel scorePanelTemp = new JPanel(layout);

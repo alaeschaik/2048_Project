@@ -501,10 +501,9 @@ public class Calc extends JPanel {
         final int w = fm.stringWidth(s);
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
-        // TODO: 18.03.2016 fix the sizing of the score and centre them 
         if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-        g.drawString("Score: " + score, 100, 25);
-        g.drawString("HighScore: " + highScore, 300, 25);
+        g.drawString("Score: " + scoreValue, 50, 615);
+        g.drawString("HighScore: " + highScore, 300, 615); // FIXME: 23.03.16 highscore needs the right value
     }
 
     /**

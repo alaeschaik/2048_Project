@@ -93,7 +93,6 @@ public class Score extends JPanel {
                 " Score: " + score + "\n";
     }
 
-    //TODO: make the painting functional
     @Override
     public void paint(Graphics g2) {
         Graphics2D g = ((Graphics2D) g2);

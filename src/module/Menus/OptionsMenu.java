@@ -54,7 +54,6 @@ public class OptionsMenu {
                 Calc.setSpawnRate(spawnSlider.getValue());
             }
         });
-        // TODO: 18.03.2016 Back button needs to be smaller 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
