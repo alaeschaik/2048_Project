@@ -57,7 +57,7 @@ public class ScoreBoardMenu {
         scorePanel = new JPanel();
 
         //Combobox initialization
-        String[] scoreStrings = {"start","start","2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23", "24", "25"};
+        String[] scoreStrings = {"2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23", "24", "25"};
         sizeList = new JComboBox(scoreStrings);
         sizeList.setSelectedIndex(0);
         sizeList.addActionListener(e -> {
@@ -86,7 +86,7 @@ public class ScoreBoardMenu {
                 }
             } catch (IOException | NullPointerException | ServerException | ClassNotFoundException e1) {
                 JOptionPane.showMessageDialog(frame,
-                        "No Scoreboard Entrys for size: " + sizeList.getSelectedIndex() + " yet",
+                        "No Scoreboard Entrys for size: " + Integer.parseInt(String.valueOf(sizeList.getSelectedItem())) + " yet",
                         "NoScoreBoardEntrysError",
                         JOptionPane.ERROR_MESSAGE);
                 e1.printStackTrace();
