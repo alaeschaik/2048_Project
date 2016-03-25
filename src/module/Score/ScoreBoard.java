@@ -54,9 +54,9 @@ public class ScoreBoard implements Serializable {
     }
 
     public static void initializeGlobal(int size) throws IOException, ClassNotFoundException,ServerException {
-        if (scoreBoard == null) {
+
             scoreBoard = new ArrayList<>();
-        }
+
         scoreBoard = Server.getHTML(size);
         sort();
         System.out.println("initialize complete");

@@ -1,5 +1,6 @@
 package module.Menus;
 
+import module.Logic.Calc;
 import module.Score.ScoreBoard;
 import module.Score.ScoreBoardEmptyException;
 import module.Server.ServerException;
@@ -30,7 +31,6 @@ public class Menu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
         startGameButton.addActionListener(new ActionListener() {
 
             @Override
@@ -46,8 +46,20 @@ public class Menu {
                         options,  //the titles of buttons
                         options[0]); //default button title
                 if (choice == 0) {
+                    try {
+                        ScoreBoard.initializeGlobal(Calc.getTableSize());
 
-                    new GameGui();
+                    } catch (IOException | ClassNotFoundException | ServerException e1) {
+                        JOptionPane.showMessageDialog(frame,
+                                "No entrys for this tablesize yet. Scoreboard will be initialized with 0 as highscore",
+                                "NoScoreBoardEntrysError",
+                                JOptionPane.ERROR_MESSAGE);
+                        e1.printStackTrace();
+
+                    }finally {
+                        new GameGui();
+                    }
+
 
                 } else {
                     try {
@@ -87,7 +99,7 @@ public class Menu {
                 try {
 
                     ScoreBoard.initializeLocal();
-                    //ScoreBoard.sort();
+                    ScoreBoard.sort();
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame,

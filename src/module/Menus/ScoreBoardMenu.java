@@ -35,16 +35,13 @@ public class ScoreBoardMenu {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-
     }
 
 
     public static void main(String[] args) {
         try {
             ScoreBoardMenu oM = new ScoreBoardMenu();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -60,7 +57,7 @@ public class ScoreBoardMenu {
         scorePanel = new JPanel();
 
         //Combobox initialization
-        String[] scoreStrings = {"2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] scoreStrings = {"start","start","2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23", "24", "25"};
         sizeList = new JComboBox(scoreStrings);
         sizeList.setSelectedIndex(0);
         sizeList.addActionListener(e -> {
