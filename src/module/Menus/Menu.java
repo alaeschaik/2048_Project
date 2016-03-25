@@ -45,26 +45,26 @@ public class Menu {
                         null,     //do not use a custom Icon
                         options,  //the titles of buttons
                         options[0]); //default button title
+
                 if (choice == 0) {
                     try {
                         ScoreBoard.initializeGlobal(Calc.getTableSize());
-
+                            new GameGui();
                     } catch (IOException | ClassNotFoundException | ServerException e1) {
                         JOptionPane.showMessageDialog(frame,
                                 "No entrys for this tablesize yet. Scoreboard will be initialized with 0 as highscore",
                                 "NoScoreBoardEntrysError",
                                 JOptionPane.ERROR_MESSAGE);
                         e1.printStackTrace();
-
-                    }finally {
-                        new GameGui();
                     }
 
 
-                } else {
+
+                } else if(choice==1){
                     try {
+                        ScoreBoard.initializeGlobal(Calc.getTableSize());
                         new GameGui(true);
-                    } catch (IOException | ClassNotFoundException e1) {
+                    } catch (IOException | ClassNotFoundException | ServerException e1) {
                         JOptionPane.showMessageDialog(frame,
                                 "No Backup available.",
                                 "NoBackupError",
@@ -110,7 +110,7 @@ public class Menu {
 
 
                 }
-            } else {
+            } else  if(choice==1){
                 try {
                     ScoreBoardMenu sBM = new ScoreBoardMenu();
                 } catch (IOException | NullPointerException | ClassNotFoundException e1) {

@@ -36,7 +36,6 @@ public class Server {
 
         }
 
-        ScoreBoard.scoreBoard = serverArray;
         System.out.println(serverArray);
         return serverArray;
     }

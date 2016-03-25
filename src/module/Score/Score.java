@@ -34,7 +34,7 @@ public class Score extends JPanel {
     }
 
     /**
-     * Constructor used for recieving date from the server (http:biko.wolko.at) as it also transmits the time the score was set.
+     * Constructor used for receiving date from the server (http:biko.wolko.at) as it also transmits the time the score was set.
      *
      * @param name
      * @param tableSize

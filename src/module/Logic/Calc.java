@@ -53,20 +53,24 @@ public class Calc extends JPanel {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     resetGame();
                 }
-                switch (e.getKeyCode()) { // delivers you which key was pressed
+                switch (e.getKeyCode() ) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_A:
                         onKeyPressLeftNew();
                         break;
 
                     case KeyEvent.VK_RIGHT:
+                    case KeyEvent.VK_D:
                         onKeyPressRightNew();
                         break;
 
                     case KeyEvent.VK_DOWN:
+                    case KeyEvent.VK_S:
                         onKeyPressDownNew();
                         break;
 
                     case KeyEvent.VK_UP:
+                    case KeyEvent.VK_W:
                         onKeyPressUpNew();
                         break;
 
@@ -270,6 +274,7 @@ public class Calc extends JPanel {
     public void resetGame() {
 
         table = new int[tableSize][tableSize];
+    initializeValue(range,spawnRate);
     }
 
     /**

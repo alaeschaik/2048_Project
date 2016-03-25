@@ -68,6 +68,7 @@ public class GameGui {
                 options,  //the titles of buttons
                 options[0]); //default button title
         if (choice == 1) {
+            System.out.println("lol");
             options = new Object[]{"Save", "Discard"};
             choice = JOptionPane.showOptionDialog(game,
                     "Would you like to enter the Score into the scoreboard?",
@@ -84,7 +85,8 @@ public class GameGui {
                         JOptionPane.QUESTION_MESSAGE);
                 ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getScoreValue()));
             }
-        } else {
+        } else if(choice==0) {
+            System.out.println("lol");
             game2048.saveStatus();
 
         }
