@@ -3,7 +3,7 @@ package module.Score;
 import java.io.Serializable;
 
 /**
- * Created by Biko on 12.03.2016.
+ * Created by Biko Kie&szlig; on 12.03.2016.
  */
 public class ScoreArray implements Serializable {
     private static long serialVersionUID = 1113799434508676095L;

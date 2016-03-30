@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * @author Ali Sheikh & Biko K.
  */
+
+@Deprecated
 public class Game2048 extends JPanel {
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Arial";

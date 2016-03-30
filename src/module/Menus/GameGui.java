@@ -1,6 +1,7 @@
 package module.Menus;
 
-import module.Logic.Calc;
+import static module.Logic.Calc.*;
+import  module.Logic.Calc;
 import module.Score.Score;
 import module.Score.ScoreBoard;
 
@@ -32,7 +33,7 @@ public class GameGui {
         game = new JFrame();
         game.setTitle("2048 Game");
         game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin()) + Calc.getTilesMargin() + 10, Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
+        game.setSize(Calc.getTableSize() * (getTileSize() +getTilesMargin()) +getTilesMargin() + 10, Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
         game.setResizable(false);
         game.setVisible(true);
         game.add(game2048);

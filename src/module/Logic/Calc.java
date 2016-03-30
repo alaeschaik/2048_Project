@@ -15,6 +15,7 @@ import java.util.Random;
 
 /**
  * Created by Biko K. & Ali S. on 23.12.2015.
+ * Calc contains the actually game logic and drawing of the tiles in the gui.
  */
 public class Calc extends JPanel {
     private static final Color BG_COLOR = new Color(0xbbada0);
@@ -140,6 +141,7 @@ public class Calc extends JPanel {
 
     public int getGuiY() {
         return guiY;
+
     }
 
     public void setGuiY(int guiY) {
@@ -195,6 +197,7 @@ public class Calc extends JPanel {
 
     public static Color getBackground(int value) {
         switch (value) {
+
             case 2:
                 return new Color(0xeee4da);
             case 4:
@@ -316,7 +319,8 @@ public class Calc extends JPanel {
     }
 
     /**
-     * Moving methods
+     * Representation of a previous way to actually move the tiles. Was a lot too performace heavy for such a simple game.
+     * There the entire concept of shifting the fields got "refurbished".
      **/
     @Deprecated
     public void onKeyPressUp() {
@@ -408,11 +412,11 @@ public class Calc extends JPanel {
     /**
      * rotates the array counter clockwise
      * eg. [0] [2] = [2] [4]
-     * [0] [4]   [0] [0]
+     *     [0] [4]   [0] [0]
      */
     public void rotate() {
-        int w = table.length;
-        int h = table[0].length;
+       final int w = table.length;
+         final int h = table[0].length;
         int[][] ret = new int[h][w];
         for (int i = 0; i < h; ++i) {
             for (int j = 0; j < w; ++j) {
@@ -424,7 +428,7 @@ public class Calc extends JPanel {
 
     /**
      * mergeLine() is basically a moveRight method, but by rotating the array it creates
-     * the impression as if you would move the tiles in any direction
+     * the impression as if you would move the tiles in any direction:
      */
     public void mergeLine() {
         moved = false;
@@ -500,9 +504,9 @@ public class Calc extends JPanel {
         g.setColor(BG_COLOR);
         g.fillRect(0, 0, this.getSize().width, this.getSize().height);
         for (int x = 0; x < getTableSize(); x++) {
-            for (int y = 0; y < getTableSize(); y++) {
+            for (int y = 0; y < getTableSize(); y++) { //every single tile gets drawn separately
                 drawTile(g, x, y);
-                //test
+
             }
         }
     }
@@ -531,6 +535,7 @@ public class Calc extends JPanel {
         if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
         g.drawString("Score: " + scoreValue, guiX + 50, guiY + 15);
+        System.out.println (ScoreBoard.scoreBoard.isEmpty());
         if (ScoreBoard.scoreBoard.isEmpty()) g.drawString("HighScore: " + 0, guiX + 150, guiY + 15);
         else g.drawString("HighScore: " + ScoreBoard.scoreBoard.get(0).getScore(), guiX + 150, guiY + 15);
 
@@ -572,7 +577,6 @@ public class Calc extends JPanel {
             System.out.println();
         }
     }
-
 
     @Override
     public String toString() {
