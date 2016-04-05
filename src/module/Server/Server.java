@@ -41,7 +41,7 @@ public class Server {
         ArrayList<Score> serverArray = new ArrayList<>();
         for (int i = 0; i < Score.length; i++) {
             String[] serverValues = Score[i].toString().split(";");
-            if (serverValues.length < 5) throw new ServerException("no entrys in the scoreboard for this category yet");
+            if (serverValues.length != 5 ) throw new ServerException("no entrys in the scoreboard for this category yet");
 
             serverArray.add(new Score(serverValues[0], Integer.parseInt(serverValues[2]), Integer.parseInt(serverValues[1]), serverValues[3]));
 

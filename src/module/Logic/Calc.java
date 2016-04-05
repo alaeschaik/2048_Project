@@ -535,11 +535,11 @@ public class Calc extends JPanel {
         if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
         g.drawString("Score: " + scoreValue, guiX + 50, guiY + 15);
-        System.out.println (ScoreBoard.scoreBoard.isEmpty());
         if (ScoreBoard.scoreBoard.isEmpty()) g.drawString("HighScore: " + 0, guiX + 150, guiY + 15);
+        if (scoreValue>ScoreBoard.scoreBoard.get (0).getScore ())  g.drawString("HighScore: " + scoreValue, guiX + 150, guiY + 15);
         else g.drawString("HighScore: " + ScoreBoard.scoreBoard.get(0).getScore(), guiX + 150, guiY + 15);
 
-        // FIXME: 23.03.16 ArrayList needs to be sorted when starting a new Game && ScoreBoard has to be initialized before starting the game
+
     }
 
     /**

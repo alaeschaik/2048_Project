@@ -24,18 +24,25 @@ public class Test2 {
         Score[] scoreArray = new Score[10];
         int[] intArray = new int[10];
         for (int i = 0; i < 10; i++) {
-            scoreArray[i] = score;
+            scoreArray[i] = clone(score);
             intArray[i] = tempInt;
             tempInt++;
             score.setScore (score.getScore ()+i);
 
         }
+        score=new Score("huhu",999,666);
 
         for(int j=0;j<10;j++)
         {
             System.out.println (intArray[j]);
             System.out.println (scoreArray[j]);
         }
+    }
+
+    public Score clone(Score input)
+    {
+        Score output;
+        return  output = input;
     }
 
 }

@@ -55,7 +55,7 @@ public abstract class ScoreBoard implements Serializable {
         sort ();
         if (scoreBoard.size () == 0) throw new ScoreBoardEmptyException ("no Entry in the scoreboard");
 
-        System.out.println ("initialize complete");
+
     }
 
     public static void initializeGlobal(int size) throws IOException, ClassNotFoundException, ServerException {
@@ -71,7 +71,6 @@ public abstract class ScoreBoard implements Serializable {
         ArrayList<Score> arr = null;
         if (scoreBoardBackUp instanceof ArrayList) {
             arr = (ArrayList<Score>) scoreBoardBackUp;
-            System.out.println (arr.toString ());
         }
 
         ois.close ();
