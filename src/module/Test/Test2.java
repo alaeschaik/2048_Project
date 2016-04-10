@@ -2,6 +2,8 @@ package module.Test;
 
 import module.Score.Score;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by Biko on 25.12.2015.
@@ -9,7 +11,7 @@ import module.Score.Score;
  */
 public class Test2 {
     public static void main(String[] args) {
-        new Test2 ().testSaving ();
+        new Test2 ().clone(new Score("huhu",4,10));
 
     }
 
@@ -41,8 +43,19 @@ public class Test2 {
 
     public Score clone(Score input)
     {
-        Score output;
-        return  output = input;
+        ArrayList<Score> scoreArraynew =new ArrayList();
+        Score output=input;
+        output.setScore(123);
+        scoreArraynew.add(output);
+        scoreArraynew.add(input);
+        input.setScore(1451);
+        System.out.println(input);
+input=new Score("huhu",10,214);
+        for(Score s:scoreArraynew)
+        {
+            System.out.println(s);
+        }
+        return  input;
     }
 
 }

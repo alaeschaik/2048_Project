@@ -14,14 +14,11 @@ import java.io.IOException;
  * Created by Biko on 12.03.2016.
  */
 public class ScoreBoardMenu {
-    private JLabel ImageLabel;
-    private JScrollBar scrollBar1;
+
     JFrame frame;
-    private JPanel panel;
     private JComboBox sizeList;
     private JPanel optionPanel;
     private JPanel scorePanel;
-    private boolean global;
 
     public ScoreBoardMenu(boolean global) throws IOException, ClassNotFoundException {
         frame = new JFrame("Menu");
@@ -51,23 +48,29 @@ public class ScoreBoardMenu {
         nameTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
         JLabel scoreTitle_JLB = new JLabel("Score");
         scoreTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel sizeTitle_JLB = new JLabel("tableSize");
+        sizeTitle_JLB.setHorizontalAlignment(SwingConstants.CENTER);
         Font font = nameTitle_JLB.getFont();
         Font boldFont = new Font(font.getFontName(), Font.BOLD, font.getSize());
 
         nameTitle_JLB.setFont(boldFont);
         scoreTitle_JLB.setFont(boldFont);
-
+        sizeTitle_JLB.setFont(boldFont);
         for (Score score : ScoreBoard.scoreBoard) {
             JLabel name_JLB = new JLabel(score.getName1());
             name_JLB.setHorizontalAlignment(SwingConstants.CENTER);
             JLabel score_JLB = new JLabel("" + score.getScore());
             score_JLB.setHorizontalAlignment(SwingConstants.CENTER);
+            JLabel size_JLB = new JLabel("" + score.getTableSize());
+            size_JLB.setHorizontalAlignment(SwingConstants.CENTER);
             scorePanel.add(name_JLB);
+            scorePanel.add(size_JLB);
             scorePanel.add(score_JLB);
 
         }
 
         optionPanel.add(nameTitle_JLB);
+        optionPanel.add(sizeTitle_JLB);
         optionPanel.add(scoreTitle_JLB);
         frame.add(optionPanel, BorderLayout.NORTH);
         frame.add(scorePanel, BorderLayout.SOUTH);

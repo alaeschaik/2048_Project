@@ -25,7 +25,6 @@ public class Calc extends JPanel {
     public static int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
     public static int spawnRate = 2;
     private static int tableSize = 4; //size of the table, sides are proportional
-    private static int highScore;
     public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
     private int scoreValue;
     private boolean moved = true;
