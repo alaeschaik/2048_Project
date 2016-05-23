@@ -1,8 +1,5 @@
 package module.Logic;
 
-import module.Menus.GameGui;
-import module.Menus.ScoreBoardMenu;
-import module.Score.Score;
 import module.Score.ScoreArray;
 import module.Score.ScoreBoard;
 
@@ -30,6 +27,7 @@ public class Calc extends JPanel {
     private boolean moved = true;
     private int guiX;
     private int guiY;
+    private JFrame gameFrame;
 
 
     /**
@@ -39,7 +37,7 @@ public class Calc extends JPanel {
         setTableSize(tableSize);
         guiX = 0;
         guiY = 0;
-
+        gameFrame = null;
         table = new int[tableSize][tableSize];
 /**     at the start of the game, 2 values are set **/
 
@@ -251,7 +249,9 @@ public class Calc extends JPanel {
             {
                 return initializeValue(range, spawnRate);
             } else { //if the game is over
-                System.out.println("GAME OVER");
+                JOptionPane.showMessageDialog(this, "Game Over!", "Well played...", JOptionPane.INFORMATION_MESSAGE);
+                this.gameFrame.dispose();
+                //// TODO: 23.05.16 draw frame which says game over!
             }
 
             spawnRate--;
@@ -583,6 +583,11 @@ public class Calc extends JPanel {
                 "tableSize=" + tableSize +
                 ", range=" + range +
                 '}';
+    }
+
+    public void setGameFrame(JFrame gameFrame) {
+        if (gameFrame != null)
+            this.gameFrame = gameFrame;
     }
 }
 

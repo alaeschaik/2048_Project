@@ -25,10 +25,11 @@ public class Menu {
     private JButton optionsButton;
     private JLabel label1;
     private JButton scoreboardButton;
+    private JFrame frame;
 
 
     public Menu() throws UnsupportedLookAndFeelException {
-        JFrame frame = new JFrame("Menu");
+        frame = new JFrame("Menu");
 
         $$$setupUI$$$();
         UIManager.setLookAndFeel(new NimbusLookAndFeel());
