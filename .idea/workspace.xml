@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="65114caa-f2fd-4746-a9c5-b1f65086052a" name="Default" comment="+ Game Over notification added -&gt; GameFrame closed">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/Logic/Calc.java" afterPath="$PROJECT_DIR$/src/module/Logic/Calc.java" />
     </list>
     <ignored path="project-2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -955,7 +954,7 @@
       <workItem from="1460186252383" duration="13000" />
       <workItem from="1463654437365" duration="189000" />
       <workItem from="1463767426908" duration="605000" />
-      <workItem from="1463997310212" duration="2139000" />
+      <workItem from="1463997310212" duration="2154000" />
     </task>
     <task id="LOCAL-00001" summary="some more minor tweaks(close to finished)&#10;+ the dialogs now properly close if you press the &quot;x&quot; in the top right.&#10;+ added &quot;wasd&quot; support.&#10;">
       <created>1458939770824</created>
@@ -978,11 +977,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463999359870</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="+ Game Over notification added -&gt; GameFrame closed">
+      <created>1463999459773</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1463999459773</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26451000" />
+    <option name="totallyTimeSpent" value="26466000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
