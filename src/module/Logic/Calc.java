@@ -251,7 +251,7 @@ public class Calc extends JPanel {
             } else { //if the game is over
                 JOptionPane.showMessageDialog(this, "Game Over!", "Well played...", JOptionPane.INFORMATION_MESSAGE);
                 this.gameFrame.dispose();
-                //// TODO: 23.05.16 draw frame which says game over!
+                // FIXME: 23.05.16 JOptionPanel showed after disposing the frame
             }
 
             spawnRate--;
