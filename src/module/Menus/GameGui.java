@@ -1,7 +1,6 @@
 package module.Menus;
 
-import static module.Logic.Calc.*;
-import  module.Logic.Calc;
+import module.Logic.Calc;
 import module.Score.Score;
 import module.Score.ScoreBoard;
 
@@ -9,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+
+import static module.Logic.Calc.getTileSize;
+import static module.Logic.Calc.getTilesMargin;
 
 /**
  * Created by Biko on 03.03.2016.
@@ -21,6 +23,7 @@ public class GameGui {
 
         game2048 = new Calc(useBackup);
         createGame();
+        game2048.setGameFrame(game);
     }
 
     public GameGui() {
