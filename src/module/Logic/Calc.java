@@ -73,7 +73,7 @@ public class Calc extends JPanel {
 
 
                 }
-                if (moved)
+
                     repaint ();
             }
 
@@ -198,7 +198,6 @@ public class Calc extends JPanel {
         switch (value) {
 
             case 2:
-                System.out.println ("get Color");
                 return new Color (0xeee4da);
             case 4:
                 return new Color (0xede0c8);
@@ -251,9 +250,8 @@ public class Calc extends JPanel {
 
             if (table[rRow][rCol] == 0) { //if the game is not over, we insert a new value
                 table[rRow][rCol] = returnEvenNumber (range);
-                return true;
             } else {
-                if (!(table[rRow][rCol] == 0) && availableField ()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+                if (!(table[rRow][rCol] == 0) && availableField ()) //if the field is already occupied && another field still empty, we call the method again and look for an empty field
                     return initializeValue (range, spawnRate);
 
             }
@@ -282,6 +280,7 @@ public class Calc extends JPanel {
             System.out.println ("continue game!");
             return false;
         }
+        System.out.print ("Game Over");
         eOG = true;
         return true;
     }
@@ -535,6 +534,7 @@ public class Calc extends JPanel {
     }
 
     private void drawTile(Graphics g2, int x, int y) {
+
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint (RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
@@ -564,6 +564,7 @@ public class Calc extends JPanel {
         else g.drawString ("HighScore: " + ScoreBoard.scoreBoard.get (0).getScore (), guiX + 150, guiY + 15);
 
         if (eOG) {
+            System.out.println ("enter the if condiition");
             g.setColor (new Color (255, 255, 255, 30));
             g.fillRect (0, 0, getWidth (), getHeight ());
             g.setColor (new Color (78, 139, 202));
