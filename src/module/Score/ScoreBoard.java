@@ -79,7 +79,7 @@ public abstract class ScoreBoard implements Serializable {
     }
 
 
-    public static void saveList() throws IOException, ClassNotFoundException {
+    private static void saveList() throws IOException, ClassNotFoundException {
         ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("scoreBoard.ser"));
         oos.writeObject (scoreBoard);
         oos.close ();

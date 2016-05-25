@@ -46,7 +46,6 @@ public class Score extends JPanel {
         this.score = score;
         this.name = name;
         this.serverTime = serverTime;
-
     }
 
 

@@ -10,8 +10,9 @@ import java.util.ArrayList;
  * for specific debugging
  */
 public class Test2 {
+    int number=10;
     public static void main(String[] args) {
-        new Test2 ().clone(new Score("huhu",4,10));
+        new Test2 ().changeNumber ();
 
     }
 
@@ -56,6 +57,42 @@ input=new Score("huhu",10,214);
             System.out.println(s);
         }
         return  input;
+    }
+
+    public void doesChangeScore(Score score)
+    {
+        score.setScore(10);
+    }
+
+    public void doesntChangeInt(int i)
+    {
+       i=10;
+    }
+
+    public void testMemory()
+    {
+        int x=20;
+        int y=x;
+        Score scoreX=new Score("test",10,20);
+        Score scoreY=scoreX;
+         scoreX=new Score("test",10,30);
+//        System.out.println("value of int: "+x+ " value of Score: "+scoreX.getScore() );
+//        doesntChangeInt(x);
+//        doesChangeScore(scoreX);
+        System.out.println("value of scoreX: "+scoreX.getScore()+ " value of ScoreY: "+scoreY.getScore() );
+//        System.out.println("value of x: "+x+ " value of y: "+y);
+    }
+
+    public int getNumber()
+    {
+     return number;
+    }
+
+    public void changeNumber()
+    {
+        int lol;
+        lol=12;
+        System.out.println ("lol: "+ lol + "number: "+number);
     }
 
 }

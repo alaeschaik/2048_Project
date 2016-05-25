@@ -1,8 +1,5 @@
 package module.Logic;
 
-import module.Menus.GameGui;
-import module.Menus.ScoreBoardMenu;
-import module.Score.Score;
 import module.Score.ScoreArray;
 import module.Score.ScoreBoard;
 
@@ -18,7 +15,7 @@ import java.util.Random;
  * Calc contains the actually game logic and drawing of the tiles in the gui.
  */
 public class Calc extends JPanel {
-    private static final Color BG_COLOR = new Color(0xbbada0);
+    private static final Color BG_COLOR = new Color (0xbbada0);
     private static final String FONT_NAME = "Arial";
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
@@ -30,52 +27,54 @@ public class Calc extends JPanel {
     private boolean moved = true;
     private int guiX;
     private int guiY;
+    public boolean eOG = false;
 
 
     /**
      * Constructor used for creating a new Playing field
      **/
     public Calc(int tableSize) {
-        setTableSize(tableSize);
+        setTableSize (tableSize);
         guiX = 0;
         guiY = 0;
 
         table = new int[tableSize][tableSize];
-/**     at the start of the game, 2 values are set **/
+/**     at the start of the game, *spawnrate* values are set **/
+        initializeValue (range, spawnRate);
 
-        initializeValue(range, spawnRate);
 
-
-        setFocusable(true);
-        addKeyListener(new KeyAdapter() {
+        setFocusable (true);
+        addKeyListener (new KeyAdapter () {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    resetGame();
+                if (e.getKeyCode () == KeyEvent.VK_ESCAPE) {
+
                 }
-                switch (e.getKeyCode() ) { // delivers you which key was pressed
+                switch (e.getKeyCode ()) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
                     case KeyEvent.VK_A:
-                        onKeyPressLeftNew();
+                        onKeyPressLeftNew ();
                         break;
 
                     case KeyEvent.VK_RIGHT:
                     case KeyEvent.VK_D:
-                        onKeyPressRightNew();
+                        onKeyPressRightNew ();
                         break;
 
                     case KeyEvent.VK_DOWN:
                     case KeyEvent.VK_S:
-                        onKeyPressDownNew();
+                        onKeyPressDownNew ();
                         break;
 
                     case KeyEvent.VK_UP:
                     case KeyEvent.VK_W:
-                        onKeyPressUpNew();
+                        onKeyPressUpNew ();
                         break;
 
+
                 }
-                repaint();
+                if (moved)
+                    repaint ();
             }
 
 
@@ -87,42 +86,42 @@ public class Calc extends JPanel {
      * Constructor used for using the field u have previously created and just continue playing
      **/
     public Calc(boolean useBackUp) throws IOException, ClassNotFoundException {
-        ScoreArray backup = readStatus();
-        System.out.println(readStatus().toString());
-        table = readStatus().getTable();
-        tableSize = readStatus().getTable().length;
+        ScoreArray backup = readStatus ();
+        System.out.println (readStatus ().toString ());
+        table = readStatus ().getTable ();
+        tableSize = readStatus ().getTable ().length;
 
 
 /**     at the start of the game, spawnRate values are set **/
 
 
-        setFocusable(true);
-        addKeyListener(new KeyAdapter() {
+        setFocusable (true);
+        addKeyListener (new KeyAdapter () {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    resetGame();
+                if (e.getKeyCode () == KeyEvent.VK_ESCAPE) {
+                    resetGame ();
                 }
-                switch (e.getKeyCode()) { // delivers you which key was pressed
+                switch (e.getKeyCode ()) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
 
-                        onKeyPressLeftNew();
+                        onKeyPressLeftNew ();
                         break;
                     case KeyEvent.VK_RIGHT:
-                        onKeyPressRightNew();
+                        onKeyPressRightNew ();
 
                         break;
                     case KeyEvent.VK_DOWN:
 
-                        onKeyPressDownNew();
+                        onKeyPressDownNew ();
                         break;
                     case KeyEvent.VK_UP:
 
-                        onKeyPressUpNew();
+                        onKeyPressUpNew ();
                         break;
 
                 }
-                repaint();
+                repaint ();
             }
 
 
@@ -169,7 +168,7 @@ public class Calc extends JPanel {
             Calc.tableSize = tableSize;
             return true;
         } else
-            System.out.println("Only values up to 25 are allowed");
+            System.out.println ("Only values up to 25 are allowed");
         return false;
     }
 
@@ -195,37 +194,41 @@ public class Calc extends JPanel {
 
 
     public static Color getBackground(int value) {
+
         switch (value) {
 
             case 2:
-                return new Color(0xeee4da);
+                System.out.println ("get Color");
+                return new Color (0xeee4da);
             case 4:
-                return new Color(0xede0c8);
+                return new Color (0xede0c8);
             case 8:
-                return new Color(0xf2b179);
+                return new Color (0xf2b179);
             case 16:
-                return new Color(0xf59563);
+                return new Color (0xf59563);
             case 32:
-                return new Color(0xf67c5f);
+                return new Color (0xf67c5f);
             case 64:
-                if (value > 64 && value < 128) return new Color(0xf65e3b + value * 10);
-
+                return new Color (0xf65e3b);
             case 128:
-                return new Color(0xedcf72);
+                return new Color (0xedcf72);
             case 256:
-                return new Color(0xedcc61);
+                return new Color (0xedcc61);
             case 512:
-                return new Color(0xedc850);
+                return new Color (0xedc850);
             case 1024:
-                return new Color(0xedc53f);
+                return new Color (0xedc53f);
             case 2048:
-                return new Color(0xedc22e);
+                return new Color (0xedc22e);
+
         }
-        return new Color(0xcdc1b4);
+        return new Color (0xcdc1b4);
+//        return new Color (value * new Random ().nextInt (100) * 100);
     }
 
+
     public static Color getForeground(int value) {
-        return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
+        return value < 16 ? new Color (0x776e65) : new Color (0xf9f6f2);
     }
 
     private static int offsetCoors(int arg) {
@@ -238,20 +241,21 @@ public class Calc extends JPanel {
      * @return true if position is assigned with value, else false if not.
      */
     public boolean initializeValue(int range, int spawnRate) {
-        if (moved != true) return false;
-        this.range = range;
+        if (endOfGame () || !moved) {
+            return false;
+        }
+        Calc.range = range;
         while (spawnRate > 0) {
-            int rRow = new Random().nextInt(table.length);
-            int rCol = new Random().nextInt(table.length);
+            int rRow = new Random ().nextInt (table.length);
+            int rCol = new Random ().nextInt (table.length);
 
-            if (table[rRow][rCol] == 0 && endOfGame()) { //if the game is not over, we insert a new value
-                table[rRow][rCol] = returnEvenNumber(range);
+            if (table[rRow][rCol] == 0) { //if the game is not over, we insert a new value
+                table[rRow][rCol] = returnEvenNumber (range);
                 return true;
-            } else if (!(table[rRow][rCol] == 0) && endOfGame()) //if the field is already occupied & game not over, we call the method again and look for an empty field
-            {
-                return initializeValue(range, spawnRate);
-            } else { //if the game is over
-                System.out.println("GAME OVER");
+            } else {
+                if (!(table[rRow][rCol] == 0) && availableField ()) //if the field is already occupied & game not over, we call the method again and look for an empty field
+                    return initializeValue (range, spawnRate);
+
             }
 
             spawnRate--;
@@ -263,6 +267,27 @@ public class Calc extends JPanel {
      * checks table for empty field, if not available, end the game
      */
     public boolean endOfGame() {
+        int counter = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                if (table[i][j] == 0) {
+                    return false;
+                }
+                if (i > 0 && j < table[i].length - 1)
+                    if (table[i][j] == table[i - 1][j] || table[i][j] == table[i][j + 1] || table[i][j] == table[i - 1][j] || table[i][j] == table[i - 1][j])
+                        counter++;
+            }
+        }
+        if (counter > 0) {
+            System.out.println ("continue game!");
+            return false;
+        }
+        eOG = true;
+        return true;
+    }
+
+
+    public boolean availableField() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] == 0) {
@@ -276,7 +301,7 @@ public class Calc extends JPanel {
     public void resetGame() {
 
         table = new int[tableSize][tableSize];
-    initializeValue(range,spawnRate);
+        initializeValue (range, spawnRate);
     }
 
     /**
@@ -284,18 +309,18 @@ public class Calc extends JPanel {
      *
      * @return even number;
      */
-    public int returnEvenNumber(int range) {
+    private int returnEvenNumber(int range) {
         int random;
         int i = 0;
         if (range > 2) {
             this.range = range;
             while (i == 0) {
-                random = new Random().nextInt(range + 1);
+                random = new Random ().nextInt (range + 1);
                 if (random % 2 == 0) i = random;
             }
             return i;
         } else {
-            System.out.println("minimum range of 2 is required");
+            System.out.println ("minimum range of 2 is required");
         }
         return 0;
     }
@@ -358,38 +383,38 @@ public class Calc extends JPanel {
                 }
             }
         }
-        initializeValue(range, spawnRate);
+        initializeValue (range, spawnRate);
     }
 
 
     public void onKeyPressLeftNew() {
-        rotate();
-        rotate();
-        mergeLine();
-        rotate();
-        rotate();
+        rotate ();
+        rotate ();
+        mergeLine ();
+        rotate ();
+        rotate ();
     }
 
     public void onKeyPressRightNew() {
-        mergeLine();
-        initializeValue(range, spawnRate);
+        mergeLine ();
+        initializeValue (range, spawnRate);
     }
 
     public void onKeyPressUpNew() {
-        rotate();
-        rotate();
-        rotate();
-        mergeLine();
-        rotate();
+        rotate ();
+        rotate ();
+        rotate ();
+        mergeLine ();
+        rotate ();
 
     }
 
     public void onKeyPressDownNew() {
-        rotate();
-        mergeLine();
-        rotate();
-        rotate();
-        rotate();
+        rotate ();
+        mergeLine ();
+        rotate ();
+        rotate ();
+        rotate ();
     }
 
     public boolean isEmpty(int row) {
@@ -402,7 +427,7 @@ public class Calc extends JPanel {
                 }
             }
         } else {
-            System.err.println("row must be smaller than the size of the array!");
+            System.err.println ("row must be smaller than the size of the array!");
         }
         return true;
 
@@ -414,8 +439,8 @@ public class Calc extends JPanel {
      *     [0] [4]   [0] [0]
      */
     public void rotate() {
-       final int w = table.length;
-         final int h = table[0].length;
+        final int w = table.length;
+        final int h = table[0].length;
         int[][] ret = new int[h][w];
         for (int i = 0; i < h; ++i) {
             for (int j = 0; j < w; ++j) {
@@ -434,7 +459,7 @@ public class Calc extends JPanel {
         int temp = 1;
         int innerTemp = 0;
         for (int i = 0; i < table.length; i++) {
-            if (!isEmpty(i)) {
+            if (!isEmpty (i)) {
 
                 for (int j = 0; j + 1 < table[i].length; j++) {
 
@@ -448,10 +473,9 @@ public class Calc extends JPanel {
                             j = temp;
                             moved = true;
 
-                        } else if (table[i][temp] == 0) {
+                        } else if (table[i][temp] == 0) {//if the next field is zero
                             innerTemp = temp;
-                            while (innerTemp + 1 < table[i].length && table[i][innerTemp] == 0) {
-
+                            while (innerTemp + 1 < table[i].length && table[i][innerTemp] == 0) {//move to the last available empty field
                                 innerTemp++;
                             }
                             if (table[i][innerTemp] == table[i][j]) {
@@ -491,7 +515,7 @@ public class Calc extends JPanel {
 
             }
         }
-        initializeValue(range, spawnRate);
+        initializeValue (range, spawnRate);
     }
 
     /**
@@ -500,11 +524,11 @@ public class Calc extends JPanel {
     @Override
     public void paint(Graphics g) {
 
-        g.setColor(BG_COLOR);
-        g.fillRect(0, 0, this.getSize().width, this.getSize().height);
-        for (int x = 0; x < getTableSize(); x++) {
-            for (int y = 0; y < getTableSize(); y++) { //every single tile gets drawn separately
-                drawTile(g, x, y);
+        g.setColor (BG_COLOR);
+        g.fillRect (0, 0, this.getSize ().width, this.getSize ().height);
+        for (int x = 0; x < getTableSize (); x++) {
+            for (int y = 0; y < getTableSize (); y++) { //every single tile gets drawn separately
+                drawTile (g, x, y);
 
             }
         }
@@ -512,34 +536,51 @@ public class Calc extends JPanel {
 
     private void drawTile(Graphics g2, int x, int y) {
         Graphics2D g = ((Graphics2D) g2);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        g.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint (RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         int value = table[y][x];
-        int xOffset = offsetCoors(x);
-        int yOffset = offsetCoors(y);
+        int xOffset = offsetCoors (x);
+        int yOffset = offsetCoors (y);
         final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
-        g.setColor(getBackground(table[y][x]));
-        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
-        g.setColor(getForeground(table[y][x]));
+        g.setColor (getBackground (table[y][x]));
+        g.fillRoundRect (xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+        g.setColor (getForeground (table[y][x]));
 
-        final Font font = new Font(FONT_NAME, Font.BOLD, size);
-        g.setFont(font);
+        final Font font = new Font (FONT_NAME, Font.BOLD, size);
+        g.setFont (font);
 
-        String s = String.valueOf(value);
-        final FontMetrics fm = getFontMetrics(font);
+        String s = String.valueOf (value);
+        final FontMetrics fm = getFontMetrics (font);
 
-        final int w = fm.stringWidth(s);
-        final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
+        final int w = fm.stringWidth (s);
+        final int h = -(int) fm.getLineMetrics (s, g).getBaselineOffsets ()[2];
 
-        if (value != 0) g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-        g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Score: " + scoreValue, guiX + 50, guiY + 15);
-        if (ScoreBoard.scoreBoard.isEmpty()) g.drawString("HighScore: " + 0, guiX + 150, guiY + 15);
-        if (scoreValue>ScoreBoard.scoreBoard.get (0).getScore ())  g.drawString("HighScore: " + scoreValue, guiX + 150, guiY + 15);
-        else g.drawString("HighScore: " + ScoreBoard.scoreBoard.get(0).getScore(), guiX + 150, guiY + 15);
+        if (value != 0) g.drawString (s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+        g.setFont (new Font (FONT_NAME, Font.PLAIN, 18));
+        g.drawString ("Score: " + scoreValue, guiX + 50, guiY + 15);
+        if (ScoreBoard.scoreBoard.isEmpty ()) g.drawString ("HighScore: " + 0, guiX + 150, guiY + 15);
+        else if (scoreValue > ScoreBoard.scoreBoard.get (0).getScore ())
+            g.drawString ("HighScore: " + scoreValue, guiX + 150, guiY + 15);
+        else g.drawString ("HighScore: " + ScoreBoard.scoreBoard.get (0).getScore (), guiX + 150, guiY + 15);
+
+        if (eOG) {
+            g.setColor (new Color (255, 255, 255, 30));
+            g.fillRect (0, 0, getWidth (), getHeight ());
+            g.setColor (new Color (78, 139, 202));
+            g.setFont (new Font (FONT_NAME, Font.BOLD, 48));
+//
+
+            g.drawString ("Game over!", 50, 130);
+            g.drawString ("You lose!", 64, 200);
+
+            g.setFont (new Font (FONT_NAME, Font.PLAIN, 16));
+            g.setColor (new Color (128, 128, 128, 128));
+            g.drawString ("Press the " + "X" + "to play again", 80, getHeight () - 40);
+        }
 
 
     }
+
 
     /**
      * readStatus() saves the necessary informations that are individual for each instance(Score,Table).
@@ -549,19 +590,19 @@ public class Calc extends JPanel {
      **/
 
     public ScoreArray readStatus() throws IOException, ClassNotFoundException {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("save.ser"));
-        ScoreArray backup = (ScoreArray) ois.readObject();
-        ois.close();
-        System.out.println("Serialized figures read");
+        ObjectInputStream ois = new ObjectInputStream (new FileInputStream ("save.ser"));
+        ScoreArray backup = (ScoreArray) ois.readObject ();
+        ois.close ();
+        System.out.println ("Serialized figures read");
         return backup;
     }
 
     public void saveStatus() throws IOException {
 
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.ser"));
-        oos.writeObject(new ScoreArray(scoreValue, table));
-        oos.close();
-        System.out.println("figures serialized");
+        ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream ("save.ser"));
+        oos.writeObject (new ScoreArray (scoreValue, table));
+        oos.close ();
+        System.out.println ("figures serialized");
     }
 
 
@@ -571,9 +612,9 @@ public class Calc extends JPanel {
     public void printTable() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
-                System.out.print("[" + table[i][j] + "]");
+                System.out.print ("[" + table[i][j] + "]");
             }
-            System.out.println();
+            System.out.println ();
         }
     }
 
