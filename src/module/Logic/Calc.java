@@ -70,10 +70,7 @@ public class Calc extends JPanel {
                     case KeyEvent.VK_W:
                         onKeyPressUpNew ();
                         break;
-
-
                 }
-
                     repaint ();
             }
 

@@ -23,7 +23,7 @@ public class GameGui {
 
         game2048 = new Calc(useBackup);
         createGame();
-        game2048.setGameFrame(game);
+
     }
 
     public GameGui() {
