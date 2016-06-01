@@ -23,11 +23,11 @@ public class Calc extends JPanel {
     public static int spawnRate = 2;
     private static int tableSize = 4; //size of the table, sides are proportional
     public int[][] table; //{{8, 4, 0, 2}, {0, 0, 2, 0}, {0, 0, 2, 2}, {0, 2, 0, 2}}; remove or keep initialization as comment depending on if you want specific or general testing
+    public boolean eOG = false;
     private int scoreValue;
     private boolean moved = true;
     private int guiX;
     private int guiY;
-    public boolean eOG = false;
 
 
     /**
@@ -123,23 +123,6 @@ public class Calc extends JPanel {
 
     }
 
-    public int getGuiX() {
-        return guiX;
-    }
-
-    public void setGuiX(int guiX) {
-        this.guiX = guiX;
-    }
-
-    public int getGuiY() {
-        return guiY;
-
-    }
-
-    public void setGuiY(int guiY) {
-        this.guiY = guiY;
-    }
-
     /**
      * Getters and Setters
      */
@@ -219,13 +202,37 @@ public class Calc extends JPanel {
 //        return new Color (value * new Random ().nextInt (100) * 100);
     }
 
-
     public static Color getForeground(int value) {
         return value < 16 ? new Color (0x776e65) : new Color (0xf9f6f2);
     }
 
     private static int offsetCoors(int arg) {
         return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
+    }
+
+    public static int getRange() {
+        return range;
+    }
+
+    public static void setRange(int range) {
+        Calc.range = range;
+    }
+
+    public int getGuiX() {
+        return guiX;
+    }
+
+    public void setGuiX(int guiX) {
+        this.guiX = guiX;
+    }
+
+    public int getGuiY() {
+        return guiY;
+
+    }
+
+    public void setGuiY(int guiY) {
+        this.guiY = guiY;
     }
 
     /**
@@ -279,7 +286,6 @@ public class Calc extends JPanel {
         return true;
     }
 
-
     public boolean availableField() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
@@ -306,7 +312,7 @@ public class Calc extends JPanel {
         int random;
         int i = 0;
         if (range > 2) {
-            this.range = range;
+            Calc.range = range;
             while (i == 0) {
                 random = new Random ().nextInt (range + 1);
                 if (random % 2 == 0) i = random;
@@ -316,14 +322,6 @@ public class Calc extends JPanel {
             System.out.println ("minimum range of 2 is required");
         }
         return 0;
-    }
-
-    public static int getRange() {
-        return range;
-    }
-
-    public static void setRange(int range) {
-        Calc.range = range;
     }
 
     public int getScoreValue() {
@@ -529,72 +527,78 @@ public class Calc extends JPanel {
 
     private void drawTile(Graphics g2, int x, int y) {
 
+
         Graphics2D g = ((Graphics2D) g2);
         g.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint (RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        int highScore = !ScoreBoard.scoreBoard.isEmpty() ? ScoreBoard.scoreBoard.get(0).getScore() : 0;
+        Font gO_FTN = new Font("Arial", Font.BOLD, 24);
         int value = table[y][x];
         int xOffset = offsetCoors (x);
         int yOffset = offsetCoors (y) + 25;
 
-        int highScore = !ScoreBoard.scoreBoard.isEmpty () ? ScoreBoard.scoreBoard.get (0).getScore () : 0;
 
         final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
 
-        g.setColor (new Color (0, 0, 0, 25));
+        g.setColor(new Color(0, 0, 0, 25));
 
-        g.fillRoundRect (xOffset + 8, yOffset + 8, TILE_SIZE, TILE_SIZE, 14, 14);
-        g.setColor (getBackground (table[y][x]));
-        g.fillRoundRect (xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+        g.fillRoundRect(xOffset + 8, yOffset + 8, TILE_SIZE, TILE_SIZE, 14, 14);
+        g.setColor(getBackground(table[y][x]));
+        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
 
-        g.setColor (getForeground (table[y][x]));
+        g.setColor(getForeground(table[y][x]));
 
-        final Font font = new Font (FONT_NAME, Font.BOLD, size);
-        g.setFont (font);
+        final Font font = new Font(FONT_NAME, Font.BOLD, size);
+        g.setFont(font);
 
-        String s = String.valueOf (value);
-        final FontMetrics fm = getFontMetrics (font);
+        String s = String.valueOf(value);
+        final FontMetrics fm = getFontMetrics(font);
 
 
-        final int w = fm.stringWidth (s);
-        final int h = -(int) fm.getLineMetrics (s, g).getBaselineOffsets ()[2];
-        if (value != 0) g.drawString (s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-        g.setFont (new Font (FONT_NAME, Font.PLAIN, 25));
-        g.drawString ("Score: " + scoreValue, guiX + 10, guiY + 30);
-        Font gO_FTN = new Font ("Arial", Font.BOLD, 24);
+        final int w = fm.stringWidth(s);
+        final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
+        if (value != 0)
+            g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+        g.setFont(new Font(FONT_NAME, Font.PLAIN, 25));
+        g.drawString("Score: " + scoreValue, guiX + 10, guiY + 30);
 
 
         if (scoreValue > highScore)
-            g.drawString ("HighScore: " + scoreValue, getWidth () - (getFontMetrics (gO_FTN).stringWidth ("HighScore" + scoreValue)), guiY + 30);
+            g.drawString("HighScore: " + scoreValue, getWidth() - (getFontMetrics(gO_FTN).stringWidth("HighScore" + scoreValue)), guiY + 30);
         else
-            g.drawString ("HighScore: " + highScore, getWidth () - (getFontMetrics (gO_FTN).stringWidth ("HighScore" + highScore)), guiY + 30);
+            g.drawString("HighScore: " + highScore, getWidth() - (getFontMetrics(gO_FTN).stringWidth("HighScore" + highScore)), guiY + 30);
+
 
         if (eOG && scoreValue > highScore) {
-            g.setColor (new Color (255, 255, 255, 30));
-            g.fillRect (0, 0, getWidth (), getHeight ());
-            g.setColor (new Color (78, 139, 202));
-            g.setFont (gO_FTN);
-            g.drawString ("Congratulations!!!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Congratulations!!!") / 2), getHeight () / 2 - 50);
-            g.drawString ("You beat the highscore for this size!",
-                    getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("You beat the highscore for this size") / 2), getHeight () / 2);
-            g.drawImage (Toolkit.getDefaultToolkit ().getImage ("confetti.gif"), 10, 10, this);
-            g.setColor (new Color (128, 128, 128, 128));
-            g.drawString ("Press the X to save the score", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Press the X to save the score") / 2), getHeight () - 15);
+            g.setColor(new Color(255, 255, 255, 10));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(new Color(78, 139, 202));
+            g.setFont(gO_FTN);
+            g.drawString("Congratulations!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Congratulations!!!") / 2), getHeight() / 2 - 50);
+            g.drawString("You beat the highscore for this size!",
+                    getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("You beat the highscore for this size") / 2), getHeight() / 2);
+
+            //g.drawImage (Toolkit.getDefaultToolkit ().getImage ("confetti.gif"), 10, 10, this);
+            g.setColor(new Color(128, 128, 128, 128));
+            g.drawString("Press the X to save the score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press the X to save the score") / 2), getHeight() - 15);
         } else if (eOG && scoreValue < highScore) {
 
-            g.setColor (new Color (255, 255, 255, 30));
-            g.fillRect (0, 0, getWidth (), getHeight ());
-            g.setColor (new Color (78, 139, 202));
-            g.setFont (gO_FTN);
+            g.setColor(new Color(255, 255, 255, 15));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(new Color(78, 139, 202));
+            g.setFont(gO_FTN);
 //
 
-            g.drawString ("Game over!!!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Game over!!!") / 2), getHeight () / 2 - 50);
-            g.drawString ("Better luck next time!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Better luck next time!") / 2), getHeight () / 2);
-            g.setColor (new Color (128, 128, 128, 128));
-            g.drawString ("Press the X to save score", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Press the X to save score") / 2), getHeight () - 15);
+            g.drawString("Game over!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Game over!!!") / 2), getHeight() / 2 - 50);
+            g.drawString("Better luck next time!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Better luck next time!") / 2), getHeight() / 2);
+            g.setColor(new Color(128, 128, 128, 128));
+            Image icon = new ImageIcon("src/resources/confetti2.gif").getImage();
+            g.drawImage(icon, (getWidth() - icon.getWidth(null)) / 2, (getHeight() - icon.getWidth(null)) / 2, this);
+            g.drawString("Press the X to save score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press the X to save score") / 2), getHeight() - 15);
+        }
         }
 
 
-    }
 
 
     /**
