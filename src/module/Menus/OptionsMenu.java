@@ -37,30 +37,12 @@ public class OptionsMenu {
         frame.setVisible(true);
 
         frame.setLocationRelativeTo(null);
-        rangeSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                Calc.setRange(rangeSlider.getValue());
-            }
-        });
-        sizeSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                Calc.setTableSize(sizeSlider.getValue());
-            }
-        });
-        spawnSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                Calc.setSpawnRate(spawnSlider.getValue());
-            }
-        });
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == backButton) { // delete the comment to making some change tp push
-                    frame.dispose();
-                }
+        rangeSlider.addChangeListener(e -> Calc.setRange(rangeSlider.getValue()));
+        sizeSlider.addChangeListener(e -> Calc.setTableSize(sizeSlider.getValue()));
+        spawnSlider.addChangeListener(e -> Calc.setSpawnRate(spawnSlider.getValue()));
+        backButton.addActionListener(e -> {
+            if (e.getSource() == backButton) { // delete the comment to making some change tp push
+                frame.dispose();
             }
         });
     }
