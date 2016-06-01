@@ -59,7 +59,7 @@ public abstract class ScoreBoard implements Serializable {
     }
 
     public static void initializeGlobal(int size) throws IOException, ClassNotFoundException, ServerException {
-//        scoreBoard=new ArrayList<> ();
+       scoreBoard=new ArrayList<> ();
         scoreBoard = Server.getHTML (size);
         System.out.println ("initialize complete");
     }

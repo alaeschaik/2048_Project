@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class Calc extends JPanel {
     private static final Color BG_COLOR = new Color (0xbbada0);
-    private static final String FONT_NAME = "Arial";
+    private static final String FONT_NAME = "Impact";
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
     public static int range = 4; //standard value of the numbers that can spawn when tile movement is done. Standard 4 means that even values including 4 can be spawned(2,4)
@@ -47,9 +47,6 @@ public class Calc extends JPanel {
         addKeyListener (new KeyAdapter () {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode () == KeyEvent.VK_ESCAPE) {
-
-                }
                 switch (e.getKeyCode ()) { // delivers you which key was pressed
                     case KeyEvent.VK_LEFT:
                     case KeyEvent.VK_A:
@@ -71,7 +68,7 @@ public class Calc extends JPanel {
                         onKeyPressUpNew ();
                         break;
                 }
-                    repaint ();
+                repaint ();
             }
 
 
@@ -261,7 +258,7 @@ public class Calc extends JPanel {
     /**
      * checks table for empty field, if not available, end the game
      */
-    public boolean endOfGame() {
+    private boolean endOfGame() {
         int counter = 0;
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
@@ -537,10 +534,18 @@ public class Calc extends JPanel {
         g.setRenderingHint (RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         int value = table[y][x];
         int xOffset = offsetCoors (x);
-        int yOffset = offsetCoors (y);
+        int yOffset = offsetCoors (y) + 25;
+
+        int highScore = !ScoreBoard.scoreBoard.isEmpty () ? ScoreBoard.scoreBoard.get (0).getScore () : 0;
+
         final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+
+        g.setColor (new Color (0, 0, 0, 25));
+
+        g.fillRoundRect (xOffset + 8, yOffset + 8, TILE_SIZE, TILE_SIZE, 14, 14);
         g.setColor (getBackground (table[y][x]));
         g.fillRoundRect (xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+
         g.setColor (getForeground (table[y][x]));
 
         final Font font = new Font (FONT_NAME, Font.BOLD, size);
@@ -549,31 +554,43 @@ public class Calc extends JPanel {
         String s = String.valueOf (value);
         final FontMetrics fm = getFontMetrics (font);
 
+
         final int w = fm.stringWidth (s);
         final int h = -(int) fm.getLineMetrics (s, g).getBaselineOffsets ()[2];
-
         if (value != 0) g.drawString (s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-        g.setFont (new Font (FONT_NAME, Font.PLAIN, 18));
-        g.drawString ("Score: " + scoreValue, guiX + 50, guiY + 15);
-        if (ScoreBoard.scoreBoard.isEmpty ()) g.drawString ("HighScore: " + 0, guiX + 150, guiY + 15);
-        else if (scoreValue > ScoreBoard.scoreBoard.get (0).getScore ())
-            g.drawString ("HighScore: " + scoreValue, guiX + 150, guiY + 15);
-        else g.drawString ("HighScore: " + ScoreBoard.scoreBoard.get (0).getScore (), guiX + 150, guiY + 15);
+        g.setFont (new Font (FONT_NAME, Font.PLAIN, 25));
+        g.drawString ("Score: " + scoreValue, guiX + 10, guiY + 30);
+        Font gO_FTN = new Font ("Arial", Font.BOLD, 24);
 
-        if (eOG) {
-            System.out.println ("enter the if condiition");
+
+        if (scoreValue > highScore)
+            g.drawString ("HighScore: " + scoreValue, getWidth () - (getFontMetrics (gO_FTN).stringWidth ("HighScore" + scoreValue)), guiY + 30);
+        else
+            g.drawString ("HighScore: " + highScore, getWidth () - (getFontMetrics (gO_FTN).stringWidth ("HighScore" + highScore)), guiY + 30);
+
+        if (eOG && scoreValue > highScore) {
             g.setColor (new Color (255, 255, 255, 30));
             g.fillRect (0, 0, getWidth (), getHeight ());
             g.setColor (new Color (78, 139, 202));
-            g.setFont (new Font (FONT_NAME, Font.BOLD, 48));
+            g.setFont (gO_FTN);
+            g.drawString ("Congratulations!!!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Congratulations!!!") / 2), getHeight () / 2 - 50);
+            g.drawString ("You beat the highscore for this size!",
+                    getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("You beat the highscore for this size") / 2), getHeight () / 2);
+            g.drawImage (Toolkit.getDefaultToolkit ().getImage ("confetti.gif"), 10, 10, this);
+            g.setColor (new Color (128, 128, 128, 128));
+            g.drawString ("Press the X to save the score", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Press the X to save the score") / 2), getHeight () - 15);
+        } else if (eOG && scoreValue < highScore) {
+
+            g.setColor (new Color (255, 255, 255, 30));
+            g.fillRect (0, 0, getWidth (), getHeight ());
+            g.setColor (new Color (78, 139, 202));
+            g.setFont (gO_FTN);
 //
 
-            g.drawString ("Game over!", 50, 130);
-            g.drawString ("You lose!", 64, 200);
-
-            g.setFont (new Font (FONT_NAME, Font.PLAIN, 16));
+            g.drawString ("Game over!!!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Game over!!!") / 2), getHeight () / 2 - 50);
+            g.drawString ("Better luck next time!", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Better luck next time!") / 2), getHeight () / 2);
             g.setColor (new Color (128, 128, 128, 128));
-            g.drawString ("Press the " + "X" + "to play again", 80, getHeight () - 40);
+            g.drawString ("Press the X to save score", getWidth () / 2 - (getFontMetrics (gO_FTN).stringWidth ("Press the X to save score") / 2), getHeight () - 15);
         }
 
 

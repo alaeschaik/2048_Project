@@ -5,7 +5,6 @@ import module.Score.ScoreBoard;
 import module.Score.ScoreBoardEmptyException;
 import module.Server.ServerException;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class ScoreBoardMenu {
 
     public ScoreBoardMenu(boolean global) throws IOException, ClassNotFoundException {
         frame = new JFrame("Menu");
-        if (global == true) createUIComponentsGlobal();
+        if (global) createUIComponentsGlobal();
         else createUIComponentsLocal();
 
 
@@ -85,7 +84,7 @@ public class ScoreBoardMenu {
         frame.add(scorePanel, BorderLayout.SOUTH);
         //Combobox initialization
         String[] scoreStrings = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"};
-        sizeList = new JComboBox(scoreStrings);
+        sizeList = new JComboBox<>(scoreStrings);
         sizeList.setSelectedIndex(0);
         sizeList.addActionListener(e -> {
             try {
