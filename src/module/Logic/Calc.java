@@ -40,7 +40,7 @@ public class Calc extends JPanel {
         setTableSize(tableSize);
         guiX = 0;
         guiY = 0;
-
+        aT = new AffineTransform();
         table = new int[tableSize][tableSize];
 /**     at the start of the game, *spawnrate* values are set **/
         initializeValue(range, spawnRate);
@@ -588,10 +588,11 @@ public class Calc extends JPanel {
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(new Color(78, 139, 202));
             g.setFont(gO_FTN);
-            g.drawString("Congratulations!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Congratulations!!!") / 2), getHeight() / 2 - 50);
+            g.drawString("Congratulations!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Congratulations!!!") / 2), getHeight() / 2 - 120);
             g.drawString("You beat the highscore for this size!",
-                    getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("You beat the highscore for this size") / 2), getHeight() / 2);
-
+                    getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("You beat the highscore for this size") / 2), getHeight() / 2 - 70);
+            g.setColor(new Color(255,0,0));
+            g.drawString("Your Score: " + scoreValue, getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Your Score: ") / 2), getHeight() / 2);
             Image icon = new ImageIcon("src/resources/confetti.gif").getImage();
             g.drawImage(icon, (getWidth() - icon.getWidth(null)) / 2, (getHeight() - icon.getWidth(null)) / 2, this);
             g.setColor(new Color(128, 128, 128, 128));
@@ -604,8 +605,10 @@ public class Calc extends JPanel {
             g.setColor(new Color(78, 139, 202));
             g.setFont(gO_FTN);
 
-            g.drawString("Game over!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Game over!!!") / 2), getHeight() / 2 - 50);
-            g.drawString("Better luck next time!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Better luck next time!") / 2), getHeight() / 2);
+            g.drawString("Game over!!!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Game over!!!") / 2), getHeight() / 2 - 120);
+            g.drawString("Better luck next time!", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Better luck next time!") / 2), getHeight() / 2 -70);
+            g.setColor(new Color(255,0,0));
+            g.drawString("Your Score: " + scoreValue, getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Your Score: ") / 2), getHeight() / 2);
             g.setColor(new Color(128, 128, 128, 128));
             Image icon = new ImageIcon("src/resources/rain.gif").getImage();
             g.drawImage(icon, (getWidth() - icon.getWidth(null)) / 2, (getHeight() - icon.getWidth(null)) / 2, this);
