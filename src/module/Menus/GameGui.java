@@ -9,41 +9,41 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-import static module.Logic.Calc.getTileSize;
-import static module.Logic.Calc.getTilesMargin;
+
+import static module.Menus.Tiledrawer.*;
 
 /**
  * Created by Biko on 03.03.2016.
  */
-public class GameGui {
-    Calc game2048;
-    JFrame game;
+public class GameGui extends JFrame {
+    Tiledrawer game2048;
+
 
     public GameGui(boolean useBackup) throws IOException, ClassNotFoundException {
 
-        game2048 = new Calc(useBackup);
+        game2048 = new Tiledrawer(useBackup);
         createGame();
 
     }
 
     public GameGui() {
-        game2048 = new Calc(Calc.getTableSize());
+        game2048 = new Tiledrawer(Calc.getTableSize());
         createGame();
 
     }
 
     private void createGame() {
-        game = new JFrame();
-        game.setTitle("2048 Game");
-        game.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        game.setSize(Calc.getTableSize() * (getTileSize() +getTilesMargin()) +getTilesMargin() + 10, Calc.getTableSize() * (Calc.getTileSize() + Calc.getTilesMargin() + Calc.getTilesMargin()));
-        game.setResizable(false);
-        game.setVisible(true);
-        game.add(game2048);
-        game2048.setGuiX(game.getX());
-        game2048.setGuiY(game.getY());
-        game.setLocationRelativeTo(null); // centers the game at start
-        game.addWindowListener(new WindowAdapter() {
+
+        setTitle("2048 Game");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setSize(Calc.getTableSize() * (getTileSize() + getTilesMargin()) + getTilesMargin() + 10, Calc.getTableSize() * (getTileSize() + getTilesMargin() + getTilesMargin()));
+        setResizable(false);
+        setVisible(true);
+        add(game2048);
+        game2048.setGuiX(getX());
+        game2048.setGuiY(getY());
+        setLocationRelativeTo(null); // centers the game at start
+        addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
@@ -63,7 +63,7 @@ public class GameGui {
 
     private void scoreWindow() throws IOException, ClassNotFoundException {
         Object[] options = {"Save", "stop and enter into scoreboard"};
-        int choice = JOptionPane.showOptionDialog(game,
+        int choice = JOptionPane.showOptionDialog(this,
                 "Would you like to save your current progress",
                 "Create Backup?",
                 JOptionPane.YES_NO_OPTION,
@@ -74,7 +74,7 @@ public class GameGui {
         if (choice == 1) {
             System.out.println("lol");
             options = new Object[]{"Save", "Discard"};
-            choice = JOptionPane.showOptionDialog(game,
+            choice = JOptionPane.showOptionDialog(this,
                     "Would you like to enter the Score into the scoreboard?",
                     "Scoreboard entry?",
                     JOptionPane.YES_NO_OPTION,
@@ -87,11 +87,11 @@ public class GameGui {
                         "What is your name?",
                         "Enter your name",
                         JOptionPane.QUESTION_MESSAGE);
-                ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getScoreValue()));
+                ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getGame2048().getScoreValue()));
             }
-        } else if(choice==0) {
+        } else if (choice == 0) {
             System.out.println("lol");
-            game2048.saveStatus();
+            game2048.getGame2048().saveStatus();
 
         }
 

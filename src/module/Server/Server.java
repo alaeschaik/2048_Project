@@ -20,7 +20,6 @@ public  class Server {
     /**
      * getHTML is responsible for receiving the available scores from the server.
      * @param size
-     * @return
      * @throws IOException
      * @throws ServerException
      */

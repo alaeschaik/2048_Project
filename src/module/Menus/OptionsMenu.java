@@ -59,7 +59,7 @@ public class OptionsMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        rangeSlider = new JSlider(2, 128, 2);
+
 
 
     }
