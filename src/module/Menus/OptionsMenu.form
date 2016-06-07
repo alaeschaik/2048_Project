@@ -97,7 +97,7 @@
           <paintLabels value="true"/>
           <paintTicks value="true"/>
           <snapToTicks value="true"/>
-          <value value="11"/>
+          <value value="9"/>
         </properties>
       </component>
       <component id="c02f7" class="javax.swing.JTextPane" binding="rangeOfValuesThatTextPane" default-binding="true">

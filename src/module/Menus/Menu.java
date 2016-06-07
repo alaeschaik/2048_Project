@@ -19,7 +19,7 @@ import static module.Score.ScoreBoard.*;
 /**
  * Created by Biko on 12.03.2016.
  */
-public class Menu {
+public class Menu extends JFrame {
     private JPanel panel1;
     private JButton startGameButton;
     private JButton exitButton;
@@ -29,12 +29,14 @@ public class Menu {
 
 
     public Menu() throws UnsupportedLookAndFeelException {
-        JFrame frame = new JFrame("Menu");
+       super("Menu");
         UIManager.setLookAndFeel(new NimbusLookAndFeel());
-        frame.setContentPane(panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        setContentPane(panel1);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        pack();
+        setSize(getWidth(),getHeight()+25);
+        setVisible(true);
         startGameButton.addActionListener(e -> {
             try {
                 playClickSound();
@@ -43,7 +45,7 @@ public class Menu {
             }
             Object[] options = {"new Game",
                     "Continue"};
-            int choice = JOptionPane.showOptionDialog(frame,
+            int choice = JOptionPane.showOptionDialog(this,
                     "Would you like to use a Backup or create a new Game?",
                     "Choose",
                     JOptionPane.YES_NO_OPTION,
@@ -57,7 +59,7 @@ public class Menu {
                     initializeGlobal(Calc.getTableSize());
 
                 } catch (IOException | ClassNotFoundException | ServerException e1) {
-                    JOptionPane.showMessageDialog(frame,
+                    JOptionPane.showMessageDialog(this,
                             "No entrys for this tablesize yet. Scoreboard will be initialized with 0 as highscore",
                             "NoScoreBoardEntrysError",
                             JOptionPane.ERROR_MESSAGE);
@@ -72,7 +74,7 @@ public class Menu {
                     initializeGlobal(Calc.getTableSize());
                     new GameGui(true);
                 } catch (IOException | ClassNotFoundException | ServerException e1) {
-                    JOptionPane.showMessageDialog(frame,
+                    JOptionPane.showMessageDialog(this,
                             "No Backup available.",
                             "NoBackupError",
                             JOptionPane.ERROR_MESSAGE);
@@ -91,11 +93,11 @@ public class Menu {
                 e1.printStackTrace();
             }
             OptionsMenu oM = new OptionsMenu();
-            frame.setState(Frame.NORMAL);
+            setState(NORMAL);
         });
 
 
-        frame.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         scoreboardButton.addActionListener(e -> {
             try {
                 playClickSound();
@@ -104,7 +106,7 @@ public class Menu {
             }
             Object[] options = {"Local Scoreboard",
                     "Global Scoreboard"};
-            int choice = JOptionPane.showOptionDialog(frame,
+            int choice = JOptionPane.showOptionDialog(this,
                     "Would you like to use display the local or global Scoreboard?",
                     "Choose",
                     JOptionPane.YES_NO_OPTION,
@@ -119,7 +121,7 @@ public class Menu {
                     sort();
                     new ScoreBoardMenu(false);
                 } catch (IOException | ScoreBoardEmptyException | NullPointerException | ClassNotFoundException e1) {
-                    JOptionPane.showMessageDialog(frame,
+                    JOptionPane.showMessageDialog(this,
                             "No Scoreboard Entrys.",
                             "NoScoreBoardEntrysError",
                             JOptionPane.ERROR_MESSAGE);
@@ -130,7 +132,7 @@ public class Menu {
                 try {
                     new ScoreBoardMenu(true);
                 } catch (IOException | NullPointerException | ClassNotFoundException e1) {
-                    JOptionPane.showMessageDialog(frame,
+                    JOptionPane.showMessageDialog(this,
                             "No Scoreboard Entrys.",
                             "NoScoreBoardEntrysError",
                             JOptionPane.ERROR_MESSAGE);

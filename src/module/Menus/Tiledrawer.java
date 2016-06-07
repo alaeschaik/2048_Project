@@ -26,12 +26,19 @@ public class Tiledrawer extends JPanel {
     private Calc game2048;
     private int guiX;
     private int guiY;
+    private GameGui gG;
     {
+
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) { // delivers you which key was pressed
+
+                    case KeyEvent.VK_ESCAPE:
+//                        gG.dispose();
+                        gG.dispose();
+
                     case KeyEvent.VK_LEFT:
                     case KeyEvent.VK_A:
                         game2048.onKeyPressLeftNew();
@@ -65,11 +72,13 @@ public class Tiledrawer extends JPanel {
         return game2048;
     }
 
-    public Tiledrawer(int tableSize) {
+    public Tiledrawer(int tableSize,GameGui gG) {
+        this.gG=gG;
         game2048 = new Calc(tableSize);
     }
 
-    public Tiledrawer(boolean useBackup) throws IOException, ClassNotFoundException {
+    public Tiledrawer(boolean useBackup,GameGui gG)throws IOException, ClassNotFoundException {
+        this.gG=gG;
         game2048 = new Calc(useBackup);
     }
 
@@ -148,7 +157,7 @@ public class Tiledrawer extends JPanel {
             Image icon = new ImageIcon("src/resources/confetti.gif").getImage();
             g.drawImage(icon, (getWidth() - icon.getWidth(null)) / 2, (getHeight() - icon.getWidth(null)) / 2, this);
             g.setColor(new Color(128, 128, 128, 128));
-            g.drawString("Press the X to save the score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press the X to save the score") / 2), getHeight() - 15);
+            g.drawString("Press ESC to save the score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press ESC to save score") / 2), getHeight() - 15);
 
             //if the game is over & the new score is higher than the old one, you "lose"
         } else if (game2048.iseOG() && game2048.getScoreValue()< highScore) {
@@ -164,7 +173,7 @@ public class Tiledrawer extends JPanel {
             g.setColor(new Color(128, 128, 128, 128));
             Image icon = new ImageIcon("src/resources/rain.gif").getImage();
             g.drawImage(icon, (getWidth() - icon.getWidth(null)) / 2, (getHeight() - icon.getWidth(null)) / 2, this);
-            g.drawString("Press the X to save score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press the X to save score") / 2), getHeight() - 15);
+            g.drawString("Press ESC to save score", getWidth() / 2 - (getFontMetrics(gO_FTN).stringWidth("Press ESC to save score") / 2), getHeight() - 15);
 
         }
 

@@ -1,12 +1,7 @@
 package module.Logic;
 
+import module.Menus.GameGui;
 import module.Score.ScoreArray;
-import module.Score.ScoreBoard;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Random;
 
@@ -31,6 +26,7 @@ public class Calc{
      * Constructor used for creating a new Playing field
      **/
     public Calc(int tableSize) {
+
         setTableSize(tableSize);
 
 

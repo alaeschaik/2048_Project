@@ -25,7 +25,8 @@
         </constraints>
         <properties>
           <enabled value="true"/>
-          <hideActionText value="true"/>
+          <focusPainted value="false"/>
+          <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value="Exit"/>
@@ -51,6 +52,7 @@
         </constraints>
         <properties>
           <enabled value="true"/>
+          <focusPainted value="false"/>
           <hideActionText value="true"/>
           <text value="Options"/>
         </properties>
@@ -64,6 +66,7 @@
         <properties>
           <background color="-2300695"/>
           <enabled value="true"/>
+          <focusPainted value="false"/>
           <foreground color="-12828863"/>
           <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
@@ -80,6 +83,7 @@
           </grid>
         </constraints>
         <properties>
+          <focusPainted value="false"/>
           <text value="Scoreboard"/>
         </properties>
       </component>

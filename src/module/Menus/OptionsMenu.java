@@ -1,6 +1,7 @@
 package module.Menus;
 
 import module.Logic.Calc;
+import oracle.jrockit.jfr.JFR;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,36 +14,34 @@ import java.io.IOException;
 /**
  * Created by Biko on 12.03.2016.
  */
-public class OptionsMenu {
+public class OptionsMenu extends JFrame {
     private JTextPane sizeOfTheFieldTextPane;
+    private JTextPane newTilesAfterEveryTextPane;
+    private JTextPane rangeOfValuesThatTextPane;
     private JSlider sizeSlider;
     private JPanel jpanel;
-    private JTextPane newTilesAfterEveryTextPane;
     private JSlider spawnSlider;
     private JLabel ImageLabel;
-    private JTextPane rangeOfValuesThatTextPane;
     private JSlider rangeSlider;
     private JButton backButton;
 
     public OptionsMenu() {
-
-        JFrame frame = new JFrame("Menu");
-
         spawnSlider.setValue(Calc.getSpawnRate());
         sizeSlider.setValue(Calc.getTableSize());
         rangeSlider.setValue(Calc.getRange());
-        frame.setContentPane(jpanel);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        setContentPane(jpanel);
+        setUndecorated(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pack();
+        setVisible(true);
 
-        frame.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         rangeSlider.addChangeListener(e -> Calc.setRange(rangeSlider.getValue()));
         sizeSlider.addChangeListener(e -> Calc.setTableSize(sizeSlider.getValue()));
         spawnSlider.addChangeListener(e -> Calc.setSpawnRate(spawnSlider.getValue()));
         backButton.addActionListener(e -> {
             if (e.getSource() == backButton) { // delete the comment to making some change tp push
-                frame.dispose();
+                dispose();
             }
         });
     }

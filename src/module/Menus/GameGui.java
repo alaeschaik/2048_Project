@@ -7,6 +7,7 @@ import module.Score.ScoreBoard;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
 
@@ -21,13 +22,13 @@ public class GameGui extends JFrame {
 
     public GameGui(boolean useBackup) throws IOException, ClassNotFoundException {
 
-        game2048 = new Tiledrawer(useBackup);
+        game2048 = new Tiledrawer(useBackup,this);
         createGame();
 
     }
 
     public GameGui() {
-        game2048 = new Tiledrawer(Calc.getTableSize());
+        game2048 = new Tiledrawer(Calc.getTableSize(),this);
         createGame();
 
     }
@@ -35,8 +36,10 @@ public class GameGui extends JFrame {
     private void createGame() {
 
         setTitle("2048 Game");
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(Calc.getTableSize() * (getTileSize() + getTilesMargin()) + getTilesMargin() + 10, Calc.getTableSize() * (getTileSize() + getTilesMargin() + getTilesMargin()));
+        setUndecorated(true);
+        setShape(new RoundRectangle2D.Double(0, 0,(Calc.getTableSize() * (getTileSize() + getTilesMargin()) + getTilesMargin() + 10), Calc.getTableSize() * (getTileSize() + getTilesMargin() + getTilesMargin()), 25, 25));
         setResizable(false);
         setVisible(true);
         add(game2048);
@@ -95,5 +98,19 @@ public class GameGui extends JFrame {
 
         }
 
+    }
+
+    public void dispose()
+    {
+        try {
+            scoreWindow();
+
+        } catch (ClassNotFoundException | IOException e1) {
+            e1.printStackTrace();
+        } finally {
+            System.out.println("Closed");
+            super.dispose();
+
+        }
     }
 }
