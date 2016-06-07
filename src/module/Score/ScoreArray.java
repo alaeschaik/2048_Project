@@ -15,7 +15,7 @@ public class ScoreArray implements Serializable {
         this.table = table;
     }
 
-    public int getscore() {
+    public int getScore() {
         return score;
     }
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by Biko Kie&szlig; on 19.03.2016.
  */
-public class Server {
+public  class Server {
 
 
     /**

@@ -26,7 +26,7 @@ if(isset($_GET["score"], $_GET["name"]))
 else
 {
 	if(!file_exists($filename))
-		die("file doesn't exist yet");
+		die("file has not yet been created");
 }
 
 //deserialize file
