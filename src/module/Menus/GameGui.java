@@ -93,7 +93,7 @@ public class GameGui extends JFrame {
                 ScoreBoard.add(new Score(response.toString(), Calc.getTableSize(), game2048.getGame2048().getScoreValue()));
             }
         } else if (choice == 0) {
-            System.out.println("lol");
+
             game2048.getGame2048().saveStatus();
 
         }
